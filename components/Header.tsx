@@ -53,7 +53,7 @@ export const Header: React.FunctionComponent = () => {
         elevation={0}
         style={{
           transition: "background-color 0.25s",
-          backgroundColor: "transparent",
+          backgroundColor: "darkblue",
           backdropFilter: "blur(5px)",
           WebkitBackdropFilter: "blur(5px)",
         }}

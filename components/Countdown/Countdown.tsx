@@ -1,7 +1,7 @@
 import styles from './Countdown.module.css'
 import React, { useState } from 'react'
 
-const targetDate = "Mar 19, 2023 00:00:00"
+const targetDate = "Mar 19, 2024 00:00:00"
 
 export const Countdown = () => {
     const [timeLeft, setTimeLeft] = useState({days: 0, hours: 0, minutes: 0, seconds: 0})

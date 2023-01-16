@@ -7,12 +7,14 @@
     background: rgba(0,0,0,0.1);
     padding: 1rem 3rem;
     border-radius: 1rem;
+    column-gap: 4rem;
 }
 
 .main span {
     display: inline-block;
     text-align: center;
     font-size: 4rem;
+    margin: auto;
 }
 
 .main span h1 {
@@ -28,8 +30,4 @@
     .main span {
         font-size: 2rem;
     }
-}
-
-.main span:not(:last-of-type) {
-    margin-right: 1.5em;
 }

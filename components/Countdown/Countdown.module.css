@@ -8,6 +8,7 @@
     padding: 1rem 3rem;
     border-radius: 1rem;
     column-gap: 4rem;
+    row-gap: 2rem;
 }
 
 .main span {

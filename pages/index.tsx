@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { Countdown } from '../components/Countdown/Countdown'
+import { Jumbotron } from '../components/Jumbotron/Jumbotron'
 
 export default function Home() {
   return (
@@ -10,10 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
-          <p>
-            Get started by editing&nbsp;
-            <code>pages/index.tsx</code>
-          </p>
+          <Jumbotron>
+            <Countdown />
+          </Jumbotron>
       </main>
     </>
   )

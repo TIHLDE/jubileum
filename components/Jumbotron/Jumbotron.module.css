@@ -1,0 +1,18 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+background: -webkit-radial-gradient(50% 200%, rgba(93, 9, 121, 1) 0%,
+    rgba(93, 9, 121, 1) 35%,
+    rgba(0, 0, 0, 1) 70%);
+    background: radial-gradient(at 50% 200%, 
+        #2b214d 0%,
+        rgba(93, 9, 121, 1) 20%,
+        rgba(93, 9, 121, 1) 35%,
+        rgba(0, 0, 0, 1) 70%);
+}

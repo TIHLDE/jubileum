@@ -16,9 +16,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 // Assets
-import { ROUTES } from "../utility/constants/routes";
+import { ROUTES } from "../../utility/constants/routes";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const menu = [
   {
@@ -32,7 +33,8 @@ const menu = [
 ];
 
 export const Header: React.FunctionComponent = () => {
-  const [drawerOpen, setDrawerOpen] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const router = useRouter();
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -109,11 +111,11 @@ export const Header: React.FunctionComponent = () => {
                   key={i}
                   component={Link}
                   href={item.link}
-                  color="info"
                   style={{
                     textAlign: "center",
-                    ...("" == item.link
+                    ...(router.pathname == item.link
                       ? {
+                          color: "white",
                           fontWeight: 600,
                           borderBottomLeftRadius: 0,
                           borderBottomRightRadius: 0,
@@ -147,10 +149,9 @@ export const Header: React.FunctionComponent = () => {
               flexDirection="row"
               justifyContent="end"
             >
-              <button onClick={()=> console.log("RADNOM")}>TEST</button>
               <IconButton
                 size="large"
-                onClick={() => console.log("TEST")}
+                onClick={toggleDrawer(true)}
                 color="info"
                 sx={{ mr: -1.5 }}
               >
@@ -159,8 +160,14 @@ export const Header: React.FunctionComponent = () => {
             </Box>
           </Container>
         </Toolbar>
-        <Drawer variant="temporary" anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-          <Container sx={{width: 250}}>
+        <Drawer
+          variant="temporary"
+          anchor="right"
+          open={drawerOpen}
+          onClose={toggleDrawer(false)}
+          PaperProps={{ sx: { backgroundColor: "black" } }}
+        >
+          <Container sx={{ width: 250, p: 2 }}>
             <Box
               flexDirection="column"
               sx={{ display: { xs: "flex", md: "none" } }}
@@ -175,10 +182,13 @@ export const Header: React.FunctionComponent = () => {
                   key={i}
                   color="info"
                   onClick={toggleDrawer(false)}
+                  component={Link}
+                  href={item.link}
                   style={
-                    "" == item.link
+                    router.pathname == item.link
                       ? {
                           fontWeight: 600,
+                          color: "white",
                           borderBottomRightRadius: 0,
                           borderTopRightRadius: 0,
                           borderRight: "2px solid white",

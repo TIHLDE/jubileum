@@ -5,8 +5,8 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    column-gap: 4rem;
-    row-gap: 2rem;
+    column-gap: 4em;
+    row-gap: 2em;
 }
 
 .wrapper {
@@ -40,6 +40,10 @@
 @media screen and (max-width: 700px) {
     .main span {
         font-size: 2rem;
+    }
+
+    .main {
+        column-gap: 2em;
     }
 }
 

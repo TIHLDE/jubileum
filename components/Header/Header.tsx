@@ -30,6 +30,10 @@ const menu = [
     link: ROUTES.DALJER,
     label: "Tihlde daljer",
   },
+  {
+    link: ROUTES.TOEDDEL,
+    label: "Tøddel",
+  }
 ];
 
 export const Header: React.FunctionComponent = () => {

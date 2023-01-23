@@ -1,5 +1,6 @@
 export const ROUTES = {
     HISTORY: "/historie",
-    DALJER: "/daljer"
+    DALJER: "/daljer",
+    TOEDDEL: "https://tihlde.org/toddel/"
 }
 

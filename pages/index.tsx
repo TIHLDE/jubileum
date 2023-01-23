@@ -1,7 +1,5 @@
-import useEnhancedEffect from '@mui/material/utils/useEnhancedEffect'
 import Head from 'next/head'
 import React, {useEffect, useState} from 'react'
-import Confetti from 'react-confetti'
 import { Countdown } from '../components/Countdown/Countdown'
 import { Jumbotron } from '../components/Jumbotron/Jumbotron'
 

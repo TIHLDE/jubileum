@@ -31,7 +31,7 @@ const menu = [
     label: "Tihlde daljer",
   },
   {
-    link: ROUTES.TOEDDEL,
+    link: ROUTES.TODDEL,
     label: "Tøddel",
   }
 ];

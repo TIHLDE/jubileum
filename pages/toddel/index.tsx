@@ -1,4 +1,4 @@
-const ToeddelPage = () => {
+const ToddelPage = () => {
     return (
         <div>
             Tøddel
@@ -6,4 +6,4 @@ const ToeddelPage = () => {
     )
 }
 
-export default ToeddelPage
+export default ToddelPage

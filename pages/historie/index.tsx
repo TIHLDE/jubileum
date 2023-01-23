@@ -1,3 +1,5 @@
+import Confetti from 'react-confetti'
+
 
 
 const HistoriePage = () => {

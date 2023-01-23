@@ -1,63 +1,50 @@
-import styles from './Countdown.module.css'
-import React, { useEffect, useState } from 'react'
-
-const targetDate = "Mar 19, 2023 00:00:00"
+import styles from './Countdown.module.css';
+import React, { useEffect, useState, ReactNode } from 'react';
+import { intervalToDuration } from 'date-fns';
+import { useConfetti } from '../hooks/Confetti';
 
 export const Countdown = () => {
-    const [timeLeft, setTimeLeft] = useState({days: 0, hours: 0, minutes: 0, seconds: 0});
-    const [visible, setVisible] = useState(true);
+    const [timeLeft, setTimeLeft] = useState<Duration>({years: undefined, months: undefined, days: undefined, hours: undefined, minutes: undefined, seconds: undefined});
+    const [confettiFired, setConfettiFired] = useState(false);
+    const { run } = useConfetti();
+
+    // Define a target date for the countdown timer
+    const targetDate = new Date("Mar 20, 2023 12:00:00");
+
 
     // Code for updating the timer values
     const updateTimer = () => {
-        const countDownDate = new Date(targetDate).getTime();
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
+        if (targetDate.getTime() - new Date().getTime() <= 0) {
+            // There is no remaining time!
+            setTimeLeft({years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0});
 
-        // If the date has alredy passed, we do not want to calculate the
-        // remaining time left, but instead set the values to 0
-        console.log(distance)
-        if(distance <= 0) {
-            setTimeLeft({days: 0, hours: 0, minutes: 0, seconds: 0})
-            if(!visible) {
-                setVisible(true);
+            // Fire the confetti only once!
+            if (!confettiFired) {
+                setConfettiFired(true);
+                run();
             }
+
             return;
         }
 
-        // Calculate the remaining time left, ensuring the values
-        // are not negative
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        days = days < 0 ? 0 : days;
-        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        hours = hours < 0 ? 0 : hours;
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        minutes = minutes < 0 ? 0 : minutes;
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        seconds = seconds < 0 ? 0 : seconds;
-
-        setTimeLeft({days: days, hours: hours, minutes: minutes, seconds: seconds})
+        // Update the timeLeft hook
+        setTimeLeft(intervalToDuration({end: targetDate, start: new Date()}))        
     }
-
+    
     useEffect(()=>{
-        // Fix this code to make it better and stuff.
-        // Curent behavior: The timer is updated after one second. This causes the countdown to display
-        // zero for one second before the countdown is updated. This is not ideal.
-        // Desired behavior: The timer is updated immediately, and then updated every second 👌.
-        setTimeout(updateTimer, 1000);
+        // Update the time remaining immedeately upon component mount
+        updateTimer();
 
-        // Check if the timer has reached zero, and if so, fire some confetti!
-        if (timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0) {
-
-            // TODO: Fire confetti 🎉
-        }
-    })
-
+        // Create an interval which updates the component every second
+        const interval = setInterval(updateTimer, 1000);
+        
+        // Clear the interval when the component is unmounted
+        return () => clearInterval(interval);
+    },[confettiFired]);
+    
 
     return(
-        <div className={`${styles.wrapper}` + 
-            (()=>{
-                return visible ? ` ${styles.show}` : ``;
-            })()}>
+        <div className={styles.wrapper}>
             <div className={styles.main}>
                 <span>
                     <h1>{timeLeft.days}</h1>

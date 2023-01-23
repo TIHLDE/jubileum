@@ -33,7 +33,7 @@ const menu = [
   {
     link: ROUTES.TODDEL,
     label: "Tøddel",
-  }
+  },
 ];
 
 export const Header: React.FunctionComponent = () => {
@@ -117,9 +117,9 @@ export const Header: React.FunctionComponent = () => {
                   href={item.link}
                   style={{
                     textAlign: "center",
+                    color: "white",
                     ...(router.pathname == item.link
                       ? {
-                          color: "white",
                           fontWeight: 600,
                           borderBottomLeftRadius: 0,
                           borderBottomRightRadius: 0,

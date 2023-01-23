@@ -1,12 +1,12 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import lightTheme from "../styles/theme/lightTheme";
 import { Header } from "../components/Header/Header";
+import dark from "../styles/theme/dark";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={dark}>
       <Header />
       <CssBaseline />
       <Component {...pageProps} />

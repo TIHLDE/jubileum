@@ -1,17 +1,62 @@
-import { createTheme } from "@mui/material/styles";
+import { PaletteColorOptions, createTheme } from "@mui/material/styles";
+
+// Redefine the palette color options to include custom colors
+declare module "@mui/material/styles" {
+  interface PaletteColorOptions {
+    main?: string;
+    light?: string;
+    dark?: string;
+    contrastText?: string;
+  }
+
+  interface PaletteOptions {
+    two?: PaletteColorOptions;
+    three?: PaletteColorOptions;
+    four?: PaletteColorOptions;
+    five?: PaletteColorOptions;
+    six?: PaletteColorOptions;
+    seven?: PaletteColorOptions;
+    eight?: PaletteColorOptions;
+    
+  }
+}
 
 const dark = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#1c458a",
+      main: "rgb(28,69,138)",
+      // Consider updating the color values below
       light: "#5470bb",
       dark: "#0d2339",
       contrastText: "#fff",
     },
+    two: {
+      main: "rgb(102,220,196)",
+    },
+    three: {
+      main: 'rgb(178,129,184)'
+    },
+    four: {
+      main: 'rgb(168,93,161)',
+    },
+    five: {
+      main: 'rgb(237,106,134)',
+    },
+    six: {
+      main: 'rgb(113,168,219)',
+    },
+    seven: {
+      main: 'rgb(155,216,247)',
+    },
+    eight: {
+      main: 'rgb(103,195,200)',
+    },
+    
     info: {
       main: "#fff",
     },
+
     background: { default: "#001328", paper: "#011830" },
     text: {
       primary: "#fff",

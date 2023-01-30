@@ -18,10 +18,12 @@ export const Countdown = () => {
             // There is no remaining time!
             setTimeLeft({years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0});
 
-            // Fire the confetti only once!
-            if (!confettiFired) {
-                setConfettiFired(true);
-                run();
+        // If the date has alredy passed, we do not want to calculate the
+        // remaining time left, but instead set the values to 0
+        if(distance <= 0) {
+            setTimeLeft({days: 0, hours: 0, minutes: 0, seconds: 0})
+            if(!visible) {
+                setVisible(true);
             }
 
             return;

@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React, {useEffect, useState} from 'react'
 import { Countdown } from '../components/Countdown/Countdown'
 import { Jumbotron } from '../components/Jumbotron/Jumbotron'
+import { Signup } from '../components/Signup/Signup'
 
 export default function Home() {
   const [height, setheight] = useState(100)
@@ -21,6 +22,7 @@ export default function Home() {
       <main >
           <Jumbotron>
             <Countdown />
+            <Signup />
           </Jumbotron>
       </main>
     </>

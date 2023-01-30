@@ -129,6 +129,7 @@ export const Header: React.FunctionComponent = () => {
                   }}
                 >
                   {item.label}
+                  {item.label == "Tøddel" && <OpenInNewIcon sx={{ ml: 1 }} fontSize="small" />}
                 </Button>
               ))}
             </Box>

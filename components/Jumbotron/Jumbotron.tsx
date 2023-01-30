@@ -1,4 +1,7 @@
+import { useTheme } from '@emotion/react'
 import styles from './Jumbotron.module.css'
+import { styled } from "@mui/material/styles";
+import { Box } from '@mui/material';
 
 // Create a styled box component using the theme styling
 const StyledGradient = styled(Box)(({theme}) => ({
@@ -11,9 +14,9 @@ export const Jumbotron = ({...props}) => {
     return(
         <div className={styles.main}>
             <div className={styles.content}>
-                {props.children}    
+                {props.children}
             </div>
-            <div className={styles.gradientBackground}></div>
+            <StyledGradient className={styles.gradientBackground}/>
         </div>
     )
 }

@@ -17,7 +17,6 @@ declare module "@mui/material/styles" {
     six?: PaletteColorOptions;
     seven?: PaletteColorOptions;
     eight?: PaletteColorOptions;
-    
   }
 }
 
@@ -52,7 +51,7 @@ const dark = createTheme({
     eight: {
       main: 'rgb(103,195,200)',
     },
-    
+
     info: {
       main: "#fff",
     },

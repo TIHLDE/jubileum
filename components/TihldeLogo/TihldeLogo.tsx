@@ -1,7 +1,9 @@
 import { styled } from "@mui/material";
+import styles from "./TihldeLogo.module.css";
 
 const Svg = styled("svg")(({ theme }) => ({
   fill: theme.palette.primary.main,
+  color: "#000",
 }));
 
 export const Logo = () => {
@@ -13,6 +15,7 @@ export const Logo = () => {
         viewBox={"250 450 2000 390"}
         width={700}
         xmlns="http://www.w3.org/2000/svg"
+        className={styles.logo}
       >
         <defs id="defs6">
           <clipPath clipPathUnits="userSpaceOnUse" id="clipPath18">
@@ -124,15 +127,9 @@ export const Logo = () => {
           </g>
         </g>
       </Svg>
-      <h2
-        style={{
-          margin: 0,
-          textAlign: "center",
-          marginTop: "-1rem",
-        }}
-      >
-        30 ÅR
-      </h2>
+      <div className={styles.bottomTextWrapper}>
+        <h2 className={styles.bottomText}>30 år</h2>
+      </div>
     </>
   );
 };

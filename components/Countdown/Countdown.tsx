@@ -1,10 +1,16 @@
 import styles from './Countdown.module.css';
 import React, { useEffect, useState, ReactNode } from 'react';
-import { intervalToDuration } from 'date-fns';
 import { useConfetti } from '../hooks/Confetti';
 
+type CountdownProps = {
+    days: number,
+    hours: number,
+    minutes: number,
+    seconds: number
+}
+
 export const Countdown = () => {
-    const [timeLeft, setTimeLeft] = useState<Duration>({years: undefined, months: undefined, days: undefined, hours: undefined, minutes: undefined, seconds: undefined});
+    const [timeLeft, setTimeLeft] = useState<CountdownProps>({days: 0, hours: 0, minutes: 0, seconds: 0});
     const [confettiFired, setConfettiFired] = useState(false);
     const { run } = useConfetti();
 
@@ -16,7 +22,7 @@ export const Countdown = () => {
     const updateTimer = () => {
         if (targetDate.getTime() - new Date().getTime() <= 0) {
             // There is no remaining time!
-            setTimeLeft({years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0});
+            setTimeLeft({days: 0, hours: 0, minutes: 0, seconds: 0});
 
             // Fire the confetti only once!
             if (!confettiFired) {
@@ -27,8 +33,17 @@ export const Countdown = () => {
             return;
         }
 
+        // Calculate the remaining time
+        const now = new Date().getTime();
+        const distance = targetDate.getTime() - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
         // Update the timeLeft hook
-        setTimeLeft(intervalToDuration({end: targetDate, start: new Date()}))        
+        setTimeLeft({days: days, hours: hours, minutes: minutes, seconds: seconds});  
     }
     
     useEffect(()=>{

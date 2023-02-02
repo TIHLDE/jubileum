@@ -1,0 +1,14 @@
+/*
+.timelineBody {
+    display: block;
+    max-width: 30vw;
+    background: white;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+} */
+
+.timelineBody {
+    display: block;
+    max-width: 30vw;
+}

@@ -59,6 +59,7 @@ const dark = createTheme({
     background: { default: "#001328", paper: "#011830" },
     text: {
       primary: "#fff",
+      secondary: "#aaa"
     },
   },
   typography: {

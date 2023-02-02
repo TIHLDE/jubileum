@@ -1,5 +1,5 @@
 import styles from './Countdown.module.css';
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useConfetti } from '../hooks/Confetti';
 
 type CountdownProps = {

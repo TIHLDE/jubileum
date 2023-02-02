@@ -1,0 +1,45 @@
+.logo {
+  width: 80%;
+  height: auto;
+  margin: auto;
+  display: block;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.bottomTextWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 0.5rem;
+
+  display: none;
+}
+
+.bottomTextWrapper::after {
+  height: 2px;
+  width: 50%;
+  position: absolute;
+  background: white;
+  content: "";
+  color: transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: none;
+}
+
+.bottomText {
+  width: fit-content;
+  text-align: center;
+  position: relative;
+  line-height: 1rem;
+  margin: 0;
+  background: #000;
+  z-index: 1;
+  padding: 0 1rem;
+}

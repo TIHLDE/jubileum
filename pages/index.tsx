@@ -24,9 +24,6 @@ export default function Home() {
         <Jumbotron>
           <Countdown />
         </Jumbotron>
-        <TIHLDETimeline
-          items={events}
-        />
       </main>
     </>
   )

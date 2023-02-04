@@ -17,4 +17,35 @@
     .timelineBody {
         max-width: 40vw;
     }
+
+    .timelinePaper {
+        max-width: calc(40vw + 1rem);
+    }
+}
+
+.timelinePaper {
+
+    /* Compensate for the padding on left and right side of the paper*/
+    width: calc(40vw + 1rem);
+}
+
+.titlePaper {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.5rem 0.5rem;
+}
+
+/* 
+    Set all corners rounded if there is no body of text succeeding
+    the title
+*/
+.titlePaper:only-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+
+/* Wrapper for the body in each of the timeline entries */
+.timelineBodyWrapper {
+    padding: 0.5rem;
 }

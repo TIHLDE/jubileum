@@ -7,7 +7,7 @@ import TimelineDot from '@mui/lab/TimelineDot'
 import TimelineSeparator from '@mui/lab/TimelineSeparator'
 import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
-import { Typography, styled } from '@mui/material'
+import { Paper, Typography, styled } from '@mui/material'
 
 type Entry = {
   date: string
@@ -16,7 +16,7 @@ type Entry = {
 }
 
 const StyledSpan = styled('span')(({ theme }) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.text.primary,
 }))
 
 export const TIHLDETimeline = ({ ...props }) => {
@@ -32,14 +32,26 @@ export const TIHLDETimeline = ({ ...props }) => {
             {props.items.length - 1 > index ? <TimelineConnector /> : null}
           </TimelineSeparator>
           <TimelineContent color={'text.primary'}>
-            {timelineEntry.title}
-            {timelineEntry.body ? (
-              <StyledSpan className={styles.timelineBody}>{timelineEntry.body}</StyledSpan>
-            ) : null}
+            <TimelinePaper>{timelineEntry}</TimelinePaper>
           </TimelineContent>
         </TimelineItem>
       ))}
     </Timeline>
+  )
+}
+
+const TimelinePaper = ({...props}) => {
+  return (
+    <Paper variant="outlined" className={styles.timelinePaper}>
+      <Paper elevation={1} className={styles.titlePaper}>
+        {props.children.title}
+      </Paper>
+      {props.children.body ? (
+        <div className={styles.timelineBodyWrapper}>
+          <StyledSpan className={styles.timelineBody}>{props.children.body}</StyledSpan>
+        </div>
+      ) : null}
+    </Paper>
   )
 }
 

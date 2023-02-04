@@ -37,6 +37,16 @@
     }
 }
 
+/*
+    Handle the case where a mobile user flips to landscape mode. Move the countdown
+    timer and logo to the middle of the screen in both axis.
+*/
+@media screen and (max-height: 700px) {
+    .content {
+        margin-top: 0;
+    }
+}
+
 /*Animations for the gradient background*/
 @keyframes gradientBackground {
     0% {

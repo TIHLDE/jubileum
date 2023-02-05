@@ -6,7 +6,7 @@ const GalleryPage = () => {
     return (
         <div>
             <h1 style={{textAlign: "center"}}>TIHLDE MERCH</h1>
-            <h3 style={{textAlign: "center"}}>UTKAST 3</h3>
+            <h3 style={{textAlign: "center"}}>UTKAST</h3>
             <GalleryV3/>
             {/* <h3 style={{textAlign: "center"}}>UTKAST 1</h3>
             <Gallery />

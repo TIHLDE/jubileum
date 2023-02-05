@@ -1,4 +1,4 @@
-import { Alert, Chip, Paper } from '@mui/material';
+import { Alert, Chip, LinearProgress, Paper } from '@mui/material';
 import CutoutText from '../CutoutText/CutoutText';
 import { Logo } from '../TihldeLogo/TihldeLogo';
 import styles from './ScrollyTeller.module.css';
@@ -102,6 +102,12 @@ export const ScrollyTeller = ({ ...props }) => {
         <Alert severity='info' className={styles.alert}>
           Bla ned for å lese mer
         </Alert>
+        <LinearProgress
+          color='primary'
+          variant='determinate'
+          value={percentage}
+          className={styles.progressBar}
+        />
       </div>
       <div className={styles.bodyFiller}></div>
     </>

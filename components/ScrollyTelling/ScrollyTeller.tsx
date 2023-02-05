@@ -68,7 +68,7 @@ export const ScrollyTeller = ({ ...props }) => {
             offset={(percentage - 20) * 5 > 100 ? 100 : (percentage - 20) * 5}
             display={percentage >= 20 && percentage < 40 ? 'block' : 'none'}
           >
-            Dette var en kjapp demo av en måte å formidle Tihldes historie på.
+            Yes
           </CutoutText>
 
           <ScrollyContainer

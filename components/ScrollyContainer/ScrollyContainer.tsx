@@ -15,8 +15,10 @@ const ScrollyContainer = ({ ...props }) => {
       setDisplay(props.display);
     }
 
-    if (progress < 20) {
-      const calcOpac = (20 - progress) / 20;
+    if (progress < 40) {
+      console.log(progress);
+      const calcOpac = progress / 20;
+      console.log('Setting opacity to ' + calcOpac + '');
       setOpacity(calcOpac > 0 ? calcOpac : 0);
     }
   }, [props.progress, props.display]);
@@ -25,7 +27,7 @@ const ScrollyContainer = ({ ...props }) => {
       style={{
         display: display,
         position: 'fixed',
-        transform: `translateY(-${progress > 20 ? 0 : 20 - progress * 5}%)`,
+        transform: `translateY(-${progress > 20 ? 0 : 20 - progress}%)`,
         opacity: opactiy,
       }}
     >

@@ -19,7 +19,8 @@ const CutoutText = ({ ...props }) => {
     }
 
     // Update the opacity of the text
-    if (offset > 70) {
+    console.log(offset);
+    if (offset < 20) {
       const calcOpac = (30 - (offset - 70)) / 30;
       setOpacity(calcOpac > 0 ? calcOpac : 0);
     }

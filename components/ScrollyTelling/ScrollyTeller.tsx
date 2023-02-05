@@ -4,6 +4,7 @@ import { Logo } from '../TihldeLogo/TihldeLogo';
 import styles from './ScrollyTeller.module.css';
 import { useState, useEffect } from 'react';
 import ScrollyContainer from '../ScrollyContainer/ScrollyContainer';
+import ScrollyCard from '../ScrollyCard/ScrollyCard';
 
 export const ScrollyTeller = ({ ...props }) => {
   const [percentage, setPercentage] = useState(0);
@@ -71,12 +72,10 @@ export const ScrollyTeller = ({ ...props }) => {
           </CutoutText>
 
           <ScrollyContainer
-            offset={(percentage - 40) * 5 > 100 ? 100 : (percentage - 40) * 5}
+            progress={(percentage - 40) * 5 > 100 ? 100 : (percentage - 40) * 5}
             display={percentage >= 40 && percentage < 60 ? 'block' : 'none'}
           >
-            <Paper elevation={3}>
-              <Chip label='Les mer' onClick={handleClick} />
-            </Paper>
+            <ScrollyCard />
           </ScrollyContainer>
 
           <CutoutText
@@ -95,8 +94,8 @@ export const ScrollyTeller = ({ ...props }) => {
             offset={(percentage - 80) * 5 > 100 ? 100 : (percentage - 80) * 5}
             display={percentage >= 80 && percentage < 100 ? 'block' : 'none'}
           >
-            Til slutt kan vi evt. legge inn en vanlig tidslinje for å
-            oppsummere.
+            Til slutt kan vi evt. legge inn en vanlig tidslinje for å gå mer i
+            detalj.
           </CutoutText>
         </div>
         <Alert severity='info' className={styles.alert}>

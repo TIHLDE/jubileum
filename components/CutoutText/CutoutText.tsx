@@ -23,7 +23,7 @@ const CutoutText = ({ ...props }) => {
       const calcOpac = (30 - (offset - 70)) / 30;
       setOpacity(calcOpac > 0 ? calcOpac : 0);
     }
-  }, [props.offset, props.display, offset, display]);
+  }, [props.offset, props.display]);
 
   return (
     <div

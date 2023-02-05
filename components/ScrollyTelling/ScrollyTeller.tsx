@@ -95,8 +95,8 @@ export const ScrollyTeller = ({ ...props }) => {
             offset={(percentage - 80) * 5 > 100 ? 100 : (percentage - 80) * 5}
             display={percentage >= 80 && percentage < 100 ? 'block' : 'none'}
           >
-            Til slutt kan vi evt. legge inn en vanlig tidslinje for å oppsummere
-            😎👌.
+            Til slutt kan vi evt. legge inn en vanlig tidslinje for å
+            oppsummere.
           </CutoutText>
         </div>
       </div>

@@ -10,11 +10,11 @@ const CutoutText = ({ ...props }) => {
   const [opactiy, setOpacity] = useState(1);
 
   useEffect(() => {
-    if (!isEqual(props.offset, offset)) {
+    if (props.offset != offset) {
       setOffset(props.offset);
     }
 
-    if (!isEqual(props.display, display)) {
+    if (props.display != display) {
       setDisplay(props.display);
     }
 

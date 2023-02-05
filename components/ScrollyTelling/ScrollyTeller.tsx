@@ -1,8 +1,9 @@
-import { Chip } from '@mui/material';
+import { Chip, Paper } from '@mui/material';
 import CutoutText from '../CutoutText/CutoutText';
 import { Logo } from '../TihldeLogo/TihldeLogo';
 import styles from './ScrollyTeller.module.css';
 import { useState, useEffect } from 'react';
+import ScrollyContainer from '../ScrollyContainer/ScrollyContainer';
 
 export const ScrollyTeller = ({ ...props }) => {
   const [percentage, setPercentage] = useState(0);
@@ -69,15 +70,14 @@ export const ScrollyTeller = ({ ...props }) => {
             Dette var en kjapp demo av en måte å formidle Tihldes historie på.
           </CutoutText>
 
-          <CutoutText
-            variant={'center'}
-            fontSize={'10vw'}
+          <ScrollyContainer
             offset={(percentage - 40) * 5 > 100 ? 100 : (percentage - 40) * 5}
             display={percentage >= 40 && percentage < 60 ? 'block' : 'none'}
           >
-            Den er ikke bugfri, men det er en start, i tilfelle vi vil gjøre det
-            på denne måten.
-          </CutoutText>
+            <Paper elevation={3}>
+              <Chip label='Les mer' onClick={handleClick} />
+            </Paper>
+          </ScrollyContainer>
 
           <CutoutText
             variant={'center'}

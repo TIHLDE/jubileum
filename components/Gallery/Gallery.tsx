@@ -5,7 +5,6 @@ export const Gallery = () => {
 
     return(
         <div className={styles.wrapper}>
-            <h1 className={styles.header}>TIHLDE MERCH</h1>
             <div className={styles.gallery}>
                 <div className={styles.gallery_column}>
                     <a className={styles.gallery__link}>

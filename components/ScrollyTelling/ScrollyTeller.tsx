@@ -41,6 +41,7 @@ export const ScrollyTeller = ({ ...props }) => {
             fontSize={'10vw'}
             offset={percentage * 10 > 100 ? 100 : percentage * 10}
             display={percentage < 10 ? 'block' : 'none'}
+            transform={percentage > 5 ? -(percentage - 5) * 10 : 0}
           >
             20. Mars 1993
           </CutoutText>

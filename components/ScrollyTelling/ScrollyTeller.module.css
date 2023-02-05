@@ -33,3 +33,10 @@
     height: 1000vh;
     width: 100vw;
 }
+
+.alert {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%);
+}

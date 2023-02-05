@@ -1,4 +1,4 @@
-import { Chip, Paper } from '@mui/material';
+import { Alert, Chip, Paper } from '@mui/material';
 import CutoutText from '../CutoutText/CutoutText';
 import { Logo } from '../TihldeLogo/TihldeLogo';
 import styles from './ScrollyTeller.module.css';
@@ -99,6 +99,9 @@ export const ScrollyTeller = ({ ...props }) => {
             oppsummere.
           </CutoutText>
         </div>
+        <Alert severity='info' className={styles.alert}>
+          Bla ned for å lese mer
+        </Alert>
       </div>
       <div className={styles.bodyFiller}></div>
     </>

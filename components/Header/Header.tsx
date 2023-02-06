@@ -33,6 +33,10 @@ const menu = [
     link: ROUTES.TODDEL,
     label: "Tøddel",
   },
+  {
+    link: ROUTES.MERCH,
+    label: "Merch",
+  },
 ];
 
 export const Header: React.FunctionComponent = () => {

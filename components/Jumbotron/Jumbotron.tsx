@@ -22,7 +22,7 @@ export const Jumbotron = ({ ...props }) => {
           />
           <TihldeJubLogo
             logoColor="white"
-            sx={{ height: 100, width: "auto" }}
+            sx={{ height: 120, width: "auto" }}
           />
         </Stack>
         {props.children}

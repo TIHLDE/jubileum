@@ -14,7 +14,7 @@ export function GalleryV3() {
       </div>
       <Box className={styles.image_box} sx={{ width: "auto", height: "auto", overflowX: "hidden", overflowY: 'hidden'}}>
         <ImageList 
-          sx={{columnCount: {sm: '1 !important', md: '3 !important', lg: '4 !important'},}} 
+          sx={{columnCount: {sm: '1 !important', md: '2 !important', lg: '4 !important'},}} 
           className={styles.image_list} variant="masonry" gap={20}>
           {itemData.map((item) => (
             <ImageListItem key={item.img} className={styles.gallery__image}>

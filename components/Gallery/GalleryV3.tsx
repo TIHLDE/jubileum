@@ -8,14 +8,14 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from '@mui/material/Button';
 
 export function GalleryV3() {
-  const matches = useMediaQuery('(min-width:792px)');
+  const matches = useMediaQuery('(min-width:79px)');
   return (
     <div className={styles.wrapper}>
       <div className={styles.button_wrapper}>
         <Button fullWidth variant="contained" href="#contained-buttons">BESTILL</Button>
       </div>
       <Box sx={{ width: "100%", height: "auto", overflowX: "hidden", overflowY: 'hidden'}}>
-        <ImageList className={styles.image_list} variant="masonry" cols={matches ? 4 : 3} gap={30}>
+        <ImageList className={styles.image_list} variant="masonry" cols={matches ? 4 : 1} gap={30}>
           {itemData.map((item) => (
             <ImageListItem key={item.img} className={styles.gallery__image}>
               <img
@@ -24,7 +24,7 @@ export function GalleryV3() {
                 alt={item.title}
                 loading="lazy"
               />
-              <ImageListItemBar className={styles.image_info} position="bottom" title={item.title} subtitle={item.price} />
+              <ImageListItemBar sx={{fontSize: "100px"}} className={styles.image_info} position="bottom" title={item.title} subtitle={item.price} />
             </ImageListItem>
           ))}
         </ImageList>

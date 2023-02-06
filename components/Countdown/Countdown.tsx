@@ -71,23 +71,23 @@ export const Countdown = () => {
 
   return (
     <>
-      <Grid container spacing={2} textAlign="center" justifyContent="center">
-        <Grid item>
+      <Grid container textAlign="center" columns={8} width={200} mx="auto">
+        <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.hours} d
+            {timeLeft.days} d
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
             {timeLeft.hours} t
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
             {timeLeft.minutes} m
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
             {timeLeft.seconds} s
           </Typography>

@@ -1,13 +1,11 @@
-import Confetti from 'react-confetti'
-
-
+import { ScrollyTeller } from '../../components/ScrollyTelling/ScrollyTeller'
 
 const HistoriePage = () => {
-    return (
-        <div>
-            HIstorie page
-        </div>
-    )
+  return (
+    <div>
+      <ScrollyTeller />
+    </div>
+  )
 }
 
 export default HistoriePage

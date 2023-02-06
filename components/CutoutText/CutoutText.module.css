@@ -5,6 +5,8 @@
     height: 100%;
     display: block;
     user-select: none;
+    position: relative;
+    z-index: 3;
 }
 
 
@@ -22,8 +24,18 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 2;
     transform: translateZ(0);
+}
+
+.fallbackBackground {
+    background: rgb(168,93,161);
+    position: absolute;
+    top: 0; 
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
 
 .wrapper {

@@ -16,9 +16,7 @@ const ScrollyContainer = ({ ...props }) => {
     }
 
     if (progress < 40) {
-      console.log(progress);
       const calcOpac = progress / 40;
-      console.log('Setting opacity to ' + calcOpac + '');
       setOpacity(calcOpac > 0 ? calcOpac : 0);
     }
   }, [props.progress, props.display]);

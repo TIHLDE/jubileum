@@ -1,6 +1,5 @@
 import { Alert, Chip, LinearProgress, Paper } from '@mui/material';
 import CutoutText from '../CutoutText/CutoutText';
-import { Logo } from '../TihldeLogo/TihldeLogo';
 import styles from './ScrollyTeller.module.css';
 import { useState, useEffect } from 'react';
 import ScrollyContainer from '../ScrollyContainer/ScrollyContainer';

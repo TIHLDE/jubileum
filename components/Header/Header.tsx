@@ -10,16 +10,15 @@ import {
   IconButton,
   Link as MuiLink,
   Toolbar,
-  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 // Assets
 import { ROUTES } from "../../utility/constants/routes";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import TihldeLogo from "../TihldeLogo/TihldeLogo";
 
 const menu = [
   {
@@ -73,37 +72,12 @@ export const Header: React.FunctionComponent = () => {
             }}
             maxWidth="xl"
           >
-            <MuiLink
-              component={Link}
-              href="/"
-              onClick={toggleDrawer(false)}
-              underline="none"
-              color="white"
-              style={{
-                marginLeft: "-8.5px",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white",
-              }}
-            >
-              <Image
-                alt="Logo"
-                width={50}
-                height={50}
-                src="/logo.png"
-                style={{ objectFit: "contain" }}
+            <MuiLink component={Link} href="/" onClick={toggleDrawer(false)}>
+              <TihldeLogo
+                size="large"
+                logoColor="white"
+                sx={{ height: 30, width: "auto" }}
               />
-              <Typography
-                variant="h2"
-                ml={1}
-                my={0}
-                fontSize="2rem"
-                fontWeight="bold"
-              >
-                Jubileum
-              </Typography>
             </MuiLink>
             <Box
               sx={{ display: { xs: "none", md: "flex" } }}
@@ -129,7 +103,9 @@ export const Header: React.FunctionComponent = () => {
                   }}
                 >
                   {item.label}
-                  {item.label == "Tøddel" && <OpenInNewIcon sx={{ ml: 1 }} fontSize="small" />}
+                  {item.label == "Tøddel" && (
+                    <OpenInNewIcon sx={{ ml: 1 }} fontSize="small" />
+                  )}
                 </Button>
               ))}
             </Box>

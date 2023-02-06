@@ -13,20 +13,7 @@ const StyledGradient = styled(Box)(({ theme }) => ({
 export const Jumbotron = ({ ...props }) => {
   return (
     <div className={styles.main}>
-      <div className={styles.content}>
-        <Stack direction="row">
-          <TihldeLogo
-            logoColor="white"
-            size="large"
-            sx={{ height: 100, width: "auto" }}
-          />
-          <TihldeJubLogo
-            logoColor="white"
-            sx={{ height: 120, width: "auto" }}
-          />
-        </Stack>
-        {props.children}
-      </div>
+      <div className={styles.content}>{props.children}</div>
       <StyledGradient className={styles.gradientBackground} />
     </div>
   );

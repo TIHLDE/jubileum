@@ -4,18 +4,18 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import styles from './Gallery.module.css';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from '@mui/material/Button';
 
 export function GalleryV3() {
-  const matches = useMediaQuery('(min-width:79px)');
   return (
     <div className={styles.wrapper}>
       <div className={styles.button_wrapper}>
         <Button fullWidth variant="contained" href="#contained-buttons">BESTILL</Button>
       </div>
-      <Box sx={{ width: "100%", height: "auto", overflowX: "hidden", overflowY: 'hidden'}}>
-        <ImageList className={styles.image_list} variant="masonry" cols={matches ? 4 : 1} gap={30}>
+      <Box className={styles.image_box} sx={{ width: "auto", height: "auto", overflowX: "hidden", overflowY: 'hidden'}}>
+        <ImageList 
+          sx={{columnCount: {sm: '1 !important', md: '3 !important', lg: '4 !important'},}} 
+          className={styles.image_list} variant="masonry" gap={20}>
           {itemData.map((item) => (
             <ImageListItem key={item.img} className={styles.gallery__image}>
               <img
@@ -54,56 +54,8 @@ const itemData = [
   },
   {
     img: 'https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg',
-    title: 'Jakke',
-    author: 'Christian Mackie',
-    price: '69,-',
-  },
-  {
-    img: 'https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg',
-    title: 'Genser',
-    author: 'Darren Richardson',
-    price: '69,-',
-  },
-  {
-    img: 'https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg',
-    title: 'Crewneck',
-    author: 'Taylor Simpson',
-    price: '69,-',
-  },
-  {
-    img: 'https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg',
-    title: 'Jakke',
-    author: 'Ben Kolde',
-    price: '69,-',
-  },
-  {
-    img: 'https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg',
-    title: 'T-skjorte',
-    author: 'Philipp Berndt',
-    price: '69,-',
-  },
-  {
-    img: 'https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg',
-    title: 'T-skjorte',
-    author: 'Jen P.',
-    price: '69,-',
-  },
-  {
-    img: 'https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg',
-    title: 'Crewneck',
-    author: 'Douglas Sheppard',
-    price: '69,-',
-  },
-  {
-    img: 'https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg',
-    title: 'Sko',
-    author: 'Fi Bell',
-    price: '69,-',
-  },
-  {
-    img: 'https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg',
-    title: 'Genser',
-    author: 'Hutomo Abrianto',
+    title: 'Bøff',
+    author: 'Charles Deluvio',
     price: '69,-',
   },
 ];

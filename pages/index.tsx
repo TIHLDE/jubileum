@@ -1,15 +1,17 @@
-import Head from 'next/head'
-import React, {useEffect, useState} from 'react'
-import { Countdown } from '../components/Countdown/Countdown'
-import { Jumbotron } from '../components/Jumbotron/Jumbotron'
+import Head from "next/head";
+import React, { useEffect, useState } from "react";
+import { Countdown } from "../components/Countdown/Countdown";
+import { Jumbotron } from "../components/Jumbotron/Jumbotron";
+import { Stack, Typography } from "@mui/material";
+import TihldeLogo, { TihldeJubLogo } from "../components/TihldeLogo/TihldeLogo";
 
 export default function Home() {
-  const [height, setheight] = useState(100)
-  const [width, setwidth] = useState(100)
-  useEffect(()=> {
-    setheight(window.innerHeight)
-    setwidth(window.innerWidth)
-  },[])
+  const [height, setheight] = useState(100);
+  const [width, setwidth] = useState(100);
+  useEffect(() => {
+    setheight(window.innerHeight);
+    setwidth(window.innerWidth);
+  }, []);
   return (
     <>
       <Head>
@@ -18,11 +20,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main >
-          <Jumbotron>
-            <Countdown />
-          </Jumbotron>
+      <main>
+        <Jumbotron>
+          <Stack direction="row">
+            <TihldeLogo
+              logoColor="white"
+              size="large"
+              sx={{ height: 100, width: "auto" }}
+            />
+            <TihldeJubLogo
+              logoColor="white"
+              sx={{ height: 120, width: "auto" }}
+            />
+          </Stack>
+          <Typography>TIHLDE feirer 30 år bla bla bla bla bla!</Typography>
+          <Countdown />
+        </Jumbotron>
       </main>
     </>
-  )
+  );
 }

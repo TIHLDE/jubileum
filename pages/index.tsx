@@ -21,6 +21,7 @@ import {
   Typography,
 } from "@mui/material";
 import TihldeLogo, { TihldeJubLogo } from "../components/TihldeLogo/TihldeLogo";
+import Image from "next/image";
 
 export default function Home({ data }: { data: any }) {
   const [height, setheight] = useState(100);
@@ -159,14 +160,77 @@ export default function Home({ data }: { data: any }) {
         <Divider />
         <Paper square sx={{ p: 3 }}>
           <Typography variant="h4" textAlign="center" my={2}>
-            Arrangementer
+            Jubileum merch ⏳
+          </Typography>
+          <Grid container sx={{ maxWidth: 600, mx: "auto" }}>
+            <Grid item xs={12} md={6}>
+              <Card
+                variant="outlined"
+                sx={{
+                  position: "relative",
+                  objectFit: "contain",
+                  m: 1,
+                }}
+              >
+                <CardContent sx={{ position: "relative", height: 300 }}>
+                  <Image
+                    src="/hettegenser.png"
+                    fill
+                    alt="hettegenser"
+                    style={{ objectFit: "contain" }}
+                  />
+                </CardContent>
+
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Hettegenser
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    300 kr
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Card
+                variant="outlined"
+                sx={{
+                  position: "relative",
+                  objectFit: "contain",
+                  m: 1,
+                }}
+              >
+                <CardContent sx={{ position: "relative", height: 300 }}>
+                  <Image
+                    src="/hettegenser.png"
+                    fill
+                    alt="hettegenser"
+                    style={{ objectFit: "contain" }}
+                  />
+                </CardContent>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Hettegenser
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    300 kr
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Paper>
+        <Divider />
+        <Paper square sx={{ p: 3 }}>
+          <Typography variant="h4" textAlign="center" my={2}>
+            Arrangementer 🥳
           </Typography>
           <Card variant="outlined" sx={{ maxWidth: 400, mx: "auto" }}>
             <CardMedia
               sx={{ height: 140 }}
               image={data.image}
               title="green iguana"
-            ></CardMedia>
+            />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 {data.title}

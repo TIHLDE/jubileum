@@ -26,16 +26,12 @@ const menu = [
     label: "Historie",
   },
   {
-    link: ROUTES.DALJER,
-    label: "Tihlde daljer",
+    link: ROUTES.MERCH,
+    label: "Merch",
   },
   {
     link: ROUTES.TODDEL,
     label: "Tøddel",
-  },
-  {
-    link: ROUTES.MERCH,
-    label: "Merch",
   },
 ];
 
@@ -62,10 +58,10 @@ export const Header: React.FunctionComponent = () => {
         elevation={0}
         style={{
           transition: "background-color 0.25s",
-          backgroundColor: "black",
           backdropFilter: "blur(5px)",
           WebkitBackdropFilter: "blur(5px)",
         }}
+        sx={{ backgroundColor: "black" }}
       >
         <Toolbar disableGutters>
           <Container

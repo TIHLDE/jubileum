@@ -22,14 +22,8 @@ const Footer = () => {
           <Typography>TIHLDE feirer 30 år! 🥳</Typography>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Stack
-            direction="row"
-            gap={1}
-            alignItems="center"
-            component={Link}
-            href="/"
-          >
-            <MuiLink color="#ffffff" fontWeight={600}>
+          <Stack direction="row" gap={1} alignItems="center">
+            <MuiLink component={Link} href="/" color="#ffffff" fontWeight={600}>
               @Tihldejubileum
             </MuiLink>
             <Image

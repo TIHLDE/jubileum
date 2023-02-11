@@ -76,7 +76,10 @@ export const Countdown = () => {
         textAlign="center"
         columns={8}
         width={200}
-        sx={{ zIndex: 1000 }}
+        sx={{
+          zIndex: 1000,
+          position: "absolute",
+        }}
       >
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>

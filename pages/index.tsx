@@ -22,6 +22,7 @@ import {
 } from "@mui/material";
 import TihldeLogo, { TihldeJubLogo } from "../components/TihldeLogo/TihldeLogo";
 import Image from "next/image";
+import Wave from "../components/Wave/wave";
 
 export default function Home({ data }: { data: any }) {
   const [height, setheight] = useState(100);
@@ -88,6 +89,8 @@ export default function Home({ data }: { data: any }) {
             </Grid>
           </Grid>
         </Jumbotron>
+        <Wave />
+
         <Paper
           square
           variant="elevation"
@@ -180,7 +183,6 @@ export default function Home({ data }: { data: any }) {
                     style={{ objectFit: "contain" }}
                   />
                 </CardContent>
-
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Hettegenser

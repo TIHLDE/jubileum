@@ -58,8 +58,7 @@ export default function Home({ data }: { data: any }) {
                 />
               </Stack>
               <Typography textAlign='center' fontWeight={600}>
-                TIHLDE feirer 30 år! Det blir fest, morro, merch, CTF og mye
-                mer!
+                TIHLDE feirer 30 år! Det blir fest, moro, merch, CTF og mye mer!
               </Typography>
             </Grid>
             <Grid

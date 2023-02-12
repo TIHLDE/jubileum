@@ -2,6 +2,7 @@ import styles from "./Countdown.module.css";
 import React, { useEffect, useState, ReactNode } from "react";
 import { useConfetti } from "../hooks/Confetti";
 import { Grid, Typography } from "@mui/material";
+import { CountdownNumber } from './CountdownNumber';
 
 type CountdownProps = {
   days: number;
@@ -21,7 +22,7 @@ export const Countdown = () => {
   const { run } = useConfetti();
 
   // Define a target date for the countdown timer
-  const targetDate = new Date("Mar 20, 2023 12:00:00");
+  const targetDate = new Date('Mar 20, 2023 12:00:00');
 
   // Code for updating the timer values
   const updateTimer = () => {
@@ -71,26 +72,25 @@ export const Countdown = () => {
 
   return (
     <>
-      <Grid container textAlign="center" columns={8} width={200}>
+      <Grid
+        container
+        spacing={1}
+        justifyContent={'center'}
+        textAlign='center'
+        columns={8}
+        width={'fit-content'}
+      >
         <Grid item xs={2}>
-          <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.days} d
-          </Typography>
+          <CountdownNumber value={timeLeft.days} appendix={'d'} />
         </Grid>
         <Grid item xs={2}>
-          <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.hours} t
-          </Typography>
+          <CountdownNumber value={timeLeft.hours} appendix={'t'} />
         </Grid>
         <Grid item xs={2}>
-          <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.minutes} m
-          </Typography>
+          <CountdownNumber value={timeLeft.minutes} appendix={'m'} />
         </Grid>
         <Grid item xs={2}>
-          <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.seconds} s
-          </Typography>
+          <CountdownNumber value={timeLeft.seconds} appendix={'s'} />
         </Grid>
       </Grid>
     </>

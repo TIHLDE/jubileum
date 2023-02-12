@@ -1,0 +1,25 @@
+.appendix {
+    background: white;
+    display: inline-block;
+    border-bottom-right-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    padding: 0 0.2rem;
+    box-sizing: border-box;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.value {
+    width: 2rem;
+    display: inline-block
+}
+
+.countdownNumber {
+    display: inline-block;
+    background-color: black;
+    border-radius: 0.25rem;
+    padding: 0 0 0 0.2rem;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: nowrap;
+}

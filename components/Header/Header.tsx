@@ -60,8 +60,9 @@ export const Header: React.FunctionComponent = () => {
           transition: "background-color 0.25s",
           backdropFilter: "blur(5px)",
           WebkitBackdropFilter: "blur(5px)",
+          position: "fixed",
         }}
-        sx={{ backgroundColor: "black" }}
+        sx={{ backgroundColor: "rgba(0,0,0,0);" }}
       >
         <Toolbar disableGutters>
           <Container

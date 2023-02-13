@@ -61,7 +61,8 @@ export default function Home({ data }: { data: any }) {
                 textAlign='center'
                 fontWeight={600}
                 sx={{
-                  maxWidth: '70vw',
+                  width: '100%',
+                  px: '3',
                   margin: 'auto',
                 }}
               >

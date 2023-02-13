@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const RidderPage = () => {
   return (
-    <div>
+    <div style={}>
       <Typography
         maxWidth={900}
         variant="h1"
@@ -16,7 +16,7 @@ const RidderPage = () => {
           margin: 0,
         }}
       >
-        Riddere
+        RIDDERE
       </Typography>
       <Paper
         width="auto"

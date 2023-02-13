@@ -21,7 +21,6 @@ specifiers:
   react-confetti: ^6.1.0
   react-dom: 18.2.0
   react-use-window-size: ^1.0.1
-  tss-react: ^4.6.0
   typescript: 4.9.4
 
 dependencies:
@@ -44,7 +43,6 @@ dependencies:
   react-confetti: 6.1.0_react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-use-window-size: 1.0.1
-  tss-react: 4.6.0_7gkcoq2nf4xufkduddb7kah6jm
   typescript: 4.9.4
 
 devDependencies:
@@ -2748,24 +2746,6 @@ packages:
 
   /tslib/2.5.0:
     resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
-    dev: false
-
-  /tss-react/4.6.0_7gkcoq2nf4xufkduddb7kah6jm:
-    resolution: {integrity: sha512-GWIduTQpV2B5iEvVSDkYTjvtLi+irTckO5tR28vCYwIOzvgUcK/Gr9xZ/NuJY1Qdb0pasNda5lCecjSnzj1Y0A==}
-    peerDependencies:
-      '@emotion/react': ^11.4.1
-      '@emotion/server': ^11.4.0
-      react: ^16.8.0 || ^17.0.2 || ^18.0.0
-    peerDependenciesMeta:
-      '@emotion/server':
-        optional: true
-    dependencies:
-      '@emotion/cache': 11.10.5
-      '@emotion/react': 11.10.5_kzbn2opkn2327fwg5yzwzya5o4
-      '@emotion/serialize': 1.1.1
-      '@emotion/server': 11.10.0
-      '@emotion/utils': 1.2.0
-      react: 18.2.0
     dev: false
 
   /tsutils/3.21.0_typescript@4.9.4:

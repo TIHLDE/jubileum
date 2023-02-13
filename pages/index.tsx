@@ -47,7 +47,7 @@ export default function Home({ data }: { data: any }) {
             sx={{ height: '100%', zIndex: 100 }}
           >
             <Grid item xs={9} p={2}>
-              <Stack direction='row' mt={10} height={100} mb={2}>
+              <Stack direction='row' mt={'20vh'} height={100} mb={2}>
                 <TihldeLogo
                   logoColor='white'
                   size='large'
@@ -58,7 +58,15 @@ export default function Home({ data }: { data: any }) {
                   }}
                 />
               </Stack>
-              <Typography textAlign='center' fontWeight={600}>
+              <Typography
+                textAlign='center'
+                fontWeight={600}
+                sx={{
+                  width: '100%',
+                  px: '3',
+                  margin: 'auto',
+                }}
+              >
                 TIHLDE feirer 30 år! Det blir fest, morro, merch, CTF og mye
                 mer!
               </Typography>

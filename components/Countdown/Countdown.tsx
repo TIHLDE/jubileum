@@ -71,7 +71,16 @@ export const Countdown = () => {
 
   return (
     <>
-      <Grid container textAlign="center" columns={8} width={200}>
+      <Grid
+        container
+        textAlign="center"
+        columns={8}
+        width={200}
+        sx={{
+          zIndex: 1000,
+          position: "absolute",
+        }}
+      >
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
             {timeLeft.days} d

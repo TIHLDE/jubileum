@@ -61,8 +61,9 @@ export const Header: React.FunctionComponent = () => {
           backdropFilter: "blur(5px)",
           WebkitBackdropFilter: "blur(5px)",
           position: "fixed",
+          backgroundColor: "transparent",
         }}
-        sx={{ backgroundColor: "rgba(0,0,0,0);" }}
+        //sx={{ backgroundColor: "rgba(0, 0, 0, 0);"}}
       >
         <Toolbar disableGutters>
           <Container

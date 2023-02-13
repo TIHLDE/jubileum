@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './wave.module.css';
-import { styled, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import styles from './wave.module.css';
 
 const Wave = () => {
   const theme = useTheme();
+  console.log(theme);
 
   return (
     <svg
@@ -22,11 +23,17 @@ const Wave = () => {
       <g className={styles.parallax}>
         <use
           xlinkHref='#gentle-wave'
-          sx={{ x: 48, y: 0, opacity: 0.8, fill: 'four.main' }}
+          x={48}
+          y={0}
+          opacity={0.8}
+          fill={theme.palette.four.main}
         />
         <use
           xlinkHref='#gentle-wave'
-          sx={{ x: 48, y: 3, opacity: 0.7, fill: 'three.main' }}
+          x={48}
+          y={3}
+          opacity={0.7}
+          fill={theme.palette.three.main}
         />
         <use
           xlinkHref='#gentle-wave'

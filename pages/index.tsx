@@ -1,10 +1,10 @@
-import Head from "next/head";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { Countdown } from "../components/Countdown/Countdown";
-import { Jumbotron } from "../components/Jumbotron/Jumbotron";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Head from 'next/head';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { Countdown } from '../components/Countdown/Countdown';
+import { Jumbotron } from '../components/Jumbotron/Jumbotron';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import {
   Button,
@@ -19,9 +19,10 @@ import {
   Paper,
   Stack,
   Typography,
-} from "@mui/material";
-import TihldeLogo, { TihldeJubLogo } from "../components/TihldeLogo/TihldeLogo";
-import Image from "next/image";
+} from '@mui/material';
+import TihldeLogo, { TihldeJubLogo } from '../components/TihldeLogo/TihldeLogo';
+import Image from 'next/image';
+import { WaveOne, WaveThree } from '../components/Waves/waves';
 
 export default function Home({ data }: { data: any }) {
   const [height, setheight] = useState(100);
@@ -166,11 +167,14 @@ export default function Home({ data }: { data: any }) {
           </Grid>
         </Paper>
         <Divider />
-        <Paper square sx={{ p: 3 }}>
+        <Paper square sx={{ p: 3, position: 'relative' }}>
           <Typography variant='h4' textAlign='center' my={2}>
             Jubileum merch ⏳
           </Typography>
-          <Grid container sx={{ maxWidth: 600, mx: 'auto' }}>
+          <Grid
+            container
+            sx={{ maxWidth: 600, mx: 'auto', zIndex: 1, position: 'relative' }}
+          >
             <Grid item xs={12} md={6}>
               <Card
                 variant='outlined'
@@ -227,13 +231,17 @@ export default function Home({ data }: { data: any }) {
               </Card>
             </Grid>
           </Grid>
+          <WaveOne sx={{ color: 'four.main', height: '50%' }} />
         </Paper>
         <Divider />
-        <Paper square sx={{ p: 3 }}>
+        <Paper square sx={{ p: 3, position: 'relative' }}>
           <Typography variant='h4' textAlign='center' my={2}>
             Arrangementer 🥳
           </Typography>
-          <Card variant='outlined' sx={{ maxWidth: 400, mx: 'auto' }}>
+          <Card
+            variant='outlined'
+            sx={{ maxWidth: 400, mx: 'auto', position: 'relative', zIndex: 1 }}
+          >
             <CardMedia
               sx={{ height: 140 }}
               image={data.image}
@@ -262,6 +270,14 @@ export default function Home({ data }: { data: any }) {
               </Button>
             </CardActions>
           </Card>
+
+          <WaveThree
+            sx={{
+              height: '50%',
+              color: 'two.main',
+              transform: 'flipY',
+            }}
+          />
         </Paper>
       </main>
     </>

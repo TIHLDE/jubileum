@@ -50,6 +50,7 @@ export default function Home({ data }: { data: any }) {
                 <TihldeLogo
                   logoColor='white'
                   size='large'
+                  alt='TIHLDEs logo'
                   sx={{
                     margin: 0,
                     height: '100%',

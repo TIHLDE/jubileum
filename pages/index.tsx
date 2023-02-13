@@ -110,17 +110,6 @@ export default function Home({ data }: { data: any }) {
             </Grid>
             <Grid item xs={6} md={4} p={1}>
               <Button
-                variant='contained'
-                color='primary'
-                fullWidth
-                component={Link}
-                href='/merch'
-              >
-                Merch
-              </Button>
-            </Grid>
-            <Grid item xs={6} md={4} p={1}>
-              <Button
                 fullWidth
                 startIcon={<OpenInNewIcon />}
                 variant='contained'
@@ -132,12 +121,23 @@ export default function Home({ data }: { data: any }) {
             </Grid>
             <Grid item xs={6} md={4} p={1}>
               <Button
+                variant='contained'
+                color='primary'
                 fullWidth
-                startIcon={<OpenInNewIcon />}
+                component={Link}
+                href='/merch'
+              >
+                Merch
+              </Button>
+            </Grid>
+
+            <Grid item xs={6} md={4} p={1}>
+              <Button
+                fullWidth
                 variant='contained'
                 component={Link}
                 disabled
-                href='https://tihlde.org/toddel/'
+                href='/historie'
               >
                 Historie
               </Button>
@@ -145,11 +145,10 @@ export default function Home({ data }: { data: any }) {
             <Grid item xs={6} md={4} p={1}>
               <Button
                 fullWidth
-                startIcon={<OpenInNewIcon />}
                 variant='contained'
                 component={Link}
                 disabled
-                href='https://tihlde.org/toddel/'
+                href='/daljer'
               >
                 Daljer
               </Button>

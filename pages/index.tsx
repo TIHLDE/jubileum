@@ -23,7 +23,7 @@ import {
 import TihldeLogo, { TihldeJubLogo } from '../components/TihldeLogo/TihldeLogo';
 import Image from 'next/image';
 import { WaveOne, WaveThree } from '../components/Waves/waves';
-
+import Wave from '../components/Wave/wave';
 
 export default function Home({ data }: { data: any }) {
   const [height, setheight] = useState(100);

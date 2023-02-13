@@ -11,7 +11,7 @@
   right: 0;
   width: 100%;
   overflow: hidden;
-  height: 130px;
+  height: 70px;
   bottom: 0;
   z-index: 15;
 }
@@ -28,7 +28,7 @@
 
 .waveTop {
   z-index: 18;
-  opacity: 0.5;
+  opacity: 1;
   animation: moveWave 60s linear alternate infinite;
   transform-origin: bottom center;
   position: absolute;

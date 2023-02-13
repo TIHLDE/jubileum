@@ -7,9 +7,20 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	margin: 20px auto;
+	margin: 0px auto;
 	max-width: 95%;
 	padding: 0 20px;
+}
+
+.wrapper_wrapper{
+	background-color :rgb(1, 24, 48);
+	margin-top: 0;
+}
+
+.header{
+	text-align: center;
+	margin-top: 0;
+	padding-top: 20px;
 }
 
 .image_box{
@@ -29,7 +40,7 @@
 .gallery__column {
 	display: flex;
 	flex-direction: column;
-	width: 250%;
+	width: 25%;
 }
 
 .gallery__link {
@@ -57,7 +68,7 @@
 
 .gallery__image:hover {
 	/* transform: scale(1.05); */
-	transform: scaleY(1.07);
+	transform: scale(1.07);
 }
 
 .gallery__caption {
@@ -79,7 +90,7 @@
 }
 
 .image_info{
-	height: 30%;
+	height: 20%;
 }
 
 .button_wrapper{

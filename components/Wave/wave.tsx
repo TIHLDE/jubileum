@@ -1,12 +1,11 @@
-import { keyframes } from '@emotion/react';
 import React from 'react';
 import classes from './wave.module.css';
-import { useTheme } from '@mui/system';
+import { styled } from '@mui/material';
 import styles from './wave.module.css';
 
-const Wave = () => {
-  const theme = useTheme();
+const Use = styled('use')();
 
+const Wave = () => {
   return (
     <svg
       className={classes.wave}
@@ -21,34 +20,22 @@ const Wave = () => {
         />
       </defs>
       <g className={styles.parallax}>
-        <use
+        <Use
           xlinkHref='#gentle-wave'
-          x={'48'}
-          y={'0'}
-          opacity={0.8}
-          fill={theme.palette.four.main}
-        ></use>
-        <use
+          sx={{ x: 48, y: 0, opacity: 0.8, fill: 'four.main' }}
+        />
+        <Use
           xlinkHref='#gentle-wave'
-          x={'48'}
-          y={'3'}
-          opacity={0.7}
-          fill={theme.palette.three.main}
-        ></use>
-        <use
+          sx={{ x: 48, y: 3, opacity: 0.7, fill: 'three.main' }}
+        />
+        <Use
           xlinkHref='#gentle-wave'
-          x={'48'}
-          y={'5'}
-          opacity={0.45}
-          fill={theme.palette.two.main}
-        ></use>
-        <use
+          sx={{ x: 48, y: 5, opacity: 0.45, fill: 'two.main' }}
+        />
+        <Use
           xlinkHref='#gentle-wave'
-          x={'48'}
-          y={'7'}
-          /* Set paper background to wave fill */
-          fill={'rgba(14, 36, 59, 1)'}
-        ></use>
+          sx={{ x: 48, y: 7, opacity: 0.8, fill: 'rgba(14, 36, 59, 1)' }}
+        />
       </g>
     </svg>
   );

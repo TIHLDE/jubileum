@@ -15,7 +15,7 @@ export function Gallery() {
       <Box className={styles.image_box} sx={{ width: "auto", height: "auto", overflowX: "hidden", overflowY: 'hidden' }}>
         <ImageList
           sx={{ columnCount: { sm: '1 !important', md: '2 !important', lg: '4 !important' }, overflow: 'hidden'}}
-          className={styles.image_list} variant="masonry" gap={30}>
+          className={styles.image_list} variant="masonry" gap={10}>
           {itemData.map((item) => (
             <ImageListItem key={item.img} className={styles.gallery__image}>
               <img
@@ -35,39 +35,27 @@ export function Gallery() {
 
 const itemData = [
   {
-    img: '/test1.jpg',
+    img: '/hettegenser.png',
     title: 'Genser',
     author: 'swabdesign',
     price: '69,-',
   },
   {
-    img: '/test2.jpg',
+    img: '/hettegenser.png',
     title: 'Genser',
     author: 'swabdesign',
     price: '69,-',
   },
   {
-    img: '/test3.jpg',
+    img: '/hettegenser.png',
     title: 'Genser',
     author: 'swabdesign',
     price: '69,-',
   },
   {
-    img: '/test4.jpg',
+    img: '/hettegenser.png',
     title: 'Lue',
     author: 'Pavel Nekoranec',
-    price: '69,-',
-  },
-  {
-    img: '/test5.jpg',
-    title: 'Bøff',
-    author: 'Charles Deluvio',
-    price: '69,-',
-  },
-  {
-    img: '/test6.jpg',
-    title: 'Bøff',
-    author: 'Charles Deluvio',
     price: '69,-',
   },
 ];

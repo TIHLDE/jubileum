@@ -10,8 +10,6 @@ import HistoryIcon from '@mui/icons-material/History';
 import CheckroomIcon from '@mui/icons-material/Checkroom';
 import {
   Button,
-  ButtonGroup,
-  Link as MuiLink,
   Card,
   CardActions,
   CardContent,
@@ -23,18 +21,12 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import TihldeLogo, { TihldeJubLogo } from '../components/TihldeLogo/TihldeLogo';
+import TihldeLogo from '../components/TihldeLogo/TihldeLogo';
 import Image from 'next/image';
 import { WaveOne, WaveThree } from '../components/Waves/waves';
 import Wave from '../components/Wave/wave';
 
 export default function Home({ data }: { data: any }) {
-  const [height, setheight] = useState(100);
-  const [width, setwidth] = useState(100);
-  useEffect(() => {
-    setheight(window.innerHeight);
-    setwidth(window.innerWidth);
-  }, []);
   return (
     <>
       <Head>
@@ -174,68 +166,6 @@ export default function Home({ data }: { data: any }) {
         </Paper>
         <Divider />
         <Paper square sx={{ p: 3, position: 'relative' }}>
-          <Link href='/merch'>
-            <Typography variant='h4' textAlign='center' my={2}>
-              Jubileum merch ⏳
-            </Typography>
-          </Link>
-          <Grid
-            container
-            sx={{ maxWidth: 600, mx: 'auto', zIndex: 1, position: 'relative' }}
-          >
-            <Grid item xs={12} md={6}>
-              <Card
-                variant='outlined'
-                sx={{
-                  position: 'relative',
-                  objectFit: 'contain',
-                  m: 1,
-                }}
-              >
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image='/blåcrewMbrodert.png'
-                  title='green iguana'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    Jubileum genser
-                  </Typography>
-                  {/* <Typography variant='body2' color='text.secondary'>
-                    300 kr
-                  </Typography> */}
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Card
-                variant='outlined'
-                sx={{
-                  position: 'relative',
-                  objectFit: 'contain',
-                  m: 1,
-                }}
-              >
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image='/GøyalVri.png'
-                  title='green iguana'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    TIHLDE genser
-                  </Typography>
-                  {/* <Typography variant='body2' color='text.secondary'>
-                    300 kr
-                  </Typography> */}
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-          <WaveOne sx={{ color: 'four.main', height: '50%' }} />
-        </Paper>
-        <Divider />
-        <Paper square sx={{ p: 3, position: 'relative' }}>
           <Typography variant='h4' textAlign='center' my={2}>
             Arrangementer 🥳
           </Typography>
@@ -271,7 +201,6 @@ export default function Home({ data }: { data: any }) {
               </Button>
             </CardActions>
           </Card>
-
           <WaveThree
             sx={{
               height: '50%',
@@ -279,6 +208,75 @@ export default function Home({ data }: { data: any }) {
               transform: 'flipY',
             }}
           />
+        </Paper>
+        <Divider />
+        <Paper
+          square
+          sx={{
+            px: 3,
+            py: 5,
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Link href='/merch'>
+            <Typography variant='h4' textAlign='center' my={2}>
+              Jubileum merch ⏳
+            </Typography>
+          </Link>
+          <Grid
+            container
+            sx={{
+              maxWidth: 800,
+              zIndex: 1,
+              position: 'relative',
+            }}
+            spacing={2}
+          >
+            <Grid item xs={12} md={6}>
+              <Paper
+                variant='outlined'
+                sx={{
+                  position: 'relative',
+                  objectFit: 'contain',
+                  width: '100%',
+                  height: '100%',
+                  overflow: 'hidden',
+                  minHeight: 200,
+                }}
+              >
+                <Image
+                  src='/blåcrewMbrodert.png'
+                  alt='Bilde av genser'
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Paper
+                variant='outlined'
+                sx={{
+                  position: 'relative',
+                  objectFit: 'contain',
+                  width: '100%',
+                  height: '100%',
+                  overflow: 'hidden',
+                  minHeight: 200,
+                }}
+              >
+                <Image
+                  src='/GøyalVri.png'
+                  alt='Bilde av genser'
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </Paper>
+            </Grid>
+          </Grid>
+          <WaveOne sx={{ color: 'four.main', height: '50%' }} />
         </Paper>
       </main>
     </>

@@ -205,7 +205,13 @@ export default function Home({ data }: { data: any }) {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size='small' variant='contained'>
+                  <Button
+                    size='small'
+                    variant='contained'
+                    component={Link}
+                    href={'https://neartail.com/no/tihldejubileum'}
+                    endIcon={<OpenInNewIcon />}
+                  >
                     Bestill
                   </Button>
                 </CardActions>
@@ -234,7 +240,13 @@ export default function Home({ data }: { data: any }) {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size='small' variant='contained'>
+                  <Button
+                    size='small'
+                    variant='contained'
+                    component={Link}
+                    href={'https://neartail.com/no/tihldejubileum'}
+                    endIcon={<OpenInNewIcon />}
+                  >
                     Bestill
                   </Button>
                 </CardActions>

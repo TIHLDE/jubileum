@@ -1,11 +1,17 @@
 .wave {
   width: 100%;
   min-height: 40px;
-  height: 20vh;
+  height: 25vh;
   position: absolute;
   transform: translate(0, -100%);
   z-index: 2;
   border: none;
+}
+
+@media screen and (max-width: 700px) {
+  .wave {
+    height: 10vh;
+  }  
 }
 
 .parallax > use {
@@ -24,8 +30,10 @@
   animation-duration: 20s;
 }
 .parallax > use:nth-child(4) {
+  animation: move-last-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
   animation-delay: -5s;
   animation-duration: 25s;
+  
 }
 
 @keyframes move-forever {
@@ -34,6 +42,15 @@
   }
   100% {
     transform: translate3d(85px, 0, 0);
+  }
+}
+
+@keyframes move-last-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0) scaleY(30%);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0) scaleY(30%);
   }
 }
 

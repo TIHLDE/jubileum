@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from './wave.module.css';
-import { styled } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import styles from './wave.module.css';
 
-const Use = styled('use')();
-
 const Wave = () => {
+  const theme = useTheme();
+
   return (
     <svg
       className={classes.wave}
@@ -20,21 +20,36 @@ const Wave = () => {
         />
       </defs>
       <g className={styles.parallax}>
-        <Use
+        <use
           xlinkHref='#gentle-wave'
-          sx={{ x: 48, y: 0, opacity: 0.8, fill: 'four.main' }}
+          x={48}
+          y={0}
+          opacity={0.8}
+          fill={theme.palette.four.main}
         />
-        <Use
+        <use
           xlinkHref='#gentle-wave'
-          sx={{ x: 48, y: 3, opacity: 0.7, fill: 'three.main' }}
+          x={48}
+          y={3}
+          style={{
+            transform: 'scaleY(70%)',
+          }}
+          opacity={0.7}
+          fill={theme.palette.three.main}
         />
-        <Use
+        <use
           xlinkHref='#gentle-wave'
-          sx={{ x: 48, y: 5, opacity: 0.45, fill: 'two.main' }}
+          x={48}
+          y={5}
+          opacity={0.45}
+          fill={theme.palette.two.main}
         />
-        <Use
+        <use
           xlinkHref='#gentle-wave'
-          sx={{ x: 48, y: 7, opacity: 0.8, fill: 'rgba(14, 36, 59, 1)' }}
+          x={48}
+          y={125}
+          opacity={1}
+          fill={'rgba(14, 36, 59, 1)'}
         />
       </g>
     </svg>

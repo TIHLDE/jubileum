@@ -71,6 +71,7 @@ export default function Home({ data }: { data: any }) {
                 TIHLDE feirer 30 år! Det blir fest, morro, merch, CTF og mye
                 mer!
               </Typography>
+              <Countdown />
             </Grid>
             <Grid
               item
@@ -80,9 +81,7 @@ export default function Home({ data }: { data: any }) {
                 alignItems: 'flex-end',
                 justifyContent: 'center',
               }}
-            >
-              <Countdown />
-            </Grid>
+            ></Grid>
             <Grid
               item
               xs={1}

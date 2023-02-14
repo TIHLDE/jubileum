@@ -5,7 +5,6 @@ import styles from './wave.module.css';
 
 const Wave = () => {
   const theme = useTheme();
-  console.log(theme);
 
   return (
     <svg
@@ -32,6 +31,9 @@ const Wave = () => {
           xlinkHref='#gentle-wave'
           x={48}
           y={3}
+          style={{
+            transform: 'scaleY(70%)',
+          }}
           opacity={0.7}
           fill={theme.palette.three.main}
         />
@@ -45,9 +47,9 @@ const Wave = () => {
         <use
           xlinkHref='#gentle-wave'
           x={48}
-          y={7}
+          y={125}
           opacity={1}
-          fill='rgba(14, 36, 59, 1)'
+          fill={'rgba(14, 36, 59, 1)'}
         />
       </g>
     </svg>

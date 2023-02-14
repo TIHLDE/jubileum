@@ -15,7 +15,7 @@ export function Gallery() {
       <Box className={styles.image_box} sx={{ width: "auto", height: "auto", overflowX: "hidden", overflowY: 'hidden' }}>
         <ImageList
           sx={{ columnCount: { sm: '1 !important', md: '2 !important', lg: '4 !important' }, overflow: 'hidden'}}
-          className={styles.image_list} variant="masonry" gap={30}>
+          className={styles.image_list} variant="masonry" gap={50}>
           {itemData.map((item) => (
             <ImageListItem key={item.img} className={styles.gallery__image}>
               <img
@@ -35,12 +35,12 @@ export function Gallery() {
 
 const itemData = [
   {
-    img: '/merch/blaacrewMbrodert.png',
+    img: '/merch/blaacrewMbrodert-1.png',
     title: 'Blå crewneck med brodert logo',
     price: '69,-',
   },
   {
-    img: '/merch/GoyalVri.png',
+    img: '/merch/GoyalVri-1.png',
     title: 'Gøyal Vri',
     price: '69,-',
   },

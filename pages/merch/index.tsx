@@ -9,6 +9,7 @@ const GalleryPage = () => {
         className={styles.wrapper_wrapper}
         style={{
           paddingTop: '4rem',
+          minHeight: 'calc(100vh - 4rem)',
         }}
       >
         <h1 className={styles.header}>TIHLDE MERCH</h1>

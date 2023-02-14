@@ -27,6 +27,8 @@ import TihldeLogo, { TihldeJubLogo } from '../components/TihldeLogo/TihldeLogo';
 import Image from 'next/image';
 import { WaveOne, WaveThree } from '../components/Waves/waves';
 import Wave from '../components/Wave/wave';
+import { MerchItems } from '../components/MerchBox/MerchItems';
+import { MerchBox } from '../components/MerchBox/MerchBox';
 
 export default function Home({ data }: { data: any }) {
   const [height, setheight] = useState(100);
@@ -180,56 +182,17 @@ export default function Home({ data }: { data: any }) {
           </Link>
           <Grid
             container
-            sx={{ maxWidth: 600, mx: 'auto', zIndex: 1, position: 'relative' }}
+            sx={{ maxWidth: 800, mx: 'auto', zIndex: 1, position: 'relative' }}
           >
-            <Grid item xs={12} md={6}>
-              <Card
-                variant='outlined'
-                sx={{
-                  position: 'relative',
-                  objectFit: 'contain',
-                  m: 1,
-                }}
-              >
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image='/blåcrewMbrodert.png'
-                  title='green iguana'
+            {MerchItems.slice(0, 2).map((item) => (
+              <Grid item xs={12} md={6} key={item.title}>
+                <MerchBox
+                  title={item.title}
+                  price={item.price}
+                  url={item.url}
                 />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    Jubileumsgenser
-                  </Typography>
-                  {/* <Typography variant='body2' color='text.secondary'>
-                    300 kr
-                  </Typography> */}
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Card
-                variant='outlined'
-                sx={{
-                  position: 'relative',
-                  objectFit: 'contain',
-                  m: 1,
-                }}
-              >
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image='/GøyalVri.png'
-                  title='green iguana'
-                />
-                <CardContent>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    TIHLDE-genser
-                  </Typography>
-                  {/* <Typography variant='body2' color='text.secondary'>
-                    300 kr
-                  </Typography> */}
-                </CardContent>
-              </Card>
-            </Grid>
+              </Grid>
+            ))}
           </Grid>
           <WaveOne sx={{ color: 'four.main', height: '50%' }} />
         </Paper>

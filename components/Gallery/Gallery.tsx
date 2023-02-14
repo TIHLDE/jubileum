@@ -10,12 +10,12 @@ export function Gallery() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.button_wrapper}>
-        <Button fullWidth variant="contained" href="#contained-buttons">BESTILL</Button>
+        <Button fullWidth variant="contained" href="https://neartail.com/no/tihldejubileum" target="_blank">BESTILL</Button>
       </div>
       <Box className={styles.image_box} sx={{ width: "auto", height: "auto", overflowX: "hidden", overflowY: 'hidden' }}>
         <ImageList
           sx={{ columnCount: { sm: '1 !important', md: '2 !important', lg: '4 !important' }, overflow: 'hidden'}}
-          className={styles.image_list} variant="masonry" gap={10}>
+          className={styles.image_list} variant="masonry" gap={30}>
           {itemData.map((item) => (
             <ImageListItem key={item.img} className={styles.gallery__image}>
               <img
@@ -35,25 +35,31 @@ export function Gallery() {
 
 const itemData = [
   {
-    img: '/hettegenser.png',
+    img: '/merch/blaacrewMbrodert.png',
     title: 'Genser',
     author: 'swabdesign',
     price: '69,-',
   },
   {
-    img: '/hettegenser.png',
+    img: '/merch/GoyalVri.png',
     title: 'Genser',
     author: 'swabdesign',
     price: '69,-',
   },
   {
-    img: '/hettegenser.png',
+    img: '/merch/olglass.png',
     title: 'Genser',
     author: 'swabdesign',
     price: '69,-',
   },
   {
-    img: '/hettegenser.png',
+    img: '/merch/lerke.png',
+    title: 'Lue',
+    author: 'Pavel Nekoranec',
+    price: '69,-',
+  },
+  {
+    img: '/merch/shotglass.png',
     title: 'Lue',
     author: 'Pavel Nekoranec',
     price: '69,-',

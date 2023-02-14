@@ -33,7 +33,7 @@ const ScrollyTeller = ({ ...props }) => {
     // Function to handle scrolling
     function handleScroll() {
       // Get the current scroll position
-      const position = window.pageYOffset;
+      const position = window.scrollY;
 
       // Get the height of the body
       const bodyHeight = document.body.clientHeight;

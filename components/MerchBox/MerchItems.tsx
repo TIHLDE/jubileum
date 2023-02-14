@@ -15,4 +15,9 @@ export const MerchItems: Array<Merch> = [
     price: '450',
     url: '/GøyalVri.png',
   },
+  {
+    title: 'Lommelerke + fire shotteglass',
+    price: '300',
+    url: './lommelerke.png',
+  },
 ];

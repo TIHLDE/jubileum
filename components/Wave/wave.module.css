@@ -19,7 +19,7 @@
 }
 .parallax > use:nth-child(1) {
   animation-delay: -2s;
-  animation-duration: 15s;
+  animation-duration: 12s;
 }
 .parallax > use:nth-child(2) {
   animation-delay: -3s;
@@ -27,12 +27,12 @@
 }
 .parallax > use:nth-child(3) {
   animation-delay: -4s;
-  animation-duration: 20s;
+  animation-duration: 23s;
 }
 .parallax > use:nth-child(4) {
   animation: move-last-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
   animation-delay: -5s;
-  animation-duration: 25s;
+  animation-duration: 30s;
   
 }
 

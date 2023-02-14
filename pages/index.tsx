@@ -71,8 +71,7 @@ export default function Home({ data }: { data: any }) {
                   margin: 'auto',
                 }}
               >
-                TIHLDE feirer 30 år! Det blir fest, morro, merch, CTF og mye
-                mer!
+                TIHLDE feirer 30 år! Det blir fest, moro, merch, CTF og mye mer!
               </Typography>
               <Countdown />
             </Grid>
@@ -176,7 +175,7 @@ export default function Home({ data }: { data: any }) {
         <Paper square sx={{ p: 3, position: 'relative' }}>
           <Link href='/merch'>
             <Typography variant='h4' textAlign='center' my={2}>
-              Jubileum merch ⏳
+              Jubileumsmerch ⏳
             </Typography>
           </Link>
           <Grid
@@ -199,7 +198,7 @@ export default function Home({ data }: { data: any }) {
                 />
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='div'>
-                    Jubileum genser
+                    Jubileumsgenser
                   </Typography>
                   {/* <Typography variant='body2' color='text.secondary'>
                     300 kr
@@ -223,7 +222,7 @@ export default function Home({ data }: { data: any }) {
                 />
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='div'>
-                    TIHLDE genser
+                    TIHLDE-genser
                   </Typography>
                   {/* <Typography variant='body2' color='text.secondary'>
                     300 kr

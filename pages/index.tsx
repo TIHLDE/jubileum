@@ -5,10 +5,13 @@ import { Countdown } from '../components/Countdown/Countdown';
 import { Jumbotron } from '../components/Jumbotron/Jumbotron';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import HistoryIcon from '@mui/icons-material/History';
+import CheckroomIcon from '@mui/icons-material/Checkroom';
 import {
   Button,
   ButtonGroup,
+  Link as MuiLink,
   Card,
   CardActions,
   CardContent,
@@ -110,25 +113,38 @@ export default function Home({ data }: { data: any }) {
           <Grid container sx={{ maxWidth: 500, mx: 'auto' }}>
             <Grid item xs={6} md={4} p={1}>
               <Button
-                fullWidth
-                variant='contained'
-                color='primary'
-                startIcon={<OpenInNewIcon />}
-                component={Link}
-                href='https://tihlde.org/'
-              >
-                Tihlde.org
-              </Button>
-            </Grid>
-            <Grid item xs={6} md={4} p={1}>
-              <Button
                 variant='contained'
                 color='primary'
                 fullWidth
+                startIcon={<CheckroomIcon />}
                 component={Link}
                 href='/merch'
               >
                 Merch
+              </Button>
+            </Grid>
+            <Grid item xs={6} md={4} p={1}>
+              <Button
+                fullWidth
+                startIcon={<HistoryIcon />}
+                variant='contained'
+                component={Link}
+                disabled
+                href='https://tihlde.org/toddel/'
+              >
+                Historie
+              </Button>
+            </Grid>
+            <Grid item xs={6} md={4} p={1}>
+              <Button
+                fullWidth
+                startIcon={<WorkspacePremiumIcon />}
+                variant='contained'
+                component={Link}
+                disabled
+                href='https://tihlde.org/toddel/'
+              >
+                Daljer
               </Button>
             </Grid>
             <Grid item xs={6} md={4} p={1}>
@@ -145,34 +161,24 @@ export default function Home({ data }: { data: any }) {
             <Grid item xs={6} md={4} p={1}>
               <Button
                 fullWidth
-                startIcon={<OpenInNewIcon />}
                 variant='contained'
-                component={Link}
-                disabled
-                href='https://tihlde.org/toddel/'
-              >
-                Historie
-              </Button>
-            </Grid>
-            <Grid item xs={6} md={4} p={1}>
-              <Button
-                fullWidth
+                color='primary'
                 startIcon={<OpenInNewIcon />}
-                variant='contained'
                 component={Link}
-                disabled
-                href='https://tihlde.org/toddel/'
+                href='https://tihlde.org/'
               >
-                Daljer
+                Tihlde.org
               </Button>
             </Grid>
           </Grid>
         </Paper>
         <Divider />
         <Paper square sx={{ p: 3, position: 'relative' }}>
-          <Typography variant='h4' textAlign='center' my={2}>
-            Jubileum merch ⏳
-          </Typography>
+          <Link href='/merch'>
+            <Typography variant='h4' textAlign='center' my={2}>
+              Jubileum merch ⏳
+            </Typography>
+          </Link>
           <Grid
             container
             sx={{ maxWidth: 600, mx: 'auto', zIndex: 1, position: 'relative' }}
@@ -186,21 +192,18 @@ export default function Home({ data }: { data: any }) {
                   m: 1,
                 }}
               >
-                <CardContent sx={{ position: 'relative', height: 300 }}>
-                  <Image
-                    src='/hettegenser.png'
-                    fill
-                    alt='hettegenser'
-                    style={{ objectFit: 'contain' }}
-                  />
-                </CardContent>
+                <CardMedia
+                  sx={{ height: 140 }}
+                  image='/blåcrewMbrodert.png'
+                  title='green iguana'
+                />
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='div'>
-                    Hettegenser
+                    Jubileum genser
                   </Typography>
-                  <Typography variant='body2' color='text.secondary'>
+                  {/* <Typography variant='body2' color='text.secondary'>
                     300 kr
-                  </Typography>
+                  </Typography> */}
                 </CardContent>
               </Card>
             </Grid>
@@ -213,21 +216,18 @@ export default function Home({ data }: { data: any }) {
                   m: 1,
                 }}
               >
-                <CardContent sx={{ position: 'relative', height: 300 }}>
-                  <Image
-                    src='/hettegenser.png'
-                    fill
-                    alt='hettegenser'
-                    style={{ objectFit: 'contain' }}
-                  />
-                </CardContent>
+                <CardMedia
+                  sx={{ height: 140 }}
+                  image='/GøyalVri.png'
+                  title='green iguana'
+                />
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='div'>
-                    Hettegenser
+                    TIHLDE genser
                   </Typography>
-                  <Typography variant='body2' color='text.secondary'>
+                  {/* <Typography variant='body2' color='text.secondary'>
                     300 kr
-                  </Typography>
+                  </Typography> */}
                 </CardContent>
               </Card>
             </Grid>

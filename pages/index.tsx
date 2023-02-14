@@ -182,7 +182,7 @@ export default function Home({ data }: { data: any }) {
           </Link>
           <Grid
             container
-            sx={{ maxWidth: 600, mx: 'auto', zIndex: 1, position: 'relative' }}
+            sx={{ maxWidth: 800, mx: 'auto', zIndex: 1, position: 'relative' }}
           >
             {MerchItems.slice(0, 2).map((item) => (
               <Grid item xs={12} md={6} key={item.title}>

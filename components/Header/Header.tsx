@@ -21,11 +21,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import TihldeLogo from '../TihldeLogo/TihldeLogo';
 
-const menu = [
+/*
   {
     link: ROUTES.HISTORY,
     label: 'Historie',
   },
+*/
+
+const menu = [
   {
     link: ROUTES.MERCH,
     label: 'Merch',

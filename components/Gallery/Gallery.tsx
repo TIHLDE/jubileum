@@ -7,61 +7,30 @@ import styles from './Gallery.module.css';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
 import { MerchItems } from '../MerchBox/MerchItems';
+import { Grid } from '@mui/material';
+import { MerchBox } from '../MerchBox/MerchBox';
 
 export function Gallery() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.button_wrapper}>
-        <Button
-          component={Link}
-          href='https://neartail.com/no/tihldejubileum'
-          fullWidth
-          variant='contained'
-        >
-          BESTILL
-        </Button>
-      </div>
-      <Box
-        className={styles.image_box}
+    <Box
+      sx={{
+        width: '70vw',
+        margin: 'auto',
+      }}
+    >
+      <Grid
+        container
         sx={{
-          width: 'auto',
-          height: 'auto',
-          overflowX: 'hidden',
-          overflowY: 'hidden',
+          mx: 'auto',
+          position: 'relative',
         }}
       >
-        <ImageList
-          sx={{
-            columnCount: {
-              sm: '1 !important',
-              md: '2 !important',
-              lg: '4 !important',
-            },
-            overflow: 'hidden',
-          }}
-          className={styles.image_list}
-          cols={3}
-          gap={10}
-        >
-          {MerchItems.map((item) => (
-            <ImageListItem key={item.url} className={styles.gallery__image}>
-              <img
-                src={`${item.url}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.title}
-                loading='lazy'
-              />
-              <ImageListItemBar
-                sx={{ fontSize: '100px' }}
-                className={styles.image_info}
-                position='bottom'
-                title={item.title}
-                subtitle={item.price}
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
-      </Box>
-    </div>
+        {MerchItems.map((item) => (
+          <Grid key={item.title} xs={12} md={6} lg={4}>
+            <MerchBox title={item.title} url={item.url} price={item.price} />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 }

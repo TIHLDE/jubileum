@@ -201,10 +201,15 @@ export default function Home({ data }: { data: any }) {
                   <Typography gutterBottom variant='h5' component='div'>
                     Jubileum genser
                   </Typography>
-                  {/* <Typography variant='body2' color='text.secondary'>
-                    300 kr
-                  </Typography> */}
+                  <Typography variant='body2' color='text.secondary'>
+                    450 kr
+                  </Typography>
                 </CardContent>
+                <CardActions>
+                  <Button size='small' variant='contained'>
+                    Bestill
+                  </Button>
+                </CardActions>
               </Card>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -225,10 +230,15 @@ export default function Home({ data }: { data: any }) {
                   <Typography gutterBottom variant='h5' component='div'>
                     TIHLDE genser
                   </Typography>
-                  {/* <Typography variant='body2' color='text.secondary'>
-                    300 kr
-                  </Typography> */}
+                  <Typography variant='body2' color='text.secondary'>
+                    450 kr
+                  </Typography>
                 </CardContent>
+                <CardActions>
+                  <Button size='small' variant='contained'>
+                    Bestill
+                  </Button>
+                </CardActions>
               </Card>
             </Grid>
           </Grid>

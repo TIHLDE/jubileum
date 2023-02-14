@@ -8,27 +8,29 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <Paper
-      variant="outlined"
+      variant='outlined'
       sx={{
         p: 3,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 10,
+        position: 'relative',
       }}
       square
     >
-      <Grid container spacing={5} sx={{ maxWidth: 1000 }} alignItems="center">
+      <Grid container spacing={5} sx={{ maxWidth: 1000 }} alignItems='center'>
         <Grid item xs={12} md={4}>
           <Typography>TIHLDE feirer 30 år! 🥳</Typography>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Stack direction="row" gap={1} alignItems="center">
-            <MuiLink component={Link} href="/" color="#ffffff" fontWeight={600}>
+          <Stack direction='row' gap={1} alignItems='center'>
+            <MuiLink component={Link} href='/' color='#ffffff' fontWeight={600}>
               @Tihldejubileum
             </MuiLink>
             <Image
-              alt="instagram"
-              src="/icons/instagram.svg"
+              alt='instagram'
+              src='/icons/instagram.svg'
               width={35}
               height={35}
             />

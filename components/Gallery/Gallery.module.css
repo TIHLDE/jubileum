@@ -13,8 +13,9 @@
 }
 
 .wrapper_wrapper{
-	background-color :rgb(1, 24, 48);
-	margin-top: 0;
+	padding: 0;
+	padding-top: 4em;
+	background-color: rgb(14, 36, 59);
 }
 
 .header{

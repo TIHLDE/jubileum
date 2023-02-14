@@ -14,7 +14,7 @@ export function Gallery() {
   return (
     <Box
       sx={{
-        width: '70vw',
+        width: '90vw',
         margin: 'auto',
       }}
     >

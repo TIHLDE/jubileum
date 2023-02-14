@@ -36,32 +36,30 @@ export function Gallery() {
 const itemData = [
   {
     img: '/merch/blaacrewMbrodert.png',
-    title: 'Genser',
-    author: 'swabdesign',
+    title: 'Blå crewneck med brodert logo',
     price: '69,-',
   },
   {
     img: '/merch/GoyalVri.png',
-    title: 'Genser',
-    author: 'swabdesign',
+    title: 'Gøyal Vri',
     price: '69,-',
   },
   {
     img: '/merch/olglass.png',
     title: 'Genser',
     author: 'swabdesign',
-    price: '69,-',
+    price: 'Kommer snart;)',
   },
   {
     img: '/merch/lerke.png',
     title: 'Lue',
     author: 'Pavel Nekoranec',
-    price: '69,-',
+    price: 'Kommer snart;)',
   },
   {
     img: '/merch/shotglass.png',
     title: 'Lue',
     author: 'Pavel Nekoranec',
-    price: '69,-',
+    price: 'Kommer snart;)',
   },
 ];

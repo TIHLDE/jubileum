@@ -6,6 +6,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import styles from './Gallery.module.css';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import { MerchItems } from '../MerchBox/MerchItems';
 
 export function Gallery() {
   return (
@@ -39,14 +40,14 @@ export function Gallery() {
             overflow: 'hidden',
           }}
           className={styles.image_list}
-          variant='masonry'
+          cols={3}
           gap={10}
         >
-          {itemData.map((item) => (
-            <ImageListItem key={item.img} className={styles.gallery__image}>
+          {MerchItems.map((item) => (
+            <ImageListItem key={item.url} className={styles.gallery__image}>
               <img
-                src={`${item.img}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                src={`${item.url}?w=248&fit=crop&auto=format`}
+                srcSet={`${item.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 alt={item.title}
                 loading='lazy'
               />
@@ -64,30 +65,3 @@ export function Gallery() {
     </div>
   );
 }
-
-const itemData = [
-  {
-    img: '/hettegenser.png',
-    title: 'Genser',
-    author: 'swabdesign',
-    price: '69,-',
-  },
-  {
-    img: '/hettegenser.png',
-    title: 'Genser',
-    author: 'swabdesign',
-    price: '69,-',
-  },
-  {
-    img: '/hettegenser.png',
-    title: 'Genser',
-    author: 'swabdesign',
-    price: '69,-',
-  },
-  {
-    img: '/hettegenser.png',
-    title: 'Lue',
-    author: 'Pavel Nekoranec',
-    price: '69,-',
-  },
-];

@@ -29,9 +29,22 @@ export const MerchBox: React.FC<MerchBoxInterface> = ({
         m: 1,
       }}
     >
-      <CardMedia sx={{ height: 140 }} image={url} title={title} />
+      <CardMedia
+        sx={{ height: 200, backgroundColor: '#fff' }}
+        image={url}
+        title={title}
+      />
       <CardContent>
-        <Typography gutterBottom variant='h5' component='div'>
+        <Typography
+          gutterBottom
+          variant='h5'
+          component='div'
+          sx={{
+            whiteSpace: 'nowrap',
+            paddingRight: '2rem',
+            overflow: 'hidden',
+          }}
+        >
           {title}
         </Typography>
         <Typography variant='body2' color='text.secondary'>

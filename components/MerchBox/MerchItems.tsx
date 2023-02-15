@@ -26,13 +26,13 @@ export const MerchItems: Array<Merch> = [
   },
   {
     title: 'Ølglass',
-    price: '300',
+    price: '',
     url: './ølglass.png',
     available: false,
   },
   {
     title: 'Shotteglass',
-    price: '300',
+    price: '',
     url: './shotteglass.png',
     available: false,
   },

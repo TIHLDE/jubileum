@@ -50,9 +50,11 @@ export const MerchBox: React.FC<MerchBoxInterface> = ({
         >
           {title}
         </Typography>
-        <Typography variant='body2' color='text.secondary'>
-          {price}kr
-        </Typography>
+        {price.trim().length > 0 ? (
+          <Typography variant='body2' color='text.secondary'>
+            {price}kr
+          </Typography>
+        ) : undefined}
       </CardContent>
       <CardActions>
         {available != false && (

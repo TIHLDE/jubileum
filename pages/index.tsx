@@ -190,6 +190,7 @@ export default function Home({ data }: { data: any }) {
                   title={item.title}
                   price={item.price}
                   url={item.url}
+                  available={item.available}
                 />
               </Grid>
             ))}

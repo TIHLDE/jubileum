@@ -13,13 +13,16 @@ type MerchBoxInterface = {
   title: string;
   price: string;
   url: string;
+  available: boolean;
 };
 
 export const MerchBox: React.FC<MerchBoxInterface> = ({
   title,
   price,
   url,
+  available,
 }) => {
+  console.log(available);
   return (
     <Card
       variant='outlined'
@@ -52,15 +55,23 @@ export const MerchBox: React.FC<MerchBoxInterface> = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button
-          size='small'
-          variant='contained'
-          component={Link}
-          href={'https://neartail.com/no/tihldejubileum'}
-          endIcon={<OpenInNewIcon />}
-        >
-          Bestill
-        </Button>
+        {available != false && (
+          <Button
+            size='small'
+            variant='contained'
+            component={Link}
+            href={'https://neartail.com/no/tihldejubileum'}
+            endIcon={<OpenInNewIcon />}
+          >
+            Bestill
+          </Button>
+        )}
+
+        {available == false && (
+          <Button disabled variant='text' size='small'>
+            Kommer snart!
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

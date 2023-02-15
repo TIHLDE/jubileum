@@ -7,13 +7,13 @@ type Merch = {
 
 export const MerchItems: Array<Merch> = [
   {
-    title: 'Jubileumsgenser',
+    title: 'Blå crewneck m/ brodert jubileumslogo',
     price: '450',
     url: '/blåcrewMbrodert.png',
     available: true,
   },
   {
-    title: 'TIHLDE-genser',
+    title: 'Grå crewneck m/ limited edition logo',
     price: '450',
     url: '/GøyalVri.png',
     available: true,

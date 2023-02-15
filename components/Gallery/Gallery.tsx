@@ -17,7 +17,10 @@ export function Gallery() {
       sx={{
         width: '90vw',
         margin: 'auto',
-        [theme.breakpoints.up('lg')]: {
+        [theme.breakpoints.down('lg')]: {
+          width: '90vw',
+        },
+        [theme.breakpoints.up('xl')]: {
           width: '50vw',
         },
       }}

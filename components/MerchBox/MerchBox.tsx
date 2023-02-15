@@ -22,7 +22,6 @@ export const MerchBox: React.FC<MerchBoxInterface> = ({
   url,
   available,
 }) => {
-  console.log(available);
   return (
     <Card
       variant='outlined'

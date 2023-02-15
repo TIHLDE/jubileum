@@ -42,7 +42,6 @@ export const MerchBox: React.FC<MerchBoxInterface> = ({
           variant='h5'
           component='div'
           sx={{
-            whiteSpace: 'nowrap',
             paddingRight: '2rem',
             overflow: 'hidden',
           }}

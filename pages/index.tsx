@@ -7,6 +7,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import HistoryIcon from '@mui/icons-material/History';
+import EastIcon from '@mui/icons-material/East';
 import CheckroomIcon from '@mui/icons-material/Checkroom';
 import {
   Button,
@@ -22,6 +23,7 @@ import {
   Paper,
   Stack,
   Typography,
+  Box,
 } from '@mui/material';
 import TihldeLogo, { TihldeJubLogo } from '../components/TihldeLogo/TihldeLogo';
 import Image from 'next/image';
@@ -29,6 +31,7 @@ import { WaveOne, WaveThree } from '../components/Waves/waves';
 import Wave from '../components/Wave/wave';
 import { MerchItems } from '../components/MerchBox/MerchItems';
 import { MerchBox } from '../components/MerchBox/MerchBox';
+import { ROUTES } from '../utility/constants/routes';
 
 export default function Home({ data }: { data: any }) {
   const [height, setheight] = useState(100);
@@ -195,6 +198,27 @@ export default function Home({ data }: { data: any }) {
               </Grid>
             ))}
           </Grid>
+
+          <Box
+            sx={{
+              display: 'block',
+              width: 'fit-content',
+              margin: 'auto',
+            }}
+          >
+            <Button
+              endIcon={<EastIcon />}
+              variant='contained'
+              sx={{
+                position: 'relative',
+                zIndex: '2',
+                mt: 2,
+              }}
+              href={ROUTES.MERCH}
+            >
+              Se mer
+            </Button>
+          </Box>
           <WaveOne sx={{ color: 'four.main', height: '50%' }} />
         </Paper>
         <Divider />

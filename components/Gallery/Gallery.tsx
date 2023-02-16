@@ -33,7 +33,7 @@ export function Gallery() {
         }}
       >
         {MerchItems.map((item) => (
-          <Grid key={item.title} xs={12} md={6} lg={4}>
+          <Grid item={true} key={item.title} xs={12} md={6} lg={4}>
             <MerchBox
               title={item.title}
               url={item.url}

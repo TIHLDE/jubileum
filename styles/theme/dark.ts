@@ -9,14 +9,38 @@ declare module "@mui/material/styles" {
     contrastText?: string;
   }
 
+/*   interface Theme {
+    status: {
+      danger: React.CSSProperties['color'];
+    };
+  } */
+
+  interface Palette {
+    two: Palette['primary'];
+    three: Palette['primary'];
+    four: Palette['primary'];
+    five: Palette['primary'];
+    six: Palette['primary'];
+    seven: Palette['primary'];
+    eight: Palette['primary'];
+  }
+
   interface PaletteOptions {
-    two?: PaletteColorOptions;
-    three?: PaletteColorOptions;
-    four?: PaletteColorOptions;
-    five?: PaletteColorOptions;
-    six?: PaletteColorOptions;
-    seven?: PaletteColorOptions;
-    eight?: PaletteColorOptions;
+    two: PaletteOptions['primary'];
+    three: PaletteOptions['primary'];
+    four: PaletteOptions['primary'];
+    five: PaletteOptions['primary'];
+    six: PaletteOptions['primary'];
+    seven: PaletteOptions['primary'];
+    eight: PaletteOptions['primary'];
+  }
+
+  interface PaletteColor {
+    darker?: string;
+  }
+
+  interface SimplePaletteColorOptions {
+    darker?: string;
   }
 }
 

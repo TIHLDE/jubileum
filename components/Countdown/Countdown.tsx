@@ -70,29 +70,42 @@ export const Countdown = () => {
   }, [confettiFired]);
 
   return (
-    <>
-      <Grid container textAlign="center" columns={8} width={200}>
+    <React.Fragment>
+      <Grid
+        container
+        textAlign='center'
+        columns={8}
+        width={200}
+        sx={{
+          zIndex: 1000,
+          position: 'absolute',
+          borderRadius: '0.25rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          marginTop: '1rem',
+        }}
+      >
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.days} d
+            {timeLeft.days}d
           </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.hours} t
+            {timeLeft.hours}t
           </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.minutes} m
+            {timeLeft.minutes}m
           </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.seconds} s
+            {timeLeft.seconds}s
           </Typography>
         </Grid>
       </Grid>
-    </>
+    </React.Fragment>
   );
 };

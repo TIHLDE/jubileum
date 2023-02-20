@@ -1,103 +1,50 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 import styles from './Gallery.module.css';
-import React, { useEffect, useState, ReactNode } from 'react';
+import Button from '@mui/material/Button';
+import Link from 'next/link';
+import { MerchItems } from '../MerchBox/MerchItems';
+import { Grid, useTheme } from '@mui/material';
+import { MerchBox } from '../MerchBox/MerchBox';
 
-export const Gallery = () => {
-
-    return(
-        <div className={styles.wrapper}>
-            <div className={styles.gallery}>
-                <div className={styles.gallery_column}>
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-                </div>
-
-                <div className={styles.gallery_column}>
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-                </div>
-
-                <div className={styles.gallery_column}>
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-                </div>
-
-                <div className={styles.gallery_column}>
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-
-                    <a className={styles.gallery__link}>
-                        <figure className={styles.gallery__thumb}>
-                            <img src="https://raw.githubusercontent.com/TIHLDE/Kvark/dev/public/browser-icons/cover-image.jpg" alt="Genser" className={styles.gallery__image}></img>
-                            <figcaption className={styles.gallery__caption}>Genser</figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
-        </div>
-    )
+export function Gallery() {
+  const theme = useTheme();
+  return (
+    <Box
+      sx={{
+        width: '90vw',
+        margin: 'auto',
+        [theme.breakpoints.down('lg')]: {
+          width: '90vw',
+        },
+        [theme.breakpoints.up('xl')]: {
+          width: '50vw',
+        },
+      }}
+    >
+      <Grid
+        container
+        sx={{
+            mx: 'auto',
+            position: 'relative',
+            width: '100%',
+            justifyContent: 'center',
+        }}
+      >
+        {MerchItems.map((item) => (
+          <Grid item={true} key={item.title} xs={12} md={6} lg={4}>
+            <MerchBox
+              title={item.title}
+              url={item.url}
+              price={item.price}
+              available={item.available}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
 }

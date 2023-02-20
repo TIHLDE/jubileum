@@ -23,8 +23,13 @@ const Footer = () => {
         </Grid>
         <Grid item xs={12} md={4}>
           <Stack direction="row" gap={1} alignItems="center">
-            <MuiLink component={Link} href="/" color="#ffffff" fontWeight={600}>
-              @Tihldejubileum
+            <MuiLink
+              component={Link}
+              href="https://instagram.com/@tihldejubileum"
+              color="#ffffff"
+              fontWeight={600}
+            >
+              @tihldejubileum
             </MuiLink>
             <Image
               alt="instagram"
@@ -34,8 +39,8 @@ const Footer = () => {
             />
           </Stack>
         </Grid>
-        <Grid item xs={12} md={4}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do minim
+        <Grid item xs={12} md={3}>
+          <Typography>Laget med kjærlighet av TIHLDE Index ❤️</Typography>
         </Grid>
       </Grid>
     </Paper>

@@ -23,7 +23,7 @@ import {
 import TihldeLogo, { TihldeJubLogo } from "../components/TihldeLogo/TihldeLogo";
 import Image from "next/image";
 
-export default function Home({ data }: { data: any }) {
+export default function Home({ events }: { events: any[] }) {
   const [height, setheight] = useState(100);
   const [width, setwidth] = useState(100);
   useEffect(() => {
@@ -225,35 +225,46 @@ export default function Home({ data }: { data: any }) {
           <Typography variant="h4" textAlign="center" my={2}>
             Arrangementer 🥳
           </Typography>
-          <Card variant="outlined" sx={{ maxWidth: 400, mx: "auto" }}>
-            <CardMedia
-              sx={{ height: 140 }}
-              image={data.image}
-              title="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {data.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {data.description}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {data.list_count} / {data.limit} påmeldt. Venteliste:{" "}
-                {data.waiting_list_count}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button
-                endIcon={<OpenInNewIcon />}
-                component={Link}
-                href="https://tihlde.org/arrangementer/489/tihlde-30-ar/"
-                variant="contained"
-              >
-                Til påmelding
-              </Button>
-            </CardActions>
-          </Card>
+          <Grid container sx={{ maxWidth: 600, mx: "auto" }}>
+            {events.map((event, i) => (
+              <Grid key={i} item xs={12} md={6}>
+                <Card
+                  key={i}
+                  variant="outlined"
+                  sx={{ maxWidth: 400, mx: "auto" }}
+                  component="div"
+                >
+                  <CardMedia
+                    sx={{ height: 140 }}
+                    image={event.image}
+                    title={event.title}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {event.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {event.description}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {event.list_count} / {event.limit} påmeldt. Venteliste:{" "}
+                      {event.waiting_list_count}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      endIcon={<OpenInNewIcon />}
+                      component={Link}
+                      href={`https://www.tihlde.org/arrangementer/${event.id}`}
+                      variant="contained"
+                    >
+                      Til påmelding
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Paper>
       </main>
     </>
@@ -262,9 +273,15 @@ export default function Home({ data }: { data: any }) {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await fetch(`https://api.tihlde.org/events/489/`);
-  const data = await res.json();
-  return {
-    props: { data }, // will be passed to the page component as props
-  };
+  const urls = [
+    `https://api.tihlde.org/events/489/`,
+    `https://api.tihlde.org/events/507/`,
+    `https://api.tihlde.org/events/505/`,
+  ];
+
+  const events = await Promise.all(
+    urls.map((url) => fetch(url).then((resp) => resp.json()))
+  );
+  console.log(events);
+  return { props: { events: events } };
 }

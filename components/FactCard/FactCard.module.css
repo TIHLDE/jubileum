@@ -1,0 +1,10 @@
+
+.content {
+    height: 300px;
+    padding: 2.5rem;
+  }
+
+.wrapper {
+    display: flex;
+    overflow-x: auto;
+}

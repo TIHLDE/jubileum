@@ -20,22 +20,39 @@ import {
   Divider,
   Grid,
   IconButton,
+  ImageList,
+  ImageListItem,
   Paper,
   Stack,
   Typography,
-  Box,
+  useMediaQuery,
+  useTheme,
+  Box
+} from "@mui/material";
+import TihldeLogo, { TihldeJubLogo } from "../components/TihldeLogo/TihldeLogo";
+import Image from "next/image";
+import { MarkdownBody } from "../components/MarkdownBody/MarkdownBody";
 } from '@mui/material';
-import TihldeLogo, { TihldeJubLogo } from '../components/TihldeLogo/TihldeLogo';
-import Image from 'next/image';
 import { WaveOne, WaveThree } from '../components/Waves/waves';
 import Wave from '../components/Wave/wave';
 import { MerchItems } from '../components/MerchBox/MerchItems';
 import { MerchBox } from '../components/MerchBox/MerchBox';
 import { ROUTES } from '../utility/constants/routes';
 
-export default function Home({ data }: { data: any }) {
+export default function Home({ events }: { events: any[] }) {
   const [height, setheight] = useState(100);
   const [width, setwidth] = useState(100);
+  const lgBreakpoint = useMediaQuery("(min-width:800px)");
+  const smBreakpoint = useMediaQuery("(min-width:500px)");
+  var imageListWidth = 2;
+  const theme = useTheme();
+  if (lgBreakpoint) {
+    imageListWidth = 3;
+  } else if (smBreakpoint) {
+    imageListWidth = 2;
+  } else {
+    imageListWidth = 1;
+  }
   useEffect(() => {
     setheight(window.innerHeight);
     setwidth(window.innerWidth);
@@ -226,46 +243,62 @@ export default function Home({ data }: { data: any }) {
           <Typography variant='h4' textAlign='center' my={2}>
             Arrangementer 🥳
           </Typography>
-          <Card
-            variant='outlined'
-            sx={{ maxWidth: 400, mx: 'auto', position: 'relative', zIndex: 1 }}
-          >
-            <CardMedia
-              sx={{ height: 140 }}
-              image={data.image}
-              title='green iguana'
-            />
-            <CardContent>
-              <Typography gutterBottom variant='h5' component='div'>
-                {data.title}
-              </Typography>
-              <Typography variant='body2' color='text.secondary'>
-                {data.description}
-              </Typography>
-              <Typography variant='body2' color='text.secondary'>
-                {data.list_count} / {data.limit} påmeldt. Venteliste:{' '}
-                {data.waiting_list_count}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button
-                endIcon={<OpenInNewIcon />}
-                component={Link}
-                href='https://tihlde.org/arrangementer/489/tihlde-30-ar/'
-                variant='contained'
-              >
-                Til påmelding
-              </Button>
-            </CardActions>
-          </Card>
-
-          <WaveThree
+          <ImageList
+            gap={6}
+            cols={imageListWidth}
+            variant="masonry"
             sx={{
-              height: '50%',
-              color: 'two.main',
-              transform: 'flipY',
+              maxWidth: "80vw",
+              mx: "auto",
+              [theme.breakpoints.down("lg")]: {
+                width: "90vw",
+              },
+              [theme.breakpoints.up("xl")]: {
+                width: "50vw",
+              },
             }}
-          />
+          >
+            {events.map((event, i) => (
+              <ImageListItem key={i}>
+                <Card
+                  key={i}
+                  variant="outlined"
+                  sx={{ width: "100%", maxWidth: "500px", mx: "auto" }}
+                  component="div"
+                >
+                  <CardMedia
+                    sx={{ height: 140 }}
+                    image={event.image}
+                    title={event.title}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {event.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      <MarkdownBody
+                        text={event.description.substring(0, 200) + "   ..."}
+                      />
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {event.list_count} / {event.limit} påmeldt. Venteliste:{" "}
+                      {event.waiting_list_count}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      endIcon={<OpenInNewIcon />}
+                      component={Link}
+                      href={`https://www.tihlde.org/arrangementer/${event.id}`}
+                      variant="contained"
+                    >
+                      Til påmelding
+                    </Button>
+                  </CardActions>
+                </Card>
+              </ImageListItem>
+            ))}
+          </ImageList>
         </Paper>
       </main>
     </>
@@ -274,9 +307,13 @@ export default function Home({ data }: { data: any }) {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await fetch(`https://api.tihlde.org/events/489/`);
-  const data = await res.json();
-  return {
-    props: { data }, // will be passed to the page component as props
-  };
+  const urls = [489, 507, 505, 509, 494, 480];
+
+  const events = await Promise.all(
+    urls.map((url) =>
+      fetch(`https://api.tihlde.org/events/${url}/`).then((resp) => resp.json())
+    )
+  );
+  console.log(events);
+  return { props: { events: events } };
 }

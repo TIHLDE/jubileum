@@ -16,16 +16,32 @@ import {
   Divider,
   Grid,
   IconButton,
+  ImageList,
+  ImageListItem,
   Paper,
   Stack,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import TihldeLogo, { TihldeJubLogo } from "../components/TihldeLogo/TihldeLogo";
 import Image from "next/image";
+import { MarkdownBody } from "../components/MarkdownBody/MarkdownBody";
 
 export default function Home({ events }: { events: any[] }) {
   const [height, setheight] = useState(100);
   const [width, setwidth] = useState(100);
+  const lgBreakpoint = useMediaQuery("(min-width:800px)");
+  const smBreakpoint = useMediaQuery("(min-width:500px)");
+  var imageListWidth = 2;
+  const theme = useTheme();
+  if (lgBreakpoint) {
+    imageListWidth = 3;
+  } else if (smBreakpoint) {
+    imageListWidth = 2;
+  } else {
+    imageListWidth = 1;
+  }
   useEffect(() => {
     setheight(window.innerHeight);
     setwidth(window.innerWidth);
@@ -225,13 +241,27 @@ export default function Home({ events }: { events: any[] }) {
           <Typography variant="h4" textAlign="center" my={2}>
             Arrangementer 🥳
           </Typography>
-          <Grid container sx={{ maxWidth: 600, mx: "auto" }}>
+          <ImageList
+            gap={6}
+            cols={imageListWidth}
+            variant="masonry"
+            sx={{
+              maxWidth: "80vw",
+              mx: "auto",
+              [theme.breakpoints.down("lg")]: {
+                width: "90vw",
+              },
+              [theme.breakpoints.up("xl")]: {
+                width: "50vw",
+              },
+            }}
+          >
             {events.map((event, i) => (
-              <Grid key={i} item xs={12} md={6}>
+              <ImageListItem key={i}>
                 <Card
                   key={i}
                   variant="outlined"
-                  sx={{ maxWidth: 400, mx: "auto" }}
+                  sx={{ width: "100%", maxWidth: "500px", mx: "auto" }}
                   component="div"
                 >
                   <CardMedia
@@ -244,7 +274,9 @@ export default function Home({ events }: { events: any[] }) {
                       {event.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {event.description}
+                      <MarkdownBody
+                        text={event.description.substring(0, 200) + "   ..."}
+                      />
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {event.list_count} / {event.limit} påmeldt. Venteliste:{" "}
@@ -262,9 +294,9 @@ export default function Home({ events }: { events: any[] }) {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
+              </ImageListItem>
             ))}
-          </Grid>
+          </ImageList>
         </Paper>
       </main>
     </>
@@ -273,14 +305,12 @@ export default function Home({ events }: { events: any[] }) {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const urls = [
-    `https://api.tihlde.org/events/489/`,
-    `https://api.tihlde.org/events/507/`,
-    `https://api.tihlde.org/events/505/`,
-  ];
+  const urls = [489, 507, 505, 509, 494, 480];
 
   const events = await Promise.all(
-    urls.map((url) => fetch(url).then((resp) => resp.json()))
+    urls.map((url) =>
+      fetch(`https://api.tihlde.org/events/${url}/`).then((resp) => resp.json())
+    )
   );
   console.log(events);
   return { props: { events: events } };

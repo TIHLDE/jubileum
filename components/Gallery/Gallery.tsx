@@ -28,8 +28,10 @@ export function Gallery() {
       <Grid
         container
         sx={{
-          mx: 'auto',
-          position: 'relative',
+            mx: 'auto',
+            position: 'relative',
+            width: '100%',
+            justifyContent: 'center',
         }}
       >
         {MerchItems.map((item) => (

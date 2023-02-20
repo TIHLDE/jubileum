@@ -32,7 +32,7 @@ export const MerchBox: React.FC<MerchBoxInterface> = ({
       }}
     >
       <CardMedia
-        sx={{ height: 200, backgroundColor: '#fff' }}
+        sx={{ height: 200, backgroundColor: '#dcdcdc', backgroundSize: "180px" }}
         image={url}
         title={title}
       />

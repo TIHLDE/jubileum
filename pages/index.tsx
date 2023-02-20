@@ -56,7 +56,7 @@ export default function Home({ data }: { data: any }) {
             sx={{ height: '100%', zIndex: 100 }}
           >
             <Grid item xs={9} p={2}>
-              <Stack direction='row' mt={'20vh'} height={100} mb={2}>
+              <Stack direction='row' mt={'30vh'} height={100} mb={2}>
                 <TihldeLogo
                   logoColor='white'
                   size='large'

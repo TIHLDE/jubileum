@@ -113,6 +113,7 @@ export const Header: React.FunctionComponent = () => {
             >
               {menu.map((item, i) => (
                 <Button
+                  target={item.label == 'Tøddel' ? '_blank' : undefined}
                   key={i}
                   component={Link}
                   href={item.link}

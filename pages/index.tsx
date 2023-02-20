@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { Countdown } from '../components/Countdown/Countdown';
 import { Jumbotron } from '../components/Jumbotron/Jumbotron';
+import Facts from '../components/FactCard/Facts';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
@@ -220,6 +221,13 @@ export default function Home({ data }: { data: any }) {
             </Button>
           </Box>
           <WaveOne sx={{ color: 'four.main', height: '50%' }} />
+        </Paper>
+        <Divider />
+        <Paper square sx={{ p: 3, position: 'relative' }}>
+        <Typography variant='h4' textAlign='center' my={2}>
+            Fakta
+          </Typography>
+          <Facts />
         </Paper>
         <Divider />
         <Paper square sx={{ p: 3, position: 'relative' }}>

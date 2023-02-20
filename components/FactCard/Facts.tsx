@@ -1,19 +1,16 @@
-import styles from './FactCard.module.css';
 import FactCard from "./FactCard";
+import { Box } from '@mui/material';
 
 const FaktaPage = () => {
     return (
-        <div className={styles.wrapper}>
+        <Box sx={{ display: 'flex', overflowX: 'auto' }}>
             <FactCard />
             <FactCard />
             <FactCard />
             <FactCard />
             <FactCard />
             <FactCard />
-            <FactCard />
-            <FactCard />
-            <FactCard />
-        </div>
+        </Box>
     )
 }
 

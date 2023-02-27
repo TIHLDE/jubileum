@@ -73,70 +73,27 @@ export default function Home({ data }: { data: any }) {
           square
           variant="elevation"
           sx={{
-            py: 2,
+            py: 3,
             px: 1,
           }}
         >
-          <Grid container columns={10} sx={{ maxWidth: {xs: "60vw", md:"70vw"}, mx: 'auto' }}>
-            <Grid item xs={10} md={5} lg={2} p={1}>
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                startIcon={<CheckroomIcon />}
-                component={Link}
-                href="/merch"
-              >
-                Merch
-              </Button>
-            </Grid>
-            <Grid item xs={10} md={5} lg={2} p={1}>
-              <Button
-                fullWidth
-                startIcon={<HistoryIcon />}
-                variant="contained"
-                component={Link}
-                disabled
-                href="https://tihlde.org/toddel/"
-              >
-                Historie
-              </Button>
-            </Grid>
-            <Grid item xs={10} md={5} lg={2} p={1}>
-              <Button
-                fullWidth
-                startIcon={<WorkspacePremiumIcon />}
-                variant="contained"
-                component={Link}
-                disabled
-                href="https://tihlde.org/toddel/"
-              >
-                Daljer
-              </Button>
-            </Grid>
-            <Grid item xs={10} md={5} lg={2} p={1}>
-              <Button
-                fullWidth
-                startIcon={<OpenInNewIcon />}
-                variant="contained"
-                component={Link}
-                href="https://tihlde.org/toddel/"
-              >
-                Tøddel
-              </Button>
-            </Grid>
-            <Grid item xs={10} md={5} lg={2} p={1}>
-              <Button
-                fullWidth
-                variant="contained"
-                color="primary"
-                startIcon={<OpenInNewIcon />}
-                component={Link}
-                href="https://tihlde.org/"
-              >
-                Tihlde.org
-              </Button>
-            </Grid>
+          <Grid container columns={10} sx={{ maxWidth: {xs: "60vw", md:"70vw"}, mx: 'auto' }} gap={{xs: 1, md: 0}}>
+            {Buttons.map((item) => (
+                <Grid item={true} key={item.title} xs={10} md={5} lg={2} p={1}>
+                    <Button
+                        startIcon={item.startIcon}
+                        fullWidth
+                        component={Link}
+                        href={item.href}
+                        variant={item.variant}
+                        color={item.color}
+                        disabled={item.disabled}
+                        target={item.target}
+                    >
+                    {item.title}
+                    </Button>
+                </Grid>
+            ))}
           </Grid>
         </Paper>
         <Divider />
@@ -234,14 +191,66 @@ export default function Home({ data }: { data: any }) {
     </>
   )
 }
+type Button = {
+  href: string;
+  title: string;
+  variant: 'contained' | 'outlined' | 'text';
+  disabled: true | false;
+  color: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+  startIcon?: React.ReactNode;
+  target?: '_blank' | 'unset';
+};
 
-const ButtonContainer = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+
+export const Buttons: Array<Button> = [
+
+  {
+    title: 'Merch',
+    href: '/merch',
+    variant: 'contained',
+    disabled: false,
+    color: 'primary',
+    startIcon: <CheckroomIcon />,
+    target: "unset"
+  },
+  {
+    title: 'Tøddel',
+    href: 'https://tihlde.org/toddel/',
+    variant: 'contained',
+    disabled: false,
+    color: 'primary',
+    startIcon: <OpenInNewIcon />,
+    target: "_blank"
+  },
+  {
+    title: 'Tihlde.org',
+    href: 'https://tihlde.org/toddel/',
+    variant: 'contained',
+    disabled: false,
+    color: 'primary',
+    startIcon: <OpenInNewIcon />,
+    target: "_blank"
+  },
+  {
+    title: 'Daljer',
+    href: 'https://tihlde.org/toddel/',
+    variant: 'contained',
+    disabled: true,
+    color: 'primary',
+    startIcon: <WorkspacePremiumIcon />,
+    target: "unset"
+
+  },
+  {
+    title: 'Historie',
+    href: 'https://tihlde.org/toddel/',
+    variant: 'contained',
+    disabled: true,
+    color: 'primary',
+    startIcon: <HistoryIcon />,
+    target: "unset"
+  },
+];
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(`https://api.tihlde.org/events/489/`)

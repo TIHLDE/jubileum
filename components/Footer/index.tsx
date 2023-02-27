@@ -46,7 +46,7 @@ const Footer = () => {
               color='#ffffff'
               fontWeight={600}
             >
-              @Tihldejubileum
+              @tihlde
             </MuiLink>
           </Stack>
         </Grid>

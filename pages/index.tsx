@@ -114,8 +114,8 @@ export default function Home({ data }: { data: any }) {
             px: 1,
           }}
         >
-          <Grid container columns={5} sx={{ maxWidth: {xs: "60vw", md:"70vw"}, mx: 'auto' }}>
-            <Grid item xs={5} md={1} p={1}>
+          <Grid container columns={10} sx={{ maxWidth: {xs: "60vw", md:"70vw"}, mx: 'auto' }}>
+            <Grid item xs={10} md={5} lg={2} p={1}>
               <Button
                 variant='contained'
                 color='primary'
@@ -127,7 +127,7 @@ export default function Home({ data }: { data: any }) {
                 Merch
               </Button>
             </Grid>
-            <Grid item xs={5} md={1} p={1}>
+            <Grid item xs={10} md={5} lg={2} p={1}>
               <Button
                 fullWidth
                 startIcon={<HistoryIcon />}
@@ -139,7 +139,7 @@ export default function Home({ data }: { data: any }) {
                 Historie
               </Button>
             </Grid>
-            <Grid item xs={5} md={1} p={1}>
+            <Grid item xs={10} md={5} lg={2} p={1}>
               <Button
                 fullWidth
                 startIcon={<WorkspacePremiumIcon />}
@@ -151,7 +151,7 @@ export default function Home({ data }: { data: any }) {
                 Daljer
               </Button>
             </Grid>
-            <Grid item xs={5} md={1} p={1}>
+            <Grid item xs={10} md={5} lg={2} p={1}>
               <Button
                 fullWidth
                 startIcon={<OpenInNewIcon />}
@@ -162,7 +162,7 @@ export default function Home({ data }: { data: any }) {
                 Tøddel
               </Button>
             </Grid>
-            <Grid item xs={5} md={1} p={1}>
+            <Grid item xs={10} md={5} lg={2} p={1}>
               <Button
                 fullWidth
                 variant='contained'

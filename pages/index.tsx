@@ -288,11 +288,14 @@ export const Buttons: Array<Button> = [
   },
 ];
 export async function getServerSideProps() {
-  // Fetch data from external API
-  const urls = [512,513];
+  //fetching all arrangements urls
+  const urlsUnfiltered = await fetch("https://api.tihlde.org/events/?&organizer=jubkom").then((resp) => resp.json()).then((data) => data.results.map((event: { id: any }) => event.id));
+  //removing url element "489"
+  const urls = urlsUnfiltered.filter((url: any) => url !== 489);
+
 
   const events = await Promise.all(
-    urls.map((url) =>
+    urls.map((url: any) =>
       fetch(`https://api.tihlde.org/events/${url}/`).then((resp) => resp.json())
     )
   );

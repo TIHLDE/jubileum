@@ -9,7 +9,6 @@
     z-index: 3;
 }
 
-
 @media (min-width: 900px) {
     .text {
         font-size: 4.5vw !important;

@@ -227,6 +227,7 @@ export default function Home({ data, events }: { data: any; events: any[] }) {
     </>
   );
 }
+
 type Button = {
   href: string;
   title: string;
@@ -234,12 +235,10 @@ type Button = {
   disabled: true | false;
   color: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
   startIcon?: React.ReactNode;
-  target?: '_blank' | 'unset';
+  target?: '_blank' | 'unset' | '';
 };
 
-
 export const Buttons: Array<Button> = [
-
   {
     title: 'Merch',
     href: '/merch',
@@ -247,7 +246,7 @@ export const Buttons: Array<Button> = [
     disabled: false,
     color: 'primary',
     startIcon: <CheckroomIcon />,
-    target: "unset"
+    target: 'unset',
   },
   {
     title: 'Tøddel',
@@ -256,7 +255,7 @@ export const Buttons: Array<Button> = [
     disabled: false,
     color: 'primary',
     startIcon: <OpenInNewIcon />,
-    target: "_blank"
+    target: '_blank',
   },
   {
     title: 'Tihlde.org',
@@ -265,7 +264,16 @@ export const Buttons: Array<Button> = [
     disabled: false,
     color: 'primary',
     startIcon: <OpenInNewIcon />,
-    target: "_blank"
+    target: '_blank',
+  },
+  {
+    title: 'Historie',
+    href: '/historie',
+    variant: 'contained',
+    disabled: false,
+    color: 'primary',
+    startIcon: <HistoryIcon />,
+    target: '',
   },
   {
     title: 'Daljer',
@@ -274,17 +282,7 @@ export const Buttons: Array<Button> = [
     disabled: true,
     color: 'primary',
     startIcon: <WorkspacePremiumIcon />,
-    target: "unset"
-
-  },
-  {
-    title: 'Historie',
-    href: 'https://tihlde.org/toddel/',
-    variant: 'contained',
-    disabled: true,
-    color: 'primary',
-    startIcon: <HistoryIcon />,
-    target: "unset"
+    target: 'unset',
   },
 ];
 export async function getServerSideProps() {

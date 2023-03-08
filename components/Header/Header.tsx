@@ -31,13 +31,17 @@ import Logo from "../Logo"
 const menu = [
   {
     link: ROUTES.MERCH,
-    label: "Merch",
+    label: 'Merch',
+  },
+  {
+    link: ROUTES.HISTORY,
+    label: 'Historie',
   },
   {
     link: ROUTES.TODDEL,
-    label: "Tøddel",
+    label: 'Tøddel',
   },
-]
+];
 
 export const Header: React.FunctionComponent = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)

@@ -1,6 +1,6 @@
 import { ButtonBaseProps } from "@mui/material";
 
-const entries: Array<Entry> = [
+const entries: Array<Entry | ParentEntry> = [
     {
         type: 'title',
         title: '1988',
@@ -16,17 +16,14 @@ const entries: Array<Entry> = [
     },
     {
         type: 'body',
-        body: '“Drift var en gjeng som ønsket å drifte en studenttjener tilknyttet datidens EDB-avdeling ved Trondheim Ingeinørhøgskole (TIH). I dag består Drift av 9 medlemmer som har ansvaret for daglige gjøremål tilknyttet TIHLDEs datasystemer. Hovedtjenestene som leveres er medlemskonto på studenttjeneren “Colargol” for studenter og ansatte ved NTNU, organisasjonskontoer på “Balthazar” for organisasjoner tilknyttet NTNU og virtuelle maskiner for TIHLDEs medlemmer på VMware-parken Nerdvana. I tillegg driftes det en rekke støttetjenester.',
+        body: 'Drift var en gjeng som ønsket å drifte en studenttjener tilknyttet datidens EDB-avdeling ved Trondheim Ingeinørhøgskole (TIH). I dag består Drift av 9 medlemmer som har ansvaret for daglige gjøremål tilknyttet TIHLDEs datasystemer. Hovedtjenestene som leveres er medlemskonto på studenttjeneren “Colargol” for studenter og ansatte ved NTNU, organisasjonskontoer på “Balthazar” for organisasjoner tilknyttet NTNU og virtuelle maskiner for TIHLDEs medlemmer på VMware-parken Nerdvana. I tillegg driftes det en rekke støttetjenester.',
         duration: 10,
+        disableBackgroundAnimations: true,
     },
     {
-        type: 'title',
+        type: 'titlebody',
         title: '1993',
-        duration: 10,
-    },
-    {
-        type: 'title',
-        title: 'Tihlde stiftes',
+        body: 'Tihlde stiftes',
         duration: 10,
     },
     {
@@ -58,7 +55,7 @@ const entries: Array<Entry> = [
     Several different types of content types can be added
     if needed (o゜▽゜)o☆
 */
-type Entry = {
+export type Entry = {
     type: 'title' | 'body' | 'titlebody' | 'image' | 'card' | 'pause';
     title?: string;
     body?: string;
@@ -69,6 +66,15 @@ type Entry = {
     fadeOut?: number;
     ignoreFadeIn?: boolean;
     disableBackgroundAnimations?: boolean;
+    titleTransitionStart?: number;
+    titleTransitionDuration?: number;
+    textAlign?: 'center' | 'left' | 'right';
+}
+
+export type ParentEntry = {
+    type: 'parent';
+    children: Array<Entry>;
+    duration: number;
 }
 
 export {entries};

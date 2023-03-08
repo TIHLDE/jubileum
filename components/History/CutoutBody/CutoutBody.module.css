@@ -32,8 +32,7 @@
 }
 
 .wrapper {
-    position: relative;
     width: fit-content;
-    overflow: hidden;
     max-width: 80vw;
+    overflow: hidden;
 }

@@ -89,18 +89,26 @@ const CutoutBody = ({
       <span
         style={{
           mixBlendMode: disableBackgroundAnimations ? 'normal' : 'multiply',
+          background: disableBackgroundAnimations ? 'transparent' : 'black',
         }}
         className={styles.text}
       >
         {body}
       </span>
-      <div
-        className={styles.background}
-        style={{
-          transform: `translateY(-${offset}%)`,
-        }}
-      ></div>
-      <div className={styles.fallbackBackground}></div>
+
+      {!disableBackgroundAnimations ? (
+        <>
+          <div
+            className={styles.background}
+            style={{
+              transform: `translateY(-${offset}%)`,
+            }}
+          ></div>
+          <div className={styles.fallbackBackground}></div>
+        </>
+      ) : (
+        ''
+      )}
     </div>
   );
 };

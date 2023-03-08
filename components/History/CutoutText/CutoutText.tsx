@@ -2,7 +2,7 @@ import { isEqual } from 'date-fns';
 import styles from './CutoutText.module.css';
 import { useState, useEffect } from 'react';
 
-type CutoutProps = {
+export type CutoutProps = {
   title: string;
   totalDuration: number;
   currentDuration: number;
@@ -28,7 +28,7 @@ const CutoutText = ({
   const [opactiy, setOpacity] = useState(1);
 
   variant = variant ?? 'left';
-  fontSize = fontSize ?? '1.5rem';
+  fontSize = fontSize ?? '5rem';
   fadeIn = fadeIn ?? 15;
   fadeOut = fadeOut ?? 85;
   ignoreFadeIn = ignoreFadeIn ?? false;

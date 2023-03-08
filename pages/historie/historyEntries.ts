@@ -4,9 +4,20 @@ const entries: Array<Entry> = [
     {
         type: 'title',
         title: '1988',
-        duration: 10,
+        duration: 8,
         fadeIn: 10,
         ignoreFadeIn: true,
+    },
+    {
+        type: 'body',
+        body: 'TIHLDEs historie startet i 1993, men Drift, grunnleggerene av TIHLDE, ble opprettet i 1988. Drift ble senere en undergruppe i TIHLDE, og var i lang tid den drivende kraften i linjeforeningen. ',
+        duration: 10,
+        disableBackgroundAnimations: true,
+    },
+    {
+        type: 'body',
+        body: '“Drift var en gjeng som ønsket å drifte en studenttjener tilknyttet datidens EDB-avdeling ved Trondheim Ingeinørhøgskole (TIH). I dag består Drift av 9 medlemmer som har ansvaret for daglige gjøremål tilknyttet TIHLDEs datasystemer. Hovedtjenestene som leveres er medlemskonto på studenttjeneren “Colargol” for studenter og ansatte ved NTNU, organisasjonskontoer på “Balthazar” for organisasjoner tilknyttet NTNU og virtuelle maskiner for TIHLDEs medlemmer på VMware-parken Nerdvana. I tillegg driftes det en rekke støttetjenester.',
+        duration: 10,
     },
     {
         type: 'title',
@@ -15,12 +26,30 @@ const entries: Array<Entry> = [
     },
     {
         type: 'title',
-        title: '2004',
+        title: 'Tihlde stiftes',
         duration: 10,
     },
-        {
+    {
+        type: 'body',
+        body: 'Ronny Hanssen og Arnt Harald Johansen tar initiativ til å starte linjeforeningen. Ragnvald T. Blindheim foreslår navnet TIHLDE - Trondheim IngeniørHoegskoles Linjeforening for Dannede Edbere.',
+        duration: 10,
+        disableBackgroundAnimations: true,
+    },
+    {
         type: 'title',
-        title: '2007',
+        title: '1995',
+        duration: 5,
+        disableBackgroundAnimations: true,
+    },
+    {
+        type: 'body',
+        body: 'Den første versjonen av TIHLDE logoen opprettes av Torkild Ulvøy Resheim. “Tannhjulet gav logoen et tilstrekkelig teknisk preg. De fire nodene med koblinger i mellom skulle illustrere nettverk og samhold. Til sist har vi ti(h)lde-tegnet som er velkjent blant UNIX brukere. Dette skulle symbolisere både TIHLDE og “hjem”.',
+        duration: 10,
+        disableBackgroundAnimations: true,
+    },
+    {
+        type: 'body',
+        body: 'Arbeidet ble gjort i løpet av en kveld. Først skissert på papir, deretter nøyaktig tegnet med DeLuxe Paint 3 (som var “state of the art” på den tiden) på en Amiga 1200. Alt utført av undertegnede som syntes TIHLDE kunne ha bruk for en logo. Dette var i 1995/96 tror jeg. Dét året jeg satt som leder for linjeforeningen.” (Her må det komme frem hvem som blir sitert)',
         duration: 10,
     },
 ]
@@ -39,6 +68,7 @@ type Entry = {
     fadeIn?: number;
     fadeOut?: number;
     ignoreFadeIn?: boolean;
+    disableBackgroundAnimations?: boolean;
 }
 
 export {entries};

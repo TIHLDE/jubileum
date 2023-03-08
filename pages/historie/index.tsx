@@ -23,7 +23,7 @@ const fadeIn = keyframes`
 // header that is 4rem tall.
 
 // Use this to adjust the impact of one duration unit
-const contentLengthScaler = 0.3;
+const contentLengthScaler = 0.15;
 
 const HistoriePage = () => {
   const [progress, setProgress] = useState(0);

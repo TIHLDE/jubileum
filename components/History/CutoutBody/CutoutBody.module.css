@@ -9,12 +9,6 @@
     z-index: 3;
 }
 
-@media (min-width: 900px) {
-    .text {
-        font-size: 4.5vw !important;
-    }
-}
-
 .background {
     background: rgb(168,93,161);
     background: linear-gradient(0deg, rgba(168,93,161,1) 0%, rgba(160,108,165,1) 20%, rgba(102,220,196,1) 50%, rgba(155,119,168,1) 80%, rgba(168,93,161,1) 100%);
@@ -42,13 +36,4 @@
     width: fit-content;
     overflow: hidden;
     max-width: 80vw;
-}
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }

@@ -1,9 +1,8 @@
-import { isEqual } from 'date-fns';
-import styles from './CutoutText.module.css';
+import styles from './CutoutBody.module.css';
 import { useState, useEffect } from 'react';
 
 type CutoutProps = {
-  title: string;
+  body: string;
   totalDuration: number;
   currentDuration: number;
   variant?: 'left' | 'center' | 'right';
@@ -11,10 +10,11 @@ type CutoutProps = {
   fadeOut?: number;
   fontSize?: string;
   ignoreFadeIn?: boolean;
+  disableBackgroundAnimations?: boolean;
 };
 
-const CutoutText = ({
-  title,
+const CutoutBody = ({
+  body,
   totalDuration,
   currentDuration,
   variant,
@@ -22,16 +22,19 @@ const CutoutText = ({
   fadeOut,
   fontSize,
   ignoreFadeIn,
+  disableBackgroundAnimations,
 }: CutoutProps) => {
   const [offset, setOffset] = useState(0);
   const [display, setDisplay] = useState('none');
   const [opactiy, setOpacity] = useState(1);
+  const [disableBackground, setDisableBackground] = useState(false);
 
   variant = variant ?? 'left';
-  fontSize = fontSize ?? '1.5rem';
-  fadeIn = fadeIn ?? 15;
-  fadeOut = fadeOut ?? 85;
+  fontSize = fontSize ?? '2rem';
+  fadeIn = fadeIn ?? 30;
+  fadeOut = fadeOut ?? 80;
   ignoreFadeIn = ignoreFadeIn ?? false;
+  disableBackgroundAnimations = disableBackgroundAnimations ?? false;
 
   useEffect(() => {
     const percent = currentDuration / totalDuration;
@@ -39,7 +42,9 @@ const CutoutText = ({
       setDisplay('block');
 
       // Set the background offset
-      setOffset(percent * 100);
+      if (!disableBackgroundAnimations) {
+        setOffset(percent * 100);
+      }
 
       // Calculate the text opacity
       if (fadeIn && fadeOut) {
@@ -60,7 +65,15 @@ const CutoutText = ({
         }
       }
     }
-  }, [currentDuration, totalDuration, fadeIn, fadeOut, ignoreFadeIn]);
+  }, [
+    currentDuration,
+    totalDuration,
+    fadeIn,
+    fadeOut,
+    ignoreFadeIn,
+    disableBackground,
+    disableBackgroundAnimations,
+  ]);
 
   return (
     <div
@@ -73,7 +86,14 @@ const CutoutText = ({
         transform: `translateZ(0)`,
       }}
     >
-      <span className={styles.text}>{title}</span>
+      <span
+        style={{
+          mixBlendMode: disableBackgroundAnimations ? 'normal' : 'multiply',
+        }}
+        className={styles.text}
+      >
+        {body}
+      </span>
       <div
         className={styles.background}
         style={{
@@ -85,4 +105,4 @@ const CutoutText = ({
   );
 };
 
-export default CutoutText;
+export default CutoutBody;

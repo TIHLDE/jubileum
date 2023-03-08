@@ -2,6 +2,7 @@ import { ButtonBaseProps, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import CutoutText from '../CutoutText/CutoutText';
 import { entries } from '../../../pages/historie/historyEntries';
+import CutoutBody from '../CutoutBody/CutoutBody';
 
 type ScrollyProps = {
   durationProgress: number;
@@ -17,6 +18,7 @@ type Entry = {
   fadeIn?: number;
   fadeOut?: number;
   ignoreFadeIn?: boolean;
+  disableBackgroundAnimations?: boolean;
 };
 
 const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
@@ -59,6 +61,18 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
         ignoreFadeIn={currentComponent.ignoreFadeIn}
       ></CutoutText>
     );
+  } else if (currentComponent.type == 'body') {
+    return (
+    <CutoutBody
+        body={currentComponent.body || ''}
+        totalDuration={currentComponent.duration}
+        currentDuration={duration - absoluteDuration}
+        variant='center'
+        fadeIn={currentComponent.fadeIn}
+        fadeOut={currentComponent.fadeOut}
+        ignoreFadeIn={currentComponent.ignoreFadeIn}
+        disableBackgroundAnimations={currentComponent.disableBackgroundAnimations} />
+    )
   } else {
     return (
       <CutoutText

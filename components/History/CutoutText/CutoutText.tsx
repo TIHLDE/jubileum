@@ -27,7 +27,7 @@ const CutoutText = ({
 
   variant = variant ?? 'left';
   fontSize = fontSize ?? '1.5rem';
-  fadeIn = fadeIn ?? 20;
+  fadeIn = fadeIn ?? 30;
   fadeOut = fadeOut ?? 80;
 
   useEffect(() => {
@@ -41,11 +41,19 @@ const CutoutText = ({
       // Calculate the text opacity
       if (fadeIn && fadeOut) {
         if (percent * 100 <= fadeIn && percent * 100 >= 0) {
-          setOpacity(percent * (100 / fadeIn));
+          if (fadeIn == 0) {
+            setOpacity(1);
+          } else {
+            setOpacity(percent * (100 / fadeIn));
+          }
         } else if (percent * 100 >= fadeIn && percent * 100 <= fadeOut) {
           setOpacity(1);
         } else if (percent * 100 >= fadeOut && percent * 100 <= 100) {
-          setOpacity();
+          if (fadeOut == 100) {
+            setOpacity(1);
+          } else {
+            setOpacity((100 - percent * 100) / (100 - fadeOut));
+          }
         }
       }
     }

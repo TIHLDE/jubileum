@@ -8,12 +8,14 @@ type ScrollyProps = {
 };
 
 type Entry = {
-  type: 'title' | 'body' | 'titlebody' | 'image' | 'card';
+  type: 'title' | 'body' | 'titlebody' | 'image' | 'card' | 'pause';
   title?: string;
   body?: string;
   src?: string;
   button?: ButtonBaseProps;
   duration: number;
+  fadeIn?: number;
+  fadeOut?: number;
 };
 
 const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
@@ -51,6 +53,8 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
         totalDuration={currentComponent.duration}
         currentDuration={duration - absoluteDuration}
         variant='center'
+        fadeIn={currentComponent.fadeIn}
+        fadeOut={currentComponent.fadeOut}
       ></CutoutText>
     );
   } else {

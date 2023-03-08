@@ -5,6 +5,7 @@ const entries: Array<Entry> = [
         type: 'title',
         title: '1988',
         duration: 10,
+        fadeIn: 10,
     },
     {
         type: 'title',
@@ -28,12 +29,14 @@ const entries: Array<Entry> = [
     if needed (o゜▽゜)o☆
 */
 type Entry = {
-    type: 'title' | 'body' | 'titlebody' | 'image' | 'card';
+    type: 'title' | 'body' | 'titlebody' | 'image' | 'card' | 'pause';
     title?: string;
     body?: string;
     src?: string;
     button?: ButtonBaseProps;
     duration: number;
+    fadeIn?: number;
+    fadeOut?: number;
 }
 
 export {entries};

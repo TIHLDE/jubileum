@@ -16,7 +16,7 @@ const entries: Array<Entry | ParentEntry> = [
     },
     {
         type: 'body',
-        body: 'Drift var en gjeng som ønsket å drifte en studenttjener tilknyttet datidens EDB-avdeling ved Trondheim Ingeinørhøgskole (TIH). I dag består Drift av 9 medlemmer som har ansvaret for daglige gjøremål tilknyttet TIHLDEs datasystemer. Hovedtjenestene som leveres er medlemskonto på studenttjeneren “Colargol” for studenter og ansatte ved NTNU, organisasjonskontoer på “Balthazar” for organisasjoner tilknyttet NTNU og virtuelle maskiner for TIHLDEs medlemmer på VMware-parken Nerdvana. I tillegg driftes det en rekke støttetjenester.',
+        body: 'Drift var en gjeng som ønsket å drifte en studenttjener tilknyttet datidens EDB-avdeling ved Trondheim Ingeniørhøgskole (TIH). I dag består Drift av 9 medlemmer som har ansvaret for daglige gjøremål tilknyttet TIHLDEs datasystemer. Hovedtjenestene som leveres er medlemskonto på studenttjeneren “Colargol” for studenter og ansatte ved NTNU, organisasjonskontoer på “Balthazar” for organisasjoner tilknyttet NTNU og virtuelle maskiner for TIHLDEs medlemmer på VMware-parken Nerdvana. I tillegg driftes det en rekke støttetjenester.',
         duration: 10,
         disableBackgroundAnimations: true,
     },
@@ -32,9 +32,11 @@ const entries: Array<Entry | ParentEntry> = [
         duration: 10,
         disableBackgroundAnimations: true,
     },
+
     {
-        type: 'title',
+        type: 'titlebody',
         title: '1995',
+        body: 'Tihldes logo',
         duration: 5,
         disableBackgroundAnimations: true,
     },
@@ -42,11 +44,19 @@ const entries: Array<Entry | ParentEntry> = [
         type: 'body',
         body: 'Den første versjonen av TIHLDE logoen opprettes av Torkild Ulvøy Resheim. “Tannhjulet gav logoen et tilstrekkelig teknisk preg. De fire nodene med koblinger i mellom skulle illustrere nettverk og samhold. Til sist har vi ti(h)lde-tegnet som er velkjent blant UNIX brukere. Dette skulle symbolisere både TIHLDE og “hjem”.',
         duration: 10,
-        disableBackgroundAnimations: true,
+        disableBackgroundAnimations: false,
+    },
+    {
+        type: 'image',
+        title: 'Tihldes logo',
+        duration: 15,
+        fadeIn: 70,
+        width: 200,
+        src: '/../public/logo_old.png',
     },
     {
         type: 'body',
-        body: 'Arbeidet ble gjort i løpet av en kveld. Først skissert på papir, deretter nøyaktig tegnet med DeLuxe Paint 3 (som var “state of the art” på den tiden) på en Amiga 1200. Alt utført av undertegnede som syntes TIHLDE kunne ha bruk for en logo. Dette var i 1995/96 tror jeg. Dét året jeg satt som leder for linjeforeningen.” (Her må det komme frem hvem som blir sitert)',
+        body: '"Arbeidet ble gjort i løpet av en kveld. Først skissert på papir, deretter nøyaktig tegnet med DeLuxe Paint 3 (som var “state of the art” på den tiden) på en Amiga 1200. Alt utført av undertegnede som syntes TIHLDE kunne ha bruk for en logo. Dette var i 1995/96 tror jeg. Dét året jeg satt som leder for linjeforeningen.” Torkild Ulvøy Resheim ',
         duration: 10,
     },
 ]
@@ -69,6 +79,7 @@ export type Entry = {
     titleTransitionStart?: number;
     titleTransitionDuration?: number;
     textAlign?: 'center' | 'left' | 'right';
+    width?: number;
 }
 
 export type ParentEntry = {

@@ -8,6 +8,7 @@ import {
 } from '../../../pages/historie/historyEntries';
 import CutoutBody from '../CutoutBody/CutoutBody';
 import CutoutTextWithBody from '../CutoutTextWithBody/CutoutTextWithBody';
+import ScrollyImage from '../ScrollyImage/ScrollyImage';
 
 type ScrollyProps = {
   durationProgress: number;
@@ -39,6 +40,10 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
         absoluteDuration <= duration &&
         absoluteDuration + e.duration > duration
       ) {
+        // Force the children to have same duration as parent. This feature might be removed later on
+        for (let n of e.children) {
+          n.duration = e.duration;
+        }
         currentComponent = e.children;
         break;
       }
@@ -108,6 +113,19 @@ function makeComponent(entry: Entry, currentDuration: number) {
           currentDuration={currentDuration}
         />
       );
+      break;
+    case 'image':
+      return (
+        <ScrollyImage 
+          title={entry.title ?? ''}
+          src={entry.src ?? ''}
+          totalDuration={entry.duration}
+          currentDuration={currentDuration}
+          width={entry.width ?? 100}
+          fadeIn={entry.fadeIn}
+          fadeOut={entry.fadeOut}
+        />
+      )
 
     default:
       break;

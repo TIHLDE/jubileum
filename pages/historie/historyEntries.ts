@@ -6,6 +6,7 @@ const entries: Array<Entry> = [
         title: '1988',
         duration: 10,
         fadeIn: 10,
+        ignoreFadeIn: true,
     },
     {
         type: 'title',
@@ -37,6 +38,7 @@ type Entry = {
     duration: number;
     fadeIn?: number;
     fadeOut?: number;
+    ignoreFadeIn?: boolean;
 }
 
 export {entries};

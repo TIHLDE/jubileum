@@ -16,6 +16,7 @@ type Entry = {
   duration: number;
   fadeIn?: number;
   fadeOut?: number;
+  ignoreFadeIn?: boolean;
 };
 
 const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
@@ -55,6 +56,7 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
         variant='center'
         fadeIn={currentComponent.fadeIn}
         fadeOut={currentComponent.fadeOut}
+        ignoreFadeIn={currentComponent.ignoreFadeIn}
       ></CutoutText>
     );
   } else {

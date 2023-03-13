@@ -1,6 +1,7 @@
 import { isEqual } from 'date-fns';
 import styles from './CutoutText.module.css';
 import { useState, useEffect } from 'react';
+import zIndex from '@mui/material/styles/zIndex';
 
 export type CutoutProps = {
   title: string;
@@ -11,6 +12,7 @@ export type CutoutProps = {
   fadeOut?: number;
   fontSize?: string;
   ignoreFadeIn?: boolean;
+  scaleTransition?: boolean;
 };
 
 const CutoutText = ({
@@ -22,16 +24,19 @@ const CutoutText = ({
   fadeOut,
   fontSize,
   ignoreFadeIn,
+  scaleTransition,
 }: CutoutProps) => {
   const [offset, setOffset] = useState(0);
   const [display, setDisplay] = useState('none');
   const [opactiy, setOpacity] = useState(1);
+  const [scale, setScale] = useState(1);
 
   variant = variant ?? 'left';
   fontSize = fontSize ?? '5rem';
   fadeIn = fadeIn ?? 15;
   fadeOut = fadeOut ?? 85;
   ignoreFadeIn = ignoreFadeIn ?? false;
+  scaleTransition = scaleTransition ?? false;
 
   useEffect(() => {
     const percent = currentDuration / totalDuration;
@@ -59,6 +64,12 @@ const CutoutText = ({
           }
         }
       }
+
+      if (scaleTransition) {
+        setScale(Math.max(percent * 3, 1));
+      } else {
+        setScale(1);
+      }
     }
   }, [currentDuration, totalDuration, fadeIn, fadeOut, ignoreFadeIn]);
 
@@ -70,7 +81,7 @@ const CutoutText = ({
         fontSize: fontSize,
         display: display,
         opacity: opactiy,
-        transform: `translateZ(0)`,
+        transform: `translateZ(0) scale(${scale})`,
       }}
     >
       <span className={styles.text}>{title}</span>

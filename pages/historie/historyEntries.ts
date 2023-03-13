@@ -1,12 +1,12 @@
 import { ButtonBaseProps } from "@mui/material";
 
-const entries: Array<Entry | ParentEntry> = [
+const entries: Array<EntryAggregate> = [
     {
         type: 'title',
         title: '1988',
-        duration: 8,
-        fadeIn: 10,
+        duration: 10,
         ignoreFadeIn: true,
+        scaleTransition: true,
     },
     {
         type: 'body',
@@ -37,16 +37,10 @@ const entries: Array<Entry | ParentEntry> = [
         type: 'titlebody',
         title: '1995',
         body: 'Tihldes logo',
-        duration: 5,
+        duration: 10,
         disableBackgroundAnimations: true,
     },
-    {
-        type: 'body',
-        body: 'Den første versjonen av TIHLDE logoen opprettes av Torkild Ulvøy Resheim. “Tannhjulet gav logoen et tilstrekkelig teknisk preg. De fire nodene med koblinger i mellom skulle illustrere nettverk og samhold. Til sist har vi ti(h)lde-tegnet som er velkjent blant UNIX brukere. Dette skulle symbolisere både TIHLDE og “hjem”.',
-        duration: 10,
-        disableBackgroundAnimations: false,
-    },
-    {
+        {
         type: 'image',
         title: 'Tihldes logo',
         duration: 15,
@@ -54,6 +48,13 @@ const entries: Array<Entry | ParentEntry> = [
         width: 200,
         src: '/../public/logo_old.png',
     },
+    {
+        type: 'body',
+        body: 'Den første versjonen av TIHLDE logoen opprettes av Torkild Ulvøy Resheim. “Tannhjulet gav logoen et tilstrekkelig teknisk preg. De fire nodene med koblinger i mellom skulle illustrere nettverk og samhold. Til sist har vi ti(h)lde-tegnet som er velkjent blant UNIX brukere. Dette skulle symbolisere både TIHLDE og “hjem”.',
+        duration: 10,
+        disableBackgroundAnimations: false,
+    },
+
     {
         type: 'body',
         body: '"Arbeidet ble gjort i løpet av en kveld. Først skissert på papir, deretter nøyaktig tegnet med DeLuxe Paint 3 (som var “state of the art” på den tiden) på en Amiga 1200. Alt utført av undertegnede som syntes TIHLDE kunne ha bruk for en logo. Dette var i 1995/96 tror jeg. Dét året jeg satt som leder for linjeforeningen.” Torkild Ulvøy Resheim ',
@@ -65,7 +66,7 @@ const entries: Array<Entry | ParentEntry> = [
     Several different types of content types can be added
     if needed (o゜▽゜)o☆
 */
-export type Entry = {
+type Entry = {
     type: 'title' | 'body' | 'titlebody' | 'image' | 'card' | 'pause';
     title?: string;
     body?: string;
@@ -80,12 +81,33 @@ export type Entry = {
     titleTransitionDuration?: number;
     textAlign?: 'center' | 'left' | 'right';
     width?: number;
+    scaleTransition?: boolean;
 }
 
-export type ParentEntry = {
-    type: 'parent';
-    children: Array<Entry>;
+type DefaultKeys = {
     duration: number;
 }
+
+type ButtonEntry = {
+    type: 'button';
+    label: string;
+    href: string;
+} & DefaultKeys
+
+type QuoteEntry = {
+    type: 'quote';
+    label: string;
+} & DefaultKeys
+
+type ParentEntry = {
+    type: 'parent';
+    children: Array<Entry>;
+    flowDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+    itemSpacing?: string;
+} & DefaultKeys
+
+
+
+export type EntryAggregate = ParentEntry | QuoteEntry | ButtonEntry | Entry;
 
 export {entries};

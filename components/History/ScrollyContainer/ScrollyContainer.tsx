@@ -1,36 +1,49 @@
-import { isEqual } from 'date-fns';
+import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-const ScrollyContainer = ({ ...props }) => {
-  const [progress, setProgress] = useState(props.progress ?? 0);
-  const [display, setDisplay] = useState(props.display ?? 'none');
-  const [opactiy, setOpacity] = useState(1);
+type ScrollyContainerProps = {
+  totalDuration: number;
+  currentDuration: number;
+  contentFlow?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+  children: Array<JSX.Element>;
+  itemSpacing?: string;
+};
+
+const ScrollyContainer = ({ ...props }: ScrollyContainerProps) => {
+  const [totalDuration, setTotalDuration] = useState(props.totalDuration);
+  const [currentDuration, setCurrentDuration] = useState(props.currentDuration);
+  const [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    if (props.progress != progress) {
-      setProgress(props.progress);
+    if (props.totalDuration != totalDuration) {
+      setTotalDuration(props.totalDuration);
     }
 
-    if (props.display != display) {
-      setDisplay(props.display);
+    if (props.currentDuration != currentDuration) {
+      setTotalDuration(props.currentDuration);
     }
+  }, [
+    props.totalDuration,
+    props.currentDuration,
+    totalDuration,
+    currentDuration,
+  ]);
 
-    if (progress < 40) {
-      const calcOpac = progress / 40;
-      setOpacity(calcOpac > 0 ? calcOpac : 0);
-    }
-  }, [props.progress, props.display]);
   return (
-    <div
+    <Box
       style={{
-        display: display,
-        position: 'fixed',
-        transform: `translateY(-${progress > 40 ? 0 : 40 - progress}%)`,
-        opacity: opactiy,
+        opacity: 1,
+        width: 'fit-content',
+        maxWidth: '80vw',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: props.contentFlow ?? 'row',
+        alignItems: 'center',
+        gap: props.itemSpacing ?? '0',
       }}
     >
-      {props.children}
-    </div>
+      {props.children.map((e) => e)}
+    </Box>
   );
 };
 

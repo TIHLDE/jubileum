@@ -83,7 +83,7 @@ const CutoutBody = ({
         fontSize: fontSize,
         display: display,
         opacity: opactiy,
-        transform: `translateZ(0)`,
+        position: 'relative',
       }}
     >
       <span

@@ -37,7 +37,7 @@ const CutoutTextWithBody = ({
   const [disableBackground, setDisableBackground] = useState(false);
   const [titleTransform, setTitleTransform] = useState(0);
 
-  fontSize = fontSize ?? '2rem';
+  fontSize = fontSize ?? '3rem';
   fadeIn = fadeIn ?? 30;
   fadeOut = fadeOut ?? 80;
   ignoreFadeIn = ignoreFadeIn ?? false;
@@ -92,7 +92,6 @@ const CutoutTextWithBody = ({
         fontSize: fontSize,
         display: display,
         opacity: opactiy,
-        transform: `translateZ(0)`,
         alignItems: 'center',
         justifyContent: 'center',
       }}
@@ -109,7 +108,7 @@ const CutoutTextWithBody = ({
           totalDuration={totalDuration}
           currentDuration={currentDuration}
           variant='center'
-          fontSize='2rem'
+          fontSize='3rem'
         />
       </Box>
 
@@ -137,6 +136,7 @@ const CutoutTextWithBody = ({
           totalDuration={totalDuration}
           currentDuration={currentDuration}
           variant='center'
+          fontSize='3rem'
         />
       </Box>
     </div>

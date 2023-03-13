@@ -2,13 +2,14 @@ import { ButtonBaseProps, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import CutoutText from '../CutoutText/CutoutText';
 import {
-  Entry,
-  ParentEntry,
+  EntryAggregate,
   entries,
 } from '../../../pages/historie/historyEntries';
 import CutoutBody from '../CutoutBody/CutoutBody';
 import CutoutTextWithBody from '../CutoutTextWithBody/CutoutTextWithBody';
 import ScrollyImage from '../ScrollyImage/ScrollyImage';
+import ScrollyContainer from '../ScrollyContainer/ScrollyContainer';
+import { Quote } from '../Quote/Quote';
 
 type ScrollyProps = {
   durationProgress: number;
@@ -23,7 +24,7 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
   }, [durationProgress]);
 
   // Set a placeholder component
-  let currentComponent: Array<Entry> = [
+  let currentComponent: Array<EntryAggregate> = [
     {
       type: 'title',
       duration: 0,
@@ -44,7 +45,7 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
         for (let n of e.children) {
           n.duration = e.duration;
         }
-        currentComponent = e.children;
+        currentComponent = [e];
         break;
       }
 
@@ -78,7 +79,7 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
  *
  * @param entry The entry object to transform
  */
-function makeComponent(entry: Entry, currentDuration: number) {
+function makeComponent(entry: EntryAggregate, currentDuration: number) {
   switch (entry.type) {
     case 'title':
       return (
@@ -88,6 +89,7 @@ function makeComponent(entry: Entry, currentDuration: number) {
           totalDuration={entry.duration}
           currentDuration={currentDuration}
           ignoreFadeIn={entry.ignoreFadeIn}
+          scaleTransition={entry.scaleTransition}
         />
       );
       break;
@@ -107,16 +109,19 @@ function makeComponent(entry: Entry, currentDuration: number) {
     case 'titlebody':
       return (
         <CutoutTextWithBody
+          key={entry.type}
           title={entry.title ?? ''}
           body={entry.body ?? ''}
           totalDuration={entry.duration}
           currentDuration={currentDuration}
+          fontSize='3rem'
         />
       );
       break;
     case 'image':
       return (
-        <ScrollyImage 
+        <ScrollyImage
+          key={entry.type}
           title={entry.title ?? ''}
           src={entry.src ?? ''}
           totalDuration={entry.duration}
@@ -125,7 +130,26 @@ function makeComponent(entry: Entry, currentDuration: number) {
           fadeIn={entry.fadeIn}
           fadeOut={entry.fadeOut}
         />
-      )
+      );
+      break;
+    case 'quote':
+      return <Quote />;
+      break;
+    case 'parent':
+      return (
+        <ScrollyContainer
+          key={entry.type}
+          currentDuration={currentDuration}
+          totalDuration={entry.duration}
+          contentFlow={entry.flowDirection}
+          itemSpacing={entry.itemSpacing}
+        >
+          {entry.children.map(
+            (e) => makeComponent(e, currentDuration) ?? <></>
+          )}
+        </ScrollyContainer>
+      );
+      break;
 
     default:
       break;

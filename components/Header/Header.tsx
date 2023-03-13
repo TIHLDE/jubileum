@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react"
 
 // Material
 import {
@@ -10,39 +10,40 @@ import {
   IconButton,
   Link as MuiLink,
   Toolbar,
-  Typography,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+  useTheme,
+} from "@mui/material"
+import MenuIcon from "@mui/icons-material/Menu"
+import OpenInNewIcon from "@mui/icons-material/OpenInNew"
 
 // Assets
-import { ROUTES } from "../../utility/constants/routes";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { ROUTES } from "../../utility/constants/routes"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import Logo from "../Logo"
+
+/*
+  {
+    link: ROUTES.HISTORY,
+    label: 'Historie',
+  },
+*/
 
 const menu = [
   {
-    link: ROUTES.HISTORY,
-    label: "Historie",
-  },
-  {
-    link: ROUTES.DALJER,
-    label: "Tihlde daljer",
+    link: ROUTES.MERCH,
+    label: "Merch",
   },
   {
     link: ROUTES.TODDEL,
     label: "Tøddel",
   },
-  {
-    link: ROUTES.RIDDERE,
-    label: "Riddere",
-  }
-];
+]
 
 export const Header: React.FunctionComponent = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const router = useRouter();
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [tinted, setTinted] = useState(false)
+  const router = useRouter()
+  const theme = useTheme()
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -51,10 +52,29 @@ export const Header: React.FunctionComponent = () => {
         ((event as React.KeyboardEvent).key === "Tab" ||
           (event as React.KeyboardEvent).key === "Shift")
       ) {
-        return;
+        return
       }
-      setDrawerOpen(open);
-    };
+      setDrawerOpen(open)
+    }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+
+    function handleScroll() {
+      const position = window.scrollY
+
+      if (position > 5 && !tinted) {
+        // Set the background color of the header to a semi-translucent color
+        setTinted(true)
+      } else if (position <= 5 && tinted) {
+        setTinted(false)
+      }
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [tinted])
 
   return (
     <React.Fragment>
@@ -63,10 +83,11 @@ export const Header: React.FunctionComponent = () => {
         elevation={0}
         style={{
           transition: "background-color 0.25s",
-          backgroundColor: "black",
           backdropFilter: "blur(5px)",
           WebkitBackdropFilter: "blur(5px)",
+          position: "fixed",
         }}
+        sx={{ backgroundColor: tinted ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)" }}
       >
         <Toolbar disableGutters>
           <Container
@@ -74,40 +95,18 @@ export const Header: React.FunctionComponent = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
+              alignItems: "center",
             }}
             maxWidth="xl"
           >
-            <MuiLink
-              component={Link}
-              href="/"
-              onClick={toggleDrawer(false)}
-              underline="none"
-              color="white"
-              style={{
-                marginLeft: "-8.5px",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white",
-              }}
-            >
-              <Image
-                alt="Logo"
-                width={50}
-                height={50}
-                src="/logo.png"
-                style={{ objectFit: "contain" }}
+            <MuiLink component={Link} href="/" onClick={toggleDrawer(false)}>
+              <Logo
+                sx={{
+                  width: 120,
+                  color: "white",
+                  marginTop: 1,
+                }}
               />
-              <Typography
-                variant="h2"
-                ml={1}
-                my={0}
-                fontSize="2rem"
-                fontWeight="bold"
-              >
-                Jubileum
-              </Typography>
             </MuiLink>
             <Box
               sx={{ display: { xs: "none", md: "flex" } }}
@@ -116,6 +115,7 @@ export const Header: React.FunctionComponent = () => {
             >
               {menu.map((item, i) => (
                 <Button
+                  target={item.label == "Tøddel" ? "_blank" : undefined}
                   key={i}
                   component={Link}
                   href={item.link}
@@ -133,7 +133,9 @@ export const Header: React.FunctionComponent = () => {
                   }}
                 >
                   {item.label}
-                  {item.label == "Tøddel" && <OpenInNewIcon sx={{ ml: 1 }} fontSize="small" />}
+                  {item.label == "Tøddel" && (
+                    <OpenInNewIcon sx={{ ml: 1 }} fontSize="small" />
+                  )}
                 </Button>
               ))}
             </Box>
@@ -222,5 +224,5 @@ export const Header: React.FunctionComponent = () => {
         </Drawer>
       </AppBar>
     </React.Fragment>
-  );
-};
+  )
+}

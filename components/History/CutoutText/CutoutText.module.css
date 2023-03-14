@@ -10,6 +10,29 @@
     transform: scale(100%);
 }
 
+.text::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
+    width: 20px;
+    height: 100%;
+    background: black;
+    z-index: 2;
+}
+
+.text::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    width: 20px;
+    height: 100%;
+    background: black;
+    z-index: 2;
+}
 
 .background {
     background: rgb(168,93,161);
@@ -18,7 +41,7 @@
     width: 100%;
     position: absolute;
     top: 0;
-    left: 2x;
+    left: 0;
     z-index: -2;
     transform: translateZ(0);
 }
@@ -50,4 +73,13 @@
     to {
         opacity: 1;
     }
+}
+
+.backgroundWrapper {
+    width: calc(100% - 4px);
+    left: 2px;
+    top: 2px;
+    height: calc(100% - 4px);
+    overflow: hidden;
+    position: absolute;
 }

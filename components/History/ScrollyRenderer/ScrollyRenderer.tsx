@@ -10,6 +10,7 @@ import CutoutTextWithBody from '../CutoutTextWithBody/CutoutTextWithBody';
 import ScrollyImage from '../ScrollyImage/ScrollyImage';
 import ScrollyContainer from '../ScrollyContainer/ScrollyContainer';
 import { Quote } from '../Quote/Quote';
+import { ScrollyButton } from '../Button/Button';
 
 type ScrollyProps = {
   durationProgress: number;
@@ -90,6 +91,8 @@ function makeComponent(entry: EntryAggregate, currentDuration: number) {
           currentDuration={currentDuration}
           ignoreFadeIn={entry.ignoreFadeIn}
           scaleTransition={entry.scaleTransition}
+          fadeOut={entry.fadeOut}
+          fadeIn={entry.fadeIn}
         />
       );
       break;
@@ -133,7 +136,29 @@ function makeComponent(entry: EntryAggregate, currentDuration: number) {
       );
       break;
     case 'quote':
-      return <Quote />;
+      return (
+        <Quote
+          key={entry.type}
+          label={entry.label ?? ''}
+          totalDuration={entry.duration}
+          currentDuration={currentDuration}
+          fontSize={entry.fontSize}
+          ignoreFadeIn={entry.ignoreFadeIn}
+        />
+      );
+      break;
+    case 'button':
+      return (
+        <ScrollyButton
+          label={entry.label ?? ''}
+          totalDuration={entry.duration}
+          currentDuration={currentDuration}
+          fontSize={entry.fontSize}
+          ignoreFadeIn={entry.ignoreFadeIn}
+          onClick={entry.onClick}
+          href={entry.href}
+        />
+      );
       break;
     case 'parent':
       return (

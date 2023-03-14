@@ -1,22 +1,25 @@
-import { Card, Typography } from '@mui/material';
+import { Button } from '@mui/material';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-type QuoteProps = {
+type ButtonProps = {
   label: string;
+  onClick?: () => void;
+  href?: string;
+  disabled?: boolean;
   totalDuration: number;
   currentDuration: number;
+  fontSize?: string;
   fadeIn?: number;
   fadeOut?: number;
-  fontSize?: string;
   ignoreFadeIn?: boolean;
 };
 
-export const Quote = ({ ...props }: QuoteProps) => {
-  const [display, setDisplay] = useState('none');
-  const [opactiy, setOpacity] = useState(1);
+export const ScrollyButton = ({ ...props }: ButtonProps) => {
+  const [opacity, setOpacity] = useState(1);
 
-  props.fadeIn = props.fadeIn ?? 50;
-  props.fadeOut = props.fadeOut ?? 50;
+  props.fadeIn = props.fadeIn ?? 20;
+  props.fadeOut = props.fadeOut ?? 70;
 
   useEffect(() => {
     const percent = props.currentDuration / props.totalDuration;
@@ -56,20 +59,21 @@ export const Quote = ({ ...props }: QuoteProps) => {
   ]);
 
   return (
-    <Card
-      variant='outlined'
-      sx={{
-        opacity: opactiy,
-      }}
-    >
-      <Typography
+    <Link href={props.href ?? '#'} target='_blank'>
+      <Button
+        variant='text'
+        color='primary'
+        onClick={props.onClick ?? undefined}
+        disabled={props.disabled ?? false}
         sx={{
-          px: 10,
-          userSelect: 'none',
+          opacity: opacity,
+          fontSize: props.fontSize ?? 'unset',
+          fontWeight: 500,
+          borderWidth: '1px',
         }}
       >
-        {props.label ?? ''}
-      </Typography>
-    </Card>
+        {props.label}
+      </Button>
+    </Link>
   );
 };

@@ -2,6 +2,7 @@ import { isEqual } from 'date-fns';
 import styles from './CutoutText.module.css';
 import { useState, useEffect } from 'react';
 import zIndex from '@mui/material/styles/zIndex';
+import { Box } from '@mui/material';
 
 export type CutoutProps = {
   title: string;
@@ -85,13 +86,15 @@ const CutoutText = ({
       }}
     >
       <span className={styles.text}>{title}</span>
-      <div
-        className={styles.background}
-        style={{
-          transform: `translateY(-${offset}%)`,
-        }}
-      ></div>
-      <div className={styles.fallbackBackground}></div>
+      <div className={styles.backgroundWrapper}>
+        <div
+          className={styles.background}
+          style={{
+            transform: `translateY(-${offset}%)`,
+          }}
+        ></div>
+        <div className={styles.fallbackBackground}></div>
+      </div>
     </div>
   );
 };

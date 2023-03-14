@@ -4,21 +4,36 @@ const entries: Array<EntryAggregate> = [
     {
         type: 'title',
         title: '1988',
-        duration: 10,
+        duration: 8,
+        fadeOut: 50,
         ignoreFadeIn: true,
         scaleTransition: true,
     },
     {
         type: 'body',
-        body: 'TIHLDEs historie startet i 1993, men Drift, grunnleggerene av TIHLDE, ble opprettet i 1988. Drift ble senere en undergruppe i TIHLDE, og var i lang tid den drivende kraften i linjeforeningen. ',
+        body: 'TIHLDEs historie startet i 1993, men Drift, grunnleggerene av TIHLDE, ble opprettet i 1988. De ble senere en undergruppe i TIHLDE, og var i lang tid den drivende kraften i linjeforeningen. ',
         duration: 10,
         disableBackgroundAnimations: true,
     },
     {
-        type: 'body',
-        body: 'Drift var en gjeng som ønsket å drifte en studenttjener tilknyttet datidens EDB-avdeling ved Trondheim Ingeniørhøgskole (TIH). I dag består Drift av 9 medlemmer som har ansvaret for daglige gjøremål tilknyttet TIHLDEs datasystemer. Hovedtjenestene som leveres er medlemskonto på studenttjeneren “Colargol” for studenter og ansatte ved NTNU, organisasjonskontoer på “Balthazar” for organisasjoner tilknyttet NTNU og virtuelle maskiner for TIHLDEs medlemmer på VMware-parken Nerdvana. I tillegg driftes det en rekke støttetjenester.',
+        type: 'parent',
         duration: 10,
-        disableBackgroundAnimations: true,
+        flowDirection: 'column',
+        itemSpacing: '10px',
+        children: [
+            {
+                type: 'body',
+                body: 'Drift var en gjeng som ønsket å drifte en studenttjener tilknyttet datidens EDB-avdeling ved Trondheim Ingeniørhøgskole (TIH). I dag består gruppen av 9 medlemmer som har ansvaret for daglige gjøremål tilknyttet TIHLDEs datasystemer.',
+                duration: 10,
+                disableBackgroundAnimations: true,
+            },
+            {
+                type: 'button',
+                label: 'Les mer om drift',
+                href: '/wiki/drift',
+                duration: 10,
+            }
+        ]
     },
     {
         type: 'titlebody',
@@ -40,7 +55,7 @@ const entries: Array<EntryAggregate> = [
         duration: 10,
         disableBackgroundAnimations: true,
     },
-        {
+    {
         type: 'image',
         title: 'Tihldes logo',
         duration: 15,
@@ -48,17 +63,30 @@ const entries: Array<EntryAggregate> = [
         width: 200,
         src: '/../public/logo_old.png',
     },
+  
     {
         type: 'body',
-        body: 'Den første versjonen av TIHLDE logoen opprettes av Torkild Ulvøy Resheim. “Tannhjulet gav logoen et tilstrekkelig teknisk preg. De fire nodene med koblinger i mellom skulle illustrere nettverk og samhold. Til sist har vi ti(h)lde-tegnet som er velkjent blant UNIX brukere. Dette skulle symbolisere både TIHLDE og “hjem”.',
+        body: 'Den første versjonen av TIHLDE-logoen opprettes av Torkild Ulvøy Resheim. De fire nodene med koblinger i mellom skulle illustrere nettverk og samhold. Til sist har vi ti(h)lde-tegnet som er velkjent blant UNIX brukere. Dette skulle symbolisere både TIHLDE og “hjem”.',
         duration: 10,
         disableBackgroundAnimations: false,
     },
-
     {
-        type: 'body',
-        body: '"Arbeidet ble gjort i løpet av en kveld. Først skissert på papir, deretter nøyaktig tegnet med DeLuxe Paint 3 (som var “state of the art” på den tiden) på en Amiga 1200. Alt utført av undertegnede som syntes TIHLDE kunne ha bruk for en logo. Dette var i 1995/96 tror jeg. Dét året jeg satt som leder for linjeforeningen.” Torkild Ulvøy Resheim ',
+        type: 'parent',
         duration: 10,
+        flowDirection: 'column',
+        itemSpacing: '10px',
+        children: [
+            {
+                type: 'body',
+                body: '"Arbeidet ble gjort i løpet av en kveld. Først skissert på papir, deretter nøyaktig tegnet med DeLuxe Paint 3 (som var “state of the art” på den tiden) på en Amiga 1200. Alt utført av undertegnede som syntes TIHLDE kunne ha bruk for en logo. Dette var i 1995/96 tror jeg. Dét året jeg satt som leder for linjeforeningen.”',
+                duration: 10,
+            },
+            {
+                type: 'quote',
+                label: '~Torkild Ulvøy Resheim',
+                duration: 10,
+            }
+        ]
     },
 ]
 
@@ -86,12 +114,16 @@ type Entry = {
 
 type DefaultKeys = {
     duration: number;
+    fontSize?: string;
+    ignoreFadeIn?: boolean;
 }
 
 type ButtonEntry = {
     type: 'button';
     label: string;
     href: string;
+    onClick?: () => void;
+    disabled?: boolean;
 } & DefaultKeys
 
 type QuoteEntry = {
@@ -101,7 +133,7 @@ type QuoteEntry = {
 
 type ParentEntry = {
     type: 'parent';
-    children: Array<Entry>;
+    children: Array<EntryAggregate>;
     flowDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
     itemSpacing?: string;
 } & DefaultKeys

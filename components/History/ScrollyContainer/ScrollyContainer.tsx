@@ -6,6 +6,7 @@ type ScrollyContainerProps = {
   currentDuration: number;
   contentFlow?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   children: Array<JSX.Element>;
+  variant?: 'left' | 'center' | 'right';
   itemSpacing?: string;
 };
 
@@ -38,11 +39,11 @@ const ScrollyContainer = ({ ...props }: ScrollyContainerProps) => {
         overflow: 'hidden',
         display: 'flex',
         flexDirection: props.contentFlow ?? 'row',
-        alignItems: 'center',
+        alignItems: props.variant ?? 'center',
         gap: props.itemSpacing ?? '0',
       }}
     >
-      {props.children.map((e) => e)}
+      {props.children}
     </Box>
   );
 };

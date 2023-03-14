@@ -1,20 +1,12 @@
-import { isEqual } from 'date-fns';
 import styles from './CutoutText.module.css';
 import { useState, useEffect } from 'react';
-import zIndex from '@mui/material/styles/zIndex';
-import { Box } from '@mui/material';
+import { DefaultComponentType, TextComponentProps } from '../ComponentType';
 
 export type CutoutProps = {
   title: string;
-  totalDuration: number;
-  currentDuration: number;
-  variant?: 'left' | 'center' | 'right';
-  fadeIn?: number;
-  fadeOut?: number;
-  fontSize?: string;
-  ignoreFadeIn?: boolean;
   scaleTransition?: boolean;
-};
+} & DefaultComponentType &
+  TextComponentProps;
 
 const CutoutText = ({
   title,

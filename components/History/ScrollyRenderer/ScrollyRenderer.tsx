@@ -1,4 +1,3 @@
-import { ButtonBaseProps, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import CutoutText from '../CutoutText/CutoutText';
 import {
@@ -11,6 +10,8 @@ import ScrollyImage from '../ScrollyImage/ScrollyImage';
 import ScrollyContainer from '../ScrollyContainer/ScrollyContainer';
 import { Quote } from '../Quote/Quote';
 import { ScrollyButton } from '../Button/Button';
+import { ScrollyTimeline, TimelineEntry } from '../Timeline/Timeline';
+import { Typography } from '@mui/material';
 
 type ScrollyProps = {
   durationProgress: number;
@@ -30,22 +31,53 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
       type: 'title',
       duration: 0,
       title: 'Placeholder',
+      key: 0,
     },
   ];
 
   // Find the currently active component
   let absoluteDuration = 0;
   for (let e of entries) {
-    // If the entry type is a parent, we need to extract all the children, and put them in the currentComponent array
-    if (e.type == 'parent') {
+    if (e.type == 'timeline') {
       if (
         absoluteDuration <= duration &&
         absoluteDuration + e.duration > duration
       ) {
-        // Force the children to have same duration as parent. This feature might be removed later on
-        for (let n of e.children) {
-          n.duration = e.duration;
+        // Set a unique key for each component
+        e.key = entries.indexOf(e);
+
+        let totalChildrenDuration = 0;
+        for (let n of e.entries) {
+          // Add unique keys for each child component
+          n.key = e.entries.indexOf(n);
+
+          // Count the total child duration
+          totalChildrenDuration += n.duration;
         }
+
+        e.duration = totalChildrenDuration;
+
+        currentComponent = [e];
+        break;
+      }
+    }
+    // If the entry type is a parent, we need to extract all the children, and put them in the currentComponent array
+    else if (e.type == 'parent') {
+      if (
+        absoluteDuration <= duration &&
+        absoluteDuration + e.duration > duration
+      ) {
+        // Set a unique key for each component
+        e.key = entries.indexOf(e);
+
+        for (let n of e.children) {
+          // Force the children to have same duration as parent. This feature might be removed later on
+          n.duration = e.duration;
+
+          // Add unique keys for each child component
+          n.key = e.children.indexOf(n);
+        }
+
         currentComponent = [e];
         break;
       }
@@ -80,12 +112,12 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
  *
  * @param entry The entry object to transform
  */
-function makeComponent(entry: EntryAggregate, currentDuration: number) {
+export function makeComponent(entry: EntryAggregate, currentDuration: number) {
   switch (entry.type) {
     case 'title':
       return (
         <CutoutText
-          key={entry.type}
+          key={entry.key}
           title={entry.title ?? ''}
           totalDuration={entry.duration}
           currentDuration={currentDuration}
@@ -99,7 +131,7 @@ function makeComponent(entry: EntryAggregate, currentDuration: number) {
     case 'body':
       return (
         <CutoutBody
-          key={entry.type}
+          key={entry.key}
           body={entry.body ?? ''}
           totalDuration={entry.duration}
           currentDuration={currentDuration}
@@ -112,7 +144,7 @@ function makeComponent(entry: EntryAggregate, currentDuration: number) {
     case 'titlebody':
       return (
         <CutoutTextWithBody
-          key={entry.type}
+          key={entry.key}
           title={entry.title ?? ''}
           body={entry.body ?? ''}
           totalDuration={entry.duration}
@@ -124,7 +156,7 @@ function makeComponent(entry: EntryAggregate, currentDuration: number) {
     case 'image':
       return (
         <ScrollyImage
-          key={entry.type}
+          key={entry.key}
           title={entry.title ?? ''}
           src={entry.src ?? ''}
           totalDuration={entry.duration}
@@ -138,7 +170,7 @@ function makeComponent(entry: EntryAggregate, currentDuration: number) {
     case 'quote':
       return (
         <Quote
-          key={entry.type}
+          key={entry.key}
           label={entry.label ?? ''}
           totalDuration={entry.duration}
           currentDuration={currentDuration}
@@ -150,6 +182,7 @@ function makeComponent(entry: EntryAggregate, currentDuration: number) {
     case 'button':
       return (
         <ScrollyButton
+          key={entry.key}
           label={entry.label ?? ''}
           totalDuration={entry.duration}
           currentDuration={currentDuration}
@@ -163,11 +196,12 @@ function makeComponent(entry: EntryAggregate, currentDuration: number) {
     case 'parent':
       return (
         <ScrollyContainer
-          key={entry.type}
+          key={entry.key}
           currentDuration={currentDuration}
           totalDuration={entry.duration}
           contentFlow={entry.flowDirection}
           itemSpacing={entry.itemSpacing}
+          variant={entry.variant}
         >
           {entry.children.map(
             (e) => makeComponent(e, currentDuration) ?? <></>
@@ -175,15 +209,21 @@ function makeComponent(entry: EntryAggregate, currentDuration: number) {
         </ScrollyContainer>
       );
       break;
+    case 'timeline':
+      return (
+        <ScrollyTimeline
+          currentDuration={currentDuration}
+          totalDuration={entry.duration}
+          contentFlow={entry.flowDirection}
+          key={entry.key}
+          entries={entry.entries}
+        ></ScrollyTimeline>
+      );
 
     default:
       break;
   }
 }
-
-  
-  
-
 
 export { ScrollyRenderer };
 

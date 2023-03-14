@@ -2,11 +2,81 @@ import { ButtonBaseProps } from "@mui/material";
 
 const entries: Array<EntryAggregate> = [
     {
+        type: 'timeline',
+        duration: 10,
+        entries: [
+            {
+                type: 'body',
+                body: '2003 - TIHLDE blir 10 år',
+                duration: 10,
+            },
+            {
+                type: 'body',
+                body: '2008 - TIHLDE blir 15 år',
+                duration: 10,
+            },
+            {
+                type: 'parent',
+                flowDirection: 'column',
+                variant: 'left',
+                children: [
+                    {
+                        type: 'body',
+                        body: '2011 - Kontoret på Kalvskinnet ble pusset opp',
+                        duration: 10,
+                    },
+                    {
+                        type: 'button',
+                        label: 'Les mer om året 2011',
+                        duration: 10,
+                        href: '/wiki/2011',
+                    }
+                ],
+                duration: 10,
+            },
+            {
+                type: 'body',
+                body: '2013 - TIHLDE blir 20 år, og de første daljene produseres',
+                duration: 10,
+            },
+            {
+                type: 'body',
+                body: '2016 - TIHLDE slår seg sammen med NTNU',
+                duration: 10,
+            },
+            {
+                type: 'parent',
+                flowDirection: 'column',
+                variant: 'left',
+                children: [
+                    {
+                        type: 'body',
+                        body: '2017 - TIHLDE flytter til Akrinn',
+                        duration: 10,
+                    },
+                    {
+                        type: 'button',
+                        label: 'Les mer om året 2017',
+                        duration: 10,
+                        href: '/wiki/2017',
+                    }
+                ],
+                duration: 10,
+            },
+            {
+                type: 'body',
+                body: '2017 - TIHLDE flytter til Akrinn',
+                duration: 10,
+            },
+        ]
+    },
+    {
         type: 'title',
         title: '1988',
-        duration: 8,
-        fadeOut: 50,
-        ignoreFadeIn: true,
+        duration: 10,
+        fadeOut: 60,
+        fadeIn: 30,
+        ignoreFadeIn: false,
         scaleTransition: true,
     },
     {
@@ -58,7 +128,7 @@ const entries: Array<EntryAggregate> = [
     {
         type: 'image',
         title: 'Tihldes logo',
-        duration: 15,
+        duration: 10,
         fadeIn: 70,
         width: 200,
         src: '/../public/logo_old.png',
@@ -110,12 +180,14 @@ type Entry = {
     textAlign?: 'center' | 'left' | 'right';
     width?: number;
     scaleTransition?: boolean;
+    key?: number;
 }
 
 type DefaultKeys = {
     duration: number;
     fontSize?: string;
     ignoreFadeIn?: boolean;
+    key?: number;
 }
 
 type ButtonEntry = {
@@ -136,10 +208,16 @@ type ParentEntry = {
     children: Array<EntryAggregate>;
     flowDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
     itemSpacing?: string;
+    variant?: 'left' | 'center' | 'right';
 } & DefaultKeys
 
+type TimelineEntry = {
+    type: 'timeline';
+    entries: Array<EntryAggregate>;
+    flowDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+} & DefaultKeys;
 
 
-export type EntryAggregate = ParentEntry | QuoteEntry | ButtonEntry | Entry;
+export type EntryAggregate = ParentEntry | QuoteEntry | ButtonEntry | TimelineEntry | Entry;
 
 export {entries};

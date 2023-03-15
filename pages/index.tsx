@@ -10,6 +10,7 @@ import HistoryIcon from "@mui/icons-material/History"
 import EastIcon from "@mui/icons-material/East"
 import CheckroomIcon from "@mui/icons-material/Checkroom"
 import ReactMarkdown from "react-markdown";
+import { GetServerSidePropsContext } from 'next'
 import {
   Button,
   Link as MuiLink,
@@ -287,7 +288,11 @@ export const Buttons: Array<Button> = [
     target: "unset"
   },
 ];
-export async function getServerSideProps() {
+export async function getServerSideProps({req, res}: GetServerSidePropsContext) {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
   //fetching all arrangements urls
   const urlsUnfiltered = await fetch("https://api.tihlde.org/events/?&organizer=jubkom").then((resp) => resp.json()).then((data) => data.results.map((event: { id: any }) => event.id));
   //removing url element "489"

@@ -38,7 +38,7 @@ const Footer = () => {
               alt={'Bouvet Logo'}
               style={{
                 height: 'auto',
-                maxHeight: '60px',
+                maxHeight: '70px',
                 width: 'auto',
                 margin: 'auto',
                 display: 'block',

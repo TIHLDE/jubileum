@@ -4,23 +4,19 @@ import React, { useEffect, useState } from "react";
 import { Countdown } from "../components/Countdown/Countdown";
 import { Jumbotron } from "../components/Jumbotron/Jumbotron";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import HistoryIcon from "@mui/icons-material/History";
 import EastIcon from "@mui/icons-material/East";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import ReactMarkdown from "react-markdown";
-import { GetServerSidePropsContext } from "next";
 import {
   Button,
-  Link as MuiLink,
   Card,
   CardActions,
   CardContent,
   CardMedia,
   Divider,
   Grid,
-  IconButton,
   Paper,
   Stack,
   Typography,
@@ -29,23 +25,19 @@ import {
   Box,
   ImageList,
   ImageListItem,
-  Skeleton,
 } from "@mui/material";
-import TihldeLogo from "../components/TihldeLogo/TihldeLogo";
-import Image from "next/image";
-import { WaveOne, WaveThree } from "../components/Waves/waves";
+import { WaveOne } from "../components/Waves/waves";
 import Wave from "../components/Wave/wave";
 import { MerchItems } from "../components/MerchBox/MerchItems";
 import { MerchBox } from "../components/MerchBox/MerchBox";
 import { ROUTES } from "../utility/constants/routes";
 import Logo from "../components/Logo";
+import { Event } from "./api/events";
 
 export default function Home() {
-  const [height, setheight] = useState(100);
-  const [width, setwidth] = useState(100);
   const lgBreakpoint = useMediaQuery("(min-width:800px)");
   const smBreakpoint = useMediaQuery("(min-width:500px)");
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
     fetch("/api/events")
@@ -62,10 +54,7 @@ export default function Home() {
   } else {
     imageListWidth = 1;
   }
-  useEffect(() => {
-    setheight(window.innerHeight);
-    setwidth(window.innerWidth);
-  }, []);
+
   return (
     <>
       <Head>

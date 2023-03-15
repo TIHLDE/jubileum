@@ -20,6 +20,32 @@ const Footer = () => {
       square
     >
       <Grid container spacing={5} sx={{ alignItems: 'center', maxWidth: 1000 }}>
+        <Grid item xs={12} textAlign={'center'}>
+          <Typography gutterBottom>Sponsorer</Typography>
+          <Divider />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Link href='https://www.mnemonic.io/' target='_blank'>
+            <MnemonicLogo />
+          </Link>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Link href='https://www.bouvet.no/' target='_blank'>
+            <Image
+              src={'/../public/Bouvet_Logo_white.png'}
+              width={400}
+              height={400}
+              alt={'Bouvet Logo'}
+              style={{
+                height: 'auto',
+                width: '100%',
+              }}
+            />
+          </Link>
+        </Grid>
+        <Grid item xs={12} textAlign={'center'}>
+          <Divider />
+        </Grid>
         <Grid
           item
           xs={12}
@@ -65,26 +91,6 @@ const Footer = () => {
           >
             Index
           </MuiLink>
-        </Grid>
-
-        <Grid item xs={12} textAlign={'center'}>
-          <Typography gutterBottom>Sponsorer</Typography>
-          <Divider />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Image
-            src={'/../public/Bouvet_Logo_blue.png'}
-            width={100}
-            height={100}
-            alt={'Bouvet Logo'}
-            style={{
-              height: 'auto',
-              width: '100%',
-            }}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <MnemonicLogo />
         </Grid>
       </Grid>
     </Paper>

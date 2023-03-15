@@ -1,6 +1,15 @@
-export const MnemonicLogo = () => {
+export const MnemonicLogo = ({ ...props }: { height?: string }) => {
   return (
-    <svg version='1.1' id='layer' x='0px' y='0px' viewBox='-153 200 652 152'>
+    <svg
+      version='1.1'
+      id='layer'
+      x='0px'
+      y='0px'
+      viewBox='-103 230 542 90'
+      style={{
+        height: props.height ?? '100%',
+      }}
+    >
       <path
         fill='#E6E7E8'
         d='M36.7,275c7.2,0,10.6,3.8,10.6,12.1v30.5H59v-33.8c0-12.4-6.5-19.5-18.1-19.5c-6.9-0.4-13.5,3.2-16.9,9.3

@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MnemonicLogo } from './MnemonicLogo';
+import { MnemonicLogo } from '../MnemonicLogo/MnemonicLogo';
 
 const Footer = () => {
   return (
@@ -38,7 +38,10 @@ const Footer = () => {
               alt={'Bouvet Logo'}
               style={{
                 height: 'auto',
-                width: '100%',
+                maxHeight: '60px',
+                width: 'auto',
+                margin: 'auto',
+                display: 'block',
               }}
             />
           </Link>

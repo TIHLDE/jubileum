@@ -1,10 +1,11 @@
-import { Paper, Stack, Link as MuiLink } from '@mui/material';
+/* eslint-disable @next/next/no-img-element */
+import { Paper, Stack, Link as MuiLink, Divider } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { MnemonicLogo } from './MnemonicLogo';
 
 const Footer = () => {
   return (
@@ -64,6 +65,26 @@ const Footer = () => {
           >
             Index
           </MuiLink>
+        </Grid>
+
+        <Grid item xs={12} textAlign={'center'}>
+          <Typography gutterBottom>Sponsorer</Typography>
+          <Divider />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Image
+            src={'/../public/Bouvet_Logo_blue.png'}
+            width={100}
+            height={100}
+            alt={'Bouvet Logo'}
+            style={{
+              height: 'auto',
+              width: '100%',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <MnemonicLogo />
         </Grid>
       </Grid>
     </Paper>

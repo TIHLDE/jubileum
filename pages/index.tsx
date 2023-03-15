@@ -37,6 +37,7 @@ import { MerchItems } from "../components/MerchBox/MerchItems"
 import { MerchBox } from "../components/MerchBox/MerchBox"
 import { ROUTES } from "../utility/constants/routes"
 import Logo from "../components/Logo"
+import { SponsorBanner } from '../components/SponsorBanner/SponsorBanner';
 
 export default function Home({ data, events }: { data: any; events: any[] }) {
   const [height, setheight] = useState(100);
@@ -65,6 +66,7 @@ export default function Home({ data, events }: { data: any; events: any[] }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
+        <SponsorBanner />
         <Jumbotron>
           <Stack
             alignItems='center'

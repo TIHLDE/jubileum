@@ -179,7 +179,7 @@ export default function Home() {
         </Paper>
         <Divider />
         <Paper square sx={{ position: 'relative' }}>
-          <Typography variant='h4' textAlign='center' py={2}>
+          <Typography variant='h4' textAlign='center' py={2} pt={4}>
             Arrangementer 🥳
           </Typography>
           <Grid container sx={{maxWidth: 1000, mx: "auto"}} rowGap={2} >

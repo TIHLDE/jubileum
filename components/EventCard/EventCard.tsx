@@ -34,7 +34,7 @@ const EventCard: React.FC<EventCardProps> = ({
   return (
     <Card
       variant='outlined'
-      sx={{m: 1, height: "100%"}}
+      sx={{m: 1 }}
     >
       <CardMedia sx={{ height: 140 }} image={image} title={title} />
       <CardContent>
@@ -47,7 +47,7 @@ const EventCard: React.FC<EventCardProps> = ({
           {list_count} / {limit} påmeldt. Venteliste: {waiting_list_count}
         </Typography>
       </CardContent>
-      <CardActions >
+      <CardActions>
         <Button
           endIcon={<OpenInNewIcon />}
           component={Link}

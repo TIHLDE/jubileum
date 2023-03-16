@@ -1,25 +1,22 @@
-import Head from "next/head"
-import Link from "next/link"
-import React, { useEffect, useState } from "react"
-import { Countdown } from "../components/Countdown/Countdown"
-import { Jumbotron } from "../components/Jumbotron/Jumbotron"
-import OpenInNewIcon from "@mui/icons-material/OpenInNew"
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
-import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium"
-import HistoryIcon from "@mui/icons-material/History"
-import EastIcon from "@mui/icons-material/East"
-import CheckroomIcon from "@mui/icons-material/Checkroom"
-import ReactMarkdown from "react-markdown";
+import Head from 'next/head';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { Countdown } from '../components/Countdown/Countdown';
+import { Jumbotron } from '../components/Jumbotron/Jumbotron';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import HistoryIcon from '@mui/icons-material/History';
+import EastIcon from '@mui/icons-material/East';
+import CheckroomIcon from '@mui/icons-material/Checkroom';
+import ReactMarkdown from 'react-markdown';
 import {
   Button,
-  Link as MuiLink,
   Card,
   CardActions,
   CardContent,
   CardMedia,
   Divider,
   Grid,
-  IconButton,
   Paper,
   Stack,
   Typography,
@@ -28,21 +25,26 @@ import {
   Box,
   ImageList,
   ImageListItem,
-} from "@mui/material"
-import TihldeLogo from "../components/TihldeLogo/TihldeLogo"
-import Image from "next/image"
-import { WaveOne, WaveThree } from "../components/Waves/waves"
-import Wave from "../components/Wave/wave"
-import { MerchItems } from "../components/MerchBox/MerchItems"
-import { MerchBox } from "../components/MerchBox/MerchBox"
-import { ROUTES } from "../utility/constants/routes"
-import Logo from "../components/Logo"
+} from '@mui/material';
+import { WaveOne } from '../components/Waves/waves';
+import Wave from '../components/Wave/wave';
+import { MerchItems } from '../components/MerchBox/MerchItems';
+import { MerchBox } from '../components/MerchBox/MerchBox';
+import { ROUTES } from '../utility/constants/routes';
+import Logo from '../components/Logo';
+import { Event } from './api/events';
 
-export default function Home({ data, events }: { data: any; events: any[] }) {
-  const [height, setheight] = useState(100);
-  const [width, setwidth] = useState(100);
+export default function Home() {
   const lgBreakpoint = useMediaQuery('(min-width:800px)');
   const smBreakpoint = useMediaQuery('(min-width:500px)');
+  const [events, setEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    fetch('/api/events')
+      .then((resp) => resp.json())
+      .then((data) => setEvents(data.events));
+  }, []);
+
   var imageListWidth = 2;
   const theme = useTheme();
   if (lgBreakpoint) {
@@ -52,10 +54,7 @@ export default function Home({ data, events }: { data: any; events: any[] }) {
   } else {
     imageListWidth = 1;
   }
-  useEffect(() => {
-    setheight(window.innerHeight);
-    setwidth(window.innerWidth);
-  }, []);
+
   return (
     <>
       <Head>
@@ -186,6 +185,11 @@ export default function Home({ data, events }: { data: any; events: any[] }) {
               },
             }}
           >
+            {events.length === 0 && (
+              <Typography variant='h5' textAlign='center' my={2}>
+                Laster ....
+              </Typography>
+            )}
             {events.map((event, i) => (
               <ImageListItem key={i}>
                 <Card
@@ -241,9 +245,7 @@ type Button = {
   target?: '_blank' | 'unset';
 };
 
-
 export const Buttons: Array<Button> = [
-
   {
     title: 'Merch',
     href: '/merch',
@@ -251,7 +253,7 @@ export const Buttons: Array<Button> = [
     disabled: false,
     color: 'primary',
     startIcon: <CheckroomIcon />,
-    target: "unset"
+    target: 'unset',
   },
   {
     title: 'Tøddel',
@@ -260,7 +262,7 @@ export const Buttons: Array<Button> = [
     disabled: false,
     color: 'primary',
     startIcon: <OpenInNewIcon />,
-    target: "_blank"
+    target: '_blank',
   },
   {
     title: 'Tihlde.org',
@@ -269,7 +271,7 @@ export const Buttons: Array<Button> = [
     disabled: false,
     color: 'primary',
     startIcon: <OpenInNewIcon />,
-    target: "_blank"
+    target: '_blank',
   },
   {
     title: 'Daljer',
@@ -278,8 +280,7 @@ export const Buttons: Array<Button> = [
     disabled: true,
     color: 'primary',
     startIcon: <WorkspacePremiumIcon />,
-    target: "unset"
-
+    target: 'unset',
   },
   {
     title: 'Historie',
@@ -288,20 +289,6 @@ export const Buttons: Array<Button> = [
     disabled: true,
     color: 'primary',
     startIcon: <HistoryIcon />,
-    target: "unset"
+    target: 'unset',
   },
 ];
-export async function getServerSideProps() {
-  //fetching all arrangements urls
-  const urlsUnfiltered = await fetch("https://api.tihlde.org/events/?&organizer=jubkom").then((resp) => resp.json()).then((data) => data.results.map((event: { id: any }) => event.id));
-  //removing url element "489"
-  const urls = urlsUnfiltered.filter((url: any) => url !== 489);
-
-
-  const events = await Promise.all(
-    urls.map((url: any) =>
-      fetch(`https://api.tihlde.org/events/${url}/`).then((resp) => resp.json())
-    )
-  );
-  return { props: { events: events } };
-}

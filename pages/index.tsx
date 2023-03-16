@@ -26,7 +26,7 @@ import { MerchBox } from '../components/MerchBox/MerchBox';
 import { ROUTES } from '../utility/constants/routes';
 import Logo from '../components/Logo';
 import { Event } from './api/events';
-import EventCard from '../components/EventCard/EventCard';
+import EventCard, { EventCardsLoading } from '../components/EventCard/EventCard';
 
 export default function Home() {
   const lgBreakpoint = useMediaQuery('(min-width:800px)');
@@ -178,11 +178,14 @@ export default function Home() {
           <WaveOne sx={{ color: 'four.main', height: '50%' }} />
         </Paper>
         <Divider />
-        <Paper square sx={{ p: 3, position: 'relative' }}>
-          <Typography variant='h4' textAlign='center' my={2}>
+        <Paper square sx={{ position: 'relative' }}>
+          <Typography variant='h4' textAlign='center' py={2}>
             Arrangementer 🥳
           </Typography>
           <Grid container sx={{maxWidth: 1000, mx: "auto"}} rowGap={2} >
+            {events.length === 0 && (
+              <EventCardsLoading />
+            )}
             {events.map((event, i) => (
               <React.Fragment key={event.id}>
                 <>

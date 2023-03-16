@@ -4,6 +4,8 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Grid,
+  Skeleton,
   Typography,
 } from '@mui/material';
 import Link from 'next/link';
@@ -32,10 +34,7 @@ const EventCard: React.FC<EventCardProps> = ({
   description,
 }) => {
   return (
-    <Card
-      variant='outlined'
-      sx={{m: 1 }}
-    >
+    <Card variant='outlined' sx={{ m: 1 }}>
       <CardMedia sx={{ height: 140 }} image={image} title={title} />
       <CardContent>
         <Typography gutterBottom variant='h5'>
@@ -58,6 +57,53 @@ const EventCard: React.FC<EventCardProps> = ({
         </Button>
       </CardActions>
     </Card>
+  );
+};
+
+export const EventCardsLoading: React.FC = () => {
+  return (
+    <>
+      <Grid item xs={12} md={6}>
+        <Skeleton
+          sx={{ m: 2 }}
+          width='100%'
+          height={200}
+          variant='rounded'
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Skeleton
+          sx={{ m: 2 }}
+          width='100%'
+          height={200}
+          variant='rounded'
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Skeleton
+          sx={{ m: 2 }}
+          width='100%'
+          height={200}
+          variant='rounded'
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Skeleton
+          sx={{ m: 2 }}
+          width='100%'
+          height={200}
+          variant='rounded'
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Skeleton
+          sx={{ m: 2 }}
+          width='100%'
+          height={200}
+          variant='rounded'
+        />
+      </Grid>
+    </>
   );
 };
 

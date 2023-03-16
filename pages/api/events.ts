@@ -9,6 +9,8 @@ export type Event = {
     list_count: number;
     waiting_list_count: number;
     limit: number
+    start_date: string;
+    end_date: string;
 }
 
 type Data = {

@@ -34,7 +34,17 @@ const EventCard: React.FC<EventCardProps> = ({
   description,
 }) => {
   return (
-    <Card variant='outlined' sx={{ m: 1 }}>
+    <Card
+      variant='outlined'
+      sx={{
+        m: 1,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
+      <span>
       <CardMedia sx={{ height: 140 }} image={image} title={title} />
       <CardContent>
         <Typography gutterBottom variant='h5'>
@@ -46,7 +56,8 @@ const EventCard: React.FC<EventCardProps> = ({
           {list_count} / {limit} påmeldt. Venteliste: {waiting_list_count}
         </Typography>
       </CardContent>
-      <CardActions>
+      </span>
+      <CardActions sx={{justifyContent: "center"}}>
         <Button
           endIcon={<OpenInNewIcon />}
           component={Link}
@@ -64,44 +75,19 @@ export const EventCardsLoading: React.FC = () => {
   return (
     <>
       <Grid item xs={12} md={6}>
-        <Skeleton
-          sx={{ m: 2 }}
-          width='100%'
-          height={200}
-          variant='rounded'
-        />
+        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <Skeleton
-          sx={{ m: 2 }}
-          width='100%'
-          height={200}
-          variant='rounded'
-        />
+        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <Skeleton
-          sx={{ m: 2 }}
-          width='100%'
-          height={200}
-          variant='rounded'
-        />
+        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <Skeleton
-          sx={{ m: 2 }}
-          width='100%'
-          height={200}
-          variant='rounded'
-        />
+        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <Skeleton
-          sx={{ m: 2 }}
-          width='100%'
-          height={200}
-          variant='rounded'
-        />
+        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
       </Grid>
     </>
   );

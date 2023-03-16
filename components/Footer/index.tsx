@@ -32,7 +32,7 @@ const Footer = () => {
         <Grid item xs={12} md={6}>
           <Link href='https://www.bouvet.no/' target='_blank'>
             <Image
-              src={'/../public/Bouvet_Logo_white.png'}
+              src={'/Bouvet_Logo_white.png'}
               width={400}
               height={400}
               alt={'Bouvet Logo'}

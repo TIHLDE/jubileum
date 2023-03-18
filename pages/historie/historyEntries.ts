@@ -281,6 +281,7 @@ const entries: Array<EntryAggregate> = [
         type: 'title',
         title: '2023',
         duration: 10,
+        scaleTransition: true,
     },
     {
         type: 'title',

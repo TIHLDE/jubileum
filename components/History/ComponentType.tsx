@@ -4,6 +4,7 @@ export type DefaultComponentType = {
   fadeIn?: number;
   fadeOut?: number;
   ignoreFadeIn?: boolean;
+  ignoreFadeOut?: boolean
 };
 
 export type TextComponentProps = {

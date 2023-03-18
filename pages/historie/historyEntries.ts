@@ -3,70 +3,80 @@ import { ButtonBaseProps } from "@mui/material";
 const entries: Array<EntryAggregate> = [
     {
         type: 'timeline',
-        duration: 10,
+        duration: 30,
+        ignoreFadeIn: true,
         entries: [
             {
                 type: 'body',
-                body: '2003 - TIHLDE blir 10 år',
-                duration: 10,
+                body: 'TIHLDE blir 10 år',
+                duration: 1,
+                title: '2003',
             },
             {
                 type: 'body',
-                body: '2008 - TIHLDE blir 15 år',
-                duration: 10,
+                body: 'TIHLDE blir 15 år',
+                duration: 1,
+                title: '2008',
             },
             {
                 type: 'parent',
                 flowDirection: 'column',
                 variant: 'left',
+                title: '2011',
                 children: [
                     {
                         type: 'body',
-                        body: '2011 - Kontoret på Kalvskinnet ble pusset opp',
-                        duration: 10,
+                        body: 'Kontoret på Kalvskinnet ble pusset opp',
+                        duration: 1,
+                        fadeOut: 100,
                     },
                     {
                         type: 'button',
                         label: 'Les mer om året 2011',
-                        duration: 10,
+                        duration: 1,
                         href: '/wiki/2011',
                     }
                 ],
-                duration: 10,
+                duration: 1,
             },
             {
                 type: 'body',
-                body: '2013 - TIHLDE blir 20 år, og de første daljene produseres',
-                duration: 10,
+                body: 'TIHLDE blir 20 år, og de første daljene produseres',
+                duration: 1,
+                title: '2013'
+
             },
             {
                 type: 'body',
-                body: '2016 - TIHLDE slår seg sammen med NTNU',
-                duration: 10,
+                body: 'TIHLDE slår seg sammen med NTNU',
+                duration: 1,
+                title: '2016',
             },
             {
                 type: 'parent',
                 flowDirection: 'column',
                 variant: 'left',
+                title: '2017',
                 children: [
                     {
                         type: 'body',
-                        body: '2017 - TIHLDE flytter til Akrinn',
-                        duration: 10,
+                        body: 'TIHLDE flytter til Akrinn',
+                        duration: 1,
                     },
                     {
                         type: 'button',
                         label: 'Les mer om året 2017',
-                        duration: 10,
+                        duration: 1,
                         href: '/wiki/2017',
                     }
                 ],
-                duration: 10,
+                duration: 1,
             },
             {
                 type: 'body',
-                body: '2017 - TIHLDE flytter til Akrinn',
-                duration: 10,
+                body: 'TIHLDE flytter til Akrinn',
+                duration: 1,
+                title: '2017'
             },
         ]
     },
@@ -174,6 +184,7 @@ type Entry = {
     fadeIn?: number;
     fadeOut?: number;
     ignoreFadeIn?: boolean;
+    ignoreFadeOut?: boolean;
     disableBackgroundAnimations?: boolean;
     titleTransitionStart?: number;
     titleTransitionDuration?: number;
@@ -187,6 +198,7 @@ type DefaultKeys = {
     duration: number;
     fontSize?: string;
     ignoreFadeIn?: boolean;
+    ignoreFadeOut?: boolean;
     key?: number;
 }
 
@@ -213,11 +225,12 @@ type ParentEntry = {
 
 type TimelineEntry = {
     type: 'timeline';
-    entries: Array<EntryAggregate>;
+    entries: Array<TimelineEntryItem>;
     flowDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
 } & DefaultKeys;
 
+export type TimelineEntryItem = EntryAggregate & {title: string;};
 
-export type EntryAggregate = ParentEntry | QuoteEntry | ButtonEntry | TimelineEntry | Entry;
+export type EntryAggregate = Entry | ParentEntry | QuoteEntry | ButtonEntry | TimelineEntry;
 
 export {entries};

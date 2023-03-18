@@ -13,6 +13,7 @@ type ButtonProps = {
   fadeIn?: number;
   fadeOut?: number;
   ignoreFadeIn?: boolean;
+  ignoreFadeOut?: boolean;
 };
 
 export const ScrollyButton = ({ ...props }: ButtonProps) => {
@@ -20,6 +21,8 @@ export const ScrollyButton = ({ ...props }: ButtonProps) => {
 
   props.fadeIn = props.fadeIn ?? 20;
   props.fadeOut = props.fadeOut ?? 70;
+
+  console.log(props.ignoreFadeOut);
 
   useEffect(() => {
     const percent = props.currentDuration / props.totalDuration;
@@ -38,10 +41,15 @@ export const ScrollyButton = ({ ...props }: ButtonProps) => {
           }
         } else if (
           percent * 100 >= props.fadeIn &&
-          percent * 100 <= props.fadeOut
+          percent * 100 <= props.fadeOut &&
+          !props.ignoreFadeOut
         ) {
           setOpacity(1);
-        } else if (percent * 100 >= props.fadeOut && percent * 100 <= 100) {
+        } else if (
+          percent * 100 >= props.fadeOut &&
+          percent * 100 <= 100 &&
+          !props.ignoreFadeOut
+        ) {
           if (props.fadeOut == 100) {
             setOpacity(1);
           } else {
@@ -56,6 +64,7 @@ export const ScrollyButton = ({ ...props }: ButtonProps) => {
     props.fadeIn,
     props.fadeOut,
     props.ignoreFadeIn,
+    props.ignoreFadeOut,
   ]);
 
   return (

@@ -18,6 +18,7 @@ const CutoutText = ({
   fontSize,
   ignoreFadeIn,
   scaleTransition,
+  ignoreFadeOut,
 }: CutoutProps) => {
   const [offset, setOffset] = useState(0);
   const [display, setDisplay] = useState('none');
@@ -29,6 +30,7 @@ const CutoutText = ({
   fadeIn = fadeIn ?? 15;
   fadeOut = fadeOut ?? 85;
   ignoreFadeIn = ignoreFadeIn ?? false;
+  ignoreFadeOut = ignoreFadeOut ?? false;
   scaleTransition = scaleTransition ?? false;
 
   useEffect(() => {
@@ -49,7 +51,11 @@ const CutoutText = ({
           }
         } else if (percent * 100 >= fadeIn && percent * 100 <= fadeOut) {
           setOpacity(1);
-        } else if (percent * 100 >= fadeOut && percent * 100 <= 100) {
+        } else if (
+          percent * 100 >= fadeOut &&
+          percent * 100 <= 100 &&
+          !ignoreFadeOut
+        ) {
           if (fadeOut == 100) {
             setOpacity(1);
           } else {
@@ -64,7 +70,15 @@ const CutoutText = ({
         setScale(1);
       }
     }
-  }, [currentDuration, totalDuration, fadeIn, fadeOut, ignoreFadeIn]);
+  }, [
+    currentDuration,
+    totalDuration,
+    fadeIn,
+    fadeOut,
+    ignoreFadeIn,
+    ignoreFadeOut,
+    scaleTransition,
+  ]);
 
   return (
     <div

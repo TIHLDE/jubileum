@@ -8,6 +8,8 @@ type ScrollyContainerProps = {
   children: Array<JSX.Element>;
   variant?: 'left' | 'center' | 'right';
   itemSpacing?: string;
+  ignoreFadeIn?: boolean;
+  ignoreFadeOut?: boolean;
 };
 
 const ScrollyContainer = ({ ...props }: ScrollyContainerProps) => {

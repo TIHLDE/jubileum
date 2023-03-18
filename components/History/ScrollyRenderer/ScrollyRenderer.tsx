@@ -26,14 +26,31 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
   }, [durationProgress]);
 
   // Set a placeholder component
-  let currentComponent: Array<EntryAggregate> = [
-    {
-      type: 'title',
-      duration: 0,
-      title: 'Placeholder',
-      key: 0,
-    },
-  ];
+  let currentComponent: Array<EntryAggregate> = [];
+
+  const formatChildren = (entry: EntryAggregate) => {
+    if (entry.type == 'timeline') {
+      for (let e of entry.entries) {
+        e.key = entry.entries.indexOf(e);
+        e.ignoreFadeIn = true;
+        e.ignoreFadeOut = true;
+
+        if (e.type == 'parent') {
+          formatChildren(e);
+        }
+      }
+    } else if (entry.type == 'parent') {
+      for (let e of entry.children) {
+        e.key = entry.children.indexOf(e);
+        e.ignoreFadeIn = true;
+        e.ignoreFadeOut = true;
+
+        if (e.type == 'parent') {
+          formatChildren(e);
+        }
+      }
+    }
+  };
 
   // Find the currently active component
   let absoluteDuration = 0;
@@ -46,16 +63,8 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
         // Set a unique key for each component
         e.key = entries.indexOf(e);
 
-        let totalChildrenDuration = 0;
-        for (let n of e.entries) {
-          // Add unique keys for each child component
-          n.key = e.entries.indexOf(n);
-
-          // Count the total child duration
-          totalChildrenDuration += n.duration;
-        }
-
-        e.duration = totalChildrenDuration;
+        // Format all of the contents in the timeline object
+        formatChildren(e);
 
         currentComponent = [e];
         break;
@@ -122,6 +131,7 @@ export function makeComponent(entry: EntryAggregate, currentDuration: number) {
           totalDuration={entry.duration}
           currentDuration={currentDuration}
           ignoreFadeIn={entry.ignoreFadeIn}
+          ignoreFadeOut={entry.ignoreFadeOut}
           scaleTransition={entry.scaleTransition}
           fadeOut={entry.fadeOut}
           fadeIn={entry.fadeIn}
@@ -136,6 +146,7 @@ export function makeComponent(entry: EntryAggregate, currentDuration: number) {
           totalDuration={entry.duration}
           currentDuration={currentDuration}
           ignoreFadeIn={entry.ignoreFadeIn}
+          ignoreFadeOut={entry.ignoreFadeOut}
           variant={entry.textAlign ?? 'center'}
           disableBackgroundAnimations={entry.disableBackgroundAnimations}
         />
@@ -176,6 +187,7 @@ export function makeComponent(entry: EntryAggregate, currentDuration: number) {
           currentDuration={currentDuration}
           fontSize={entry.fontSize}
           ignoreFadeIn={entry.ignoreFadeIn}
+          ignoreFadeOut={entry.ignoreFadeOut}
         />
       );
       break;
@@ -188,6 +200,7 @@ export function makeComponent(entry: EntryAggregate, currentDuration: number) {
           currentDuration={currentDuration}
           fontSize={entry.fontSize}
           ignoreFadeIn={entry.ignoreFadeIn}
+          ignoreFadeOut={entry.ignoreFadeOut}
           onClick={entry.onClick}
           href={entry.href}
         />
@@ -199,6 +212,8 @@ export function makeComponent(entry: EntryAggregate, currentDuration: number) {
           key={entry.key}
           currentDuration={currentDuration}
           totalDuration={entry.duration}
+          ignoreFadeIn={entry.ignoreFadeIn}
+          ignoreFadeOut={entry.ignoreFadeOut}
           contentFlow={entry.flowDirection}
           itemSpacing={entry.itemSpacing}
           variant={entry.variant}
@@ -215,6 +230,8 @@ export function makeComponent(entry: EntryAggregate, currentDuration: number) {
           currentDuration={currentDuration}
           totalDuration={entry.duration}
           contentFlow={entry.flowDirection}
+          ignoreFadeIn={entry.ignoreFadeIn}
+          ignoreFadeOut={entry.ignoreFadeOut}
           key={entry.key}
           entries={entry.entries}
         ></ScrollyTimeline>

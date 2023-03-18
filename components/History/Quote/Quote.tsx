@@ -9,6 +9,7 @@ type QuoteProps = {
   fadeOut?: number;
   fontSize?: string;
   ignoreFadeIn?: boolean;
+  ignoreFadeOut?: boolean;
 };
 
 export const Quote = ({ ...props }: QuoteProps) => {
@@ -35,7 +36,8 @@ export const Quote = ({ ...props }: QuoteProps) => {
           }
         } else if (
           percent * 100 >= props.fadeIn &&
-          percent * 100 <= props.fadeOut
+          percent * 100 <= props.fadeOut &&
+          !props.ignoreFadeOut
         ) {
           setOpacity(1);
         } else if (percent * 100 >= props.fadeOut && percent * 100 <= 100) {
@@ -53,6 +55,7 @@ export const Quote = ({ ...props }: QuoteProps) => {
     props.fadeIn,
     props.fadeOut,
     props.ignoreFadeIn,
+    props.ignoreFadeOut,
   ]);
 
   return (

@@ -11,6 +11,7 @@ type CutoutProps = {
   fontSize?: string;
   ignoreFadeIn?: boolean;
   disableBackgroundAnimations?: boolean;
+  ignoreFadeOut?: boolean;
 };
 
 const CutoutBody = ({
@@ -23,6 +24,7 @@ const CutoutBody = ({
   fontSize,
   ignoreFadeIn,
   disableBackgroundAnimations,
+  ignoreFadeOut,
 }: CutoutProps) => {
   const [offset, setOffset] = useState(0);
   const [display, setDisplay] = useState('none');
@@ -34,6 +36,7 @@ const CutoutBody = ({
   fadeIn = fadeIn ?? 30;
   fadeOut = fadeOut ?? 80;
   ignoreFadeIn = ignoreFadeIn ?? false;
+  ignoreFadeOut = ignoreFadeOut ?? false;
   disableBackgroundAnimations = disableBackgroundAnimations ?? false;
 
   useEffect(() => {
@@ -56,7 +59,11 @@ const CutoutBody = ({
           }
         } else if (percent * 100 >= fadeIn && percent * 100 <= fadeOut) {
           setOpacity(1);
-        } else if (percent * 100 >= fadeOut && percent * 100 <= 100) {
+        } else if (
+          percent * 100 >= fadeOut &&
+          percent * 100 <= 100 &&
+          !ignoreFadeOut
+        ) {
           if (fadeOut == 100) {
             setOpacity(1);
           } else {
@@ -73,6 +80,7 @@ const CutoutBody = ({
     ignoreFadeIn,
     disableBackground,
     disableBackgroundAnimations,
+    ignoreFadeOut,
   ]);
 
   return (

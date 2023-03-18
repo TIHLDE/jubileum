@@ -1,10 +1,11 @@
-import { Paper, Stack, Link as MuiLink } from '@mui/material';
+/* eslint-disable @next/next/no-img-element */
+import { Paper, Stack, Link as MuiLink, Divider } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { MnemonicLogo } from '../MnemonicLogo/MnemonicLogo';
 
 const Footer = () => {
   return (
@@ -19,6 +20,35 @@ const Footer = () => {
       square
     >
       <Grid container spacing={5} sx={{ alignItems: 'center', maxWidth: 1000 }}>
+        <Grid item xs={12} textAlign={'center'}>
+          <Typography gutterBottom>Sponsorer</Typography>
+          <Divider />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Link href='https://www.mnemonic.io/' target='_blank'>
+            <MnemonicLogo />
+          </Link>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Link href='https://www.bouvet.no/' target='_blank'>
+            <Image
+              src={'/Bouvet_Logo_white.png'}
+              width={400}
+              height={400}
+              alt={'Bouvet Logo'}
+              style={{
+                height: 'auto',
+                maxHeight: '70px',
+                width: 'auto',
+                margin: 'auto',
+                display: 'block',
+              }}
+            />
+          </Link>
+        </Grid>
+        <Grid item xs={12} textAlign={'center'}>
+          <Divider />
+        </Grid>
         <Grid
           item
           xs={12}

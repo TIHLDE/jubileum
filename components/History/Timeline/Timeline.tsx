@@ -10,7 +10,7 @@ type TimelineProps = {
   contentFlow?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
 } & DefaultComponentType;
 
-function joinAll(...classes) {
+function joinAll(...classes: string[]) {
   return classes.join(' ');
 }
 
@@ -20,10 +20,10 @@ export const ScrollyTimeline = ({ ...props }: TimelineProps) => {
   props.fadeIn = props.fadeIn ?? 15;
   props.fadeOut = props.fadeOut ?? 85;
   props.ignoreFadeIn = props.ignoreFadeIn ?? false;
+  props.ignoreFadeOut = props.ignoreFadeOut ?? false;
 
   useEffect(() => {
     const percent = props.currentDuration / props.totalDuration;
-    console.log(percent);
     if (percent >= 0) {
       // Calculate the text opacity
       if (props.fadeIn && props.fadeOut) {
@@ -39,7 +39,8 @@ export const ScrollyTimeline = ({ ...props }: TimelineProps) => {
           }
         } else if (
           percent * 100 >= props.fadeIn &&
-          percent * 100 <= props.fadeOut
+          percent * 100 <= props.fadeOut &&
+          !props.ignoreFadeOut
         ) {
           setOpacity(1);
         } else if (percent * 100 >= props.fadeOut && percent * 100 <= 100) {
@@ -57,6 +58,7 @@ export const ScrollyTimeline = ({ ...props }: TimelineProps) => {
     props.fadeIn,
     props.fadeOut,
     props.ignoreFadeIn,
+    props.ignoreFadeOut,
   ]);
 
   return (
@@ -78,7 +80,7 @@ export const ScrollyTimeline = ({ ...props }: TimelineProps) => {
         style={{
           display: 'block',
           height: '100%',
-          width: '100%',
+          width: 'fit-content',
           opacity: opacity,
           whiteSpace: 'nowrap',
           transform: `translateX(-${

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import CutoutText from '../CutoutText/CutoutText';
 import {
   EntryAggregate,
+  TimelineEntryItem,
   entries,
 } from '../../../pages/historie/historyEntries';
 import CutoutBody from '../CutoutBody/CutoutBody';
@@ -36,10 +37,12 @@ const ScrollyRenderer = ({ durationProgress }: ScrollyProps) => {
         e.ignoreFadeOut = true;
 
         if (e.type == 'parent') {
+          e.variant = 'left';
           formatChildren(e);
         }
       }
     } else if (entry.type == 'parent') {
+      entry.variant = 'left';
       for (let e of entry.children) {
         e.key = entry.children.indexOf(e);
         e.ignoreFadeIn = true;
@@ -232,6 +235,8 @@ export function makeComponent(entry: EntryAggregate, currentDuration: number) {
           contentFlow={entry.flowDirection}
           ignoreFadeIn={entry.ignoreFadeIn}
           ignoreFadeOut={entry.ignoreFadeOut}
+          fadeIn={entry.fadeIn}
+          fadeOut={entry.fadeOut}
           key={entry.key}
           entries={entry.entries}
         ></ScrollyTimeline>

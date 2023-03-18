@@ -8,6 +8,7 @@
     position: relative;
     z-index: 3;
     transform: scale(100%);
+    white-space: normal;
 }
 
 .text::after {

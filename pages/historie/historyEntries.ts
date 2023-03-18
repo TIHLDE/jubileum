@@ -1,92 +1,14 @@
 import { ButtonBaseProps } from "@mui/material";
 
 const entries: Array<EntryAggregate> = [
-    {
-        type: 'timeline',
-        duration: 30,
-        ignoreFadeIn: true,
-        entries: [
-            {
-                type: 'body',
-                body: 'TIHLDE blir 10 år',
-                duration: 1,
-                title: '2003',
-            },
-            {
-                type: 'body',
-                body: 'TIHLDE blir 15 år',
-                duration: 1,
-                title: '2008',
-            },
-            {
-                type: 'parent',
-                flowDirection: 'column',
-                variant: 'left',
-                title: '2011',
-                children: [
-                    {
-                        type: 'body',
-                        body: 'Kontoret på Kalvskinnet ble pusset opp',
-                        duration: 1,
-                        fadeOut: 100,
-                    },
-                    {
-                        type: 'button',
-                        label: 'Les mer om året 2011',
-                        duration: 1,
-                        href: '/wiki/2011',
-                    }
-                ],
-                duration: 1,
-            },
-            {
-                type: 'body',
-                body: 'TIHLDE blir 20 år, og de første daljene produseres',
-                duration: 1,
-                title: '2013'
-
-            },
-            {
-                type: 'body',
-                body: 'TIHLDE slår seg sammen med NTNU',
-                duration: 1,
-                title: '2016',
-            },
-            {
-                type: 'parent',
-                flowDirection: 'column',
-                variant: 'left',
-                title: '2017',
-                children: [
-                    {
-                        type: 'body',
-                        body: 'TIHLDE flytter til Akrinn',
-                        duration: 1,
-                    },
-                    {
-                        type: 'button',
-                        label: 'Les mer om året 2017',
-                        duration: 1,
-                        href: '/wiki/2017',
-                    }
-                ],
-                duration: 1,
-            },
-            {
-                type: 'body',
-                body: 'TIHLDE flytter til Akrinn',
-                duration: 1,
-                title: '2017'
-            },
-        ]
-    },
+    
     {
         type: 'title',
         title: '1988',
         duration: 10,
         fadeOut: 60,
         fadeIn: 30,
-        ignoreFadeIn: false,
+        ignoreFadeIn: true,
         scaleTransition: true,
     },
     {
@@ -141,7 +63,7 @@ const entries: Array<EntryAggregate> = [
         duration: 10,
         fadeIn: 70,
         width: 200,
-        src: '/../public/logo_old.png',
+        src: '/logo_old.png',
     },
   
     {
@@ -168,6 +90,206 @@ const entries: Array<EntryAggregate> = [
             }
         ]
     },
+    {
+        type: 'timeline',
+        duration: 40,
+        ignoreFadeIn: false,
+        fadeIn: 2,
+        ignoreFadeOut: false,
+        entries: [
+            {
+                type: 'body',
+                body: 'TIHLDE blir 10 år',
+                duration: 1,
+                title: '2003',
+                textAlign: 'left',
+                disableBackgroundAnimations: true,
+            },
+            {
+                type: 'body',
+                body: 'TIHLDE blir 15 år',
+                duration: 1,
+                title: '2008',
+                textAlign: 'left',
+                disableBackgroundAnimations: true,
+
+            },
+            {
+                type: 'parent',
+                flowDirection: 'column',
+                variant: 'left',
+                title: '2011',
+                children: [
+                    {
+                        type: 'body',
+                        body: 'Kontoret på Kalvskinnet blir pusset opp',
+                        duration: 1,
+                        fadeOut: 100,
+                        textAlign: 'left',
+                        disableBackgroundAnimations: true,
+
+                    },
+                    {
+                        type: 'button',
+                        label: 'Les mer om året 2011',
+                        duration: 1,
+                        href: '/wiki/2011',
+                    }
+                ],
+                duration: 1,
+            },
+            {
+                type: 'body',
+                body: 'TIHLDE blir 20 år, og de første daljene produseres',
+                duration: 1,
+                title: '2013',
+                textAlign: 'left',
+                disableBackgroundAnimations: true,
+            },
+            {
+                type: 'body',
+                body: 'TIHLDE slår seg sammen med NTNU',
+                duration: 1,
+                title: '2016',
+                textAlign: 'left',
+                disableBackgroundAnimations: true,
+
+            },
+            {
+                type: 'parent',
+                flowDirection: 'column',
+                variant: 'left',
+                title: '2017',
+                children: [
+                    {
+                        type: 'body',
+                        body: 'TIHLDE går fra HIST til NTNU, og flytter til Akrinn',
+                        duration: 1,
+                        textAlign: 'left', 
+                        disableBackgroundAnimations: true,
+                    },
+                    {
+                        type: 'button',
+                        label: 'Les mer om året 2017',
+                        duration: 1,
+                        href: '/wiki/2017',
+                    }
+                ],
+                duration: 1,
+            },
+            {
+                type: 'body',
+                body: 'Thomas Juberg blir slått som TIHLDEs aller første ridder',
+                title: 'November 2018',
+                duration: 1,
+                disableBackgroundAnimations: true,
+            }
+        ]
+    },
+    {
+        type: 'title',
+        duration: 10,
+        title: 'Martin Bjerke'
+    },
+    {
+        type: 'body',
+        duration: 10,
+        body: 'Martin Bjerke foreslås som æresmedlem til generalforsamlingen på bakgrunn av hans hjelp til å ivareta og fremme TIHLDEs interesser i IDI sitt samlokaliseringsprosjekt. Uten Martin Bjerkes innsats ville det vært blitt stor usikkerhet rundt TIHLDEs status under flyttingen til Gløshaugen.',
+        disableBackgroundAnimations: true,
+    },
+    {
+        type: 'timeline',
+        duration: 40,
+        ignoreFadeIn: false,
+        fadeIn: 2,
+        ignoreFadeOut: false,
+        entries: [
+            {
+                type: 'body',
+                title: 'November 2019',
+                body: 'Ole Gunnar Dybvik blir slått til ridder',
+                duration: 1,
+                disableBackgroundAnimations: true,
+            },
+            {
+                type: 'body',
+                title: '2019',
+                body: 'TIHLDE får ny nettside. Den gamle kan fortsatt besøkes på old.tihlde.org',
+                duration: 1,
+                disableBackgroundAnimations: true,
+            },
+            {
+                type: 'body',
+                title: 'Januar 2020',
+                body: 'TIHLDE flytter til Gløshaugen',
+                duration: 1,
+                disableBackgroundAnimations: true,
+            },
+            {
+                type: 'body',
+                title: 'Januar 2020',
+                body: 'Innflyttningsfest med Abakus og Online til ære for TIHLDE',
+                duration: 1,
+                disableBackgroundAnimations: true,
+            },
+            {
+                type: 'parent',
+                flowDirection: 'column',
+                variant: 'left',
+                title: '2020',
+                duration: 1,
+                children: [
+                    {
+                        type: 'body',
+                        title: '2020',
+                        body: 'Det går fra et par bedriftpresentasjoner i semesteret, til et kurs og en bedriftpresentasjon i uken',
+                        duration: 1,
+                        disableBackgroundAnimations: true,
+                    },
+                    {
+                        type: 'button',
+                        label: 'Les mer om året 2020',
+                        duration: 1,
+                        href: '/wiki/2020',
+                    },
+                ],
+            },
+            {
+                type: 'body',
+                duration: 1,
+                title: '2022',
+                body: 'Det blir en ny fest med TIHLDE, Abakus og Online i regi av IDI',
+                disableBackgroundAnimations: true,
+            },
+            {
+                type: 'body',
+                duration: 1,
+                title: 'Vårgalla 2022',
+                body: 'Markus Lønnemo og Nikoljia Maksic blir slått til riddere',
+                disableBackgroundAnimations: true,
+            },
+            {
+                type: 'body',
+                duration: 1,
+                title: 'Høsten 2022',
+                body: 'Drift går fra å være en undergruppe til komité',
+                disableBackgroundAnimations: true,
+            }
+        ]
+    },
+    {
+        type: 'title',
+        title: '2023',
+        duration: 10,
+    },
+    {
+        type: 'title',
+        duration: 15,
+        fadeIn: 50,
+        fadeOut: 90,
+        title: 'Tihlde fyller 30 år.',
+    }
+
 ]
 
 /* 
@@ -227,6 +349,8 @@ type TimelineEntry = {
     type: 'timeline';
     entries: Array<TimelineEntryItem>;
     flowDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+    fadeIn?: number;
+    fadeOut?: number;
 } & DefaultKeys;
 
 export type TimelineEntryItem = EntryAggregate & {title: string;};

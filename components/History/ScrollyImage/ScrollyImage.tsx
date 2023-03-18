@@ -67,6 +67,9 @@ const ScrollyImage = ({
         borderRadius: 1,
         overflow: 'hidden',
         height: 'fit-content',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <Image

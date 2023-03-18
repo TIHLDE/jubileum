@@ -22,8 +22,6 @@ export const ScrollyButton = ({ ...props }: ButtonProps) => {
   props.fadeIn = props.fadeIn ?? 20;
   props.fadeOut = props.fadeOut ?? 70;
 
-  console.log(props.ignoreFadeOut);
-
   useEffect(() => {
     const percent = props.currentDuration / props.totalDuration;
     if (percent >= 0) {

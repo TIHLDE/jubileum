@@ -70,6 +70,7 @@ export const Quote = ({ ...props }: QuoteProps) => {
           px: 10,
           userSelect: 'none',
         }}
+        textAlign={'center'}
       >
         {props.label ?? ''}
       </Typography>

@@ -13,25 +13,6 @@ type ScrollyContainerProps = {
 };
 
 const ScrollyContainer = ({ ...props }: ScrollyContainerProps) => {
-  const [totalDuration, setTotalDuration] = useState(props.totalDuration);
-  const [currentDuration, setCurrentDuration] = useState(props.currentDuration);
-  const [display, setDisplay] = useState(false);
-
-  useEffect(() => {
-    if (props.totalDuration != totalDuration) {
-      setTotalDuration(props.totalDuration);
-    }
-
-    if (props.currentDuration != currentDuration) {
-      setTotalDuration(props.currentDuration);
-    }
-  }, [
-    props.totalDuration,
-    props.currentDuration,
-    totalDuration,
-    currentDuration,
-  ]);
-
   return (
     <Box
       style={{

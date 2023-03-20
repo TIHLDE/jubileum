@@ -8,71 +8,60 @@ export type CutoutProps = {
 } & DefaultComponentType &
   TextComponentProps;
 
-const CutoutText = ({
-  title,
-  totalDuration,
-  currentDuration,
-  variant,
-  fadeIn,
-  fadeOut,
-  fontSize,
-  ignoreFadeIn,
-  scaleTransition,
-  ignoreFadeOut,
-}: CutoutProps) => {
+const CutoutText = ({ ...props }: CutoutProps) => {
   const [offset, setOffset] = useState(0);
-  const [display, setDisplay] = useState('none');
   const [opactiy, setOpacity] = useState(1);
   const [scale, setScale] = useState(1);
 
-  variant = variant ?? 'left';
-  fontSize = fontSize ?? '5rem';
-  fadeIn = fadeIn ?? 15;
-  fadeOut = fadeOut ?? 85;
-  ignoreFadeIn = ignoreFadeIn ?? false;
-  ignoreFadeOut = ignoreFadeOut ?? false;
-  scaleTransition = scaleTransition ?? false;
+  const variant = props.variant ?? 'left';
+  const fontSize = props.fontSize ?? '5rem';
+  const fadeIn = props.fadeIn ?? 15;
+  const fadeOut = props.fadeOut ?? 85;
+  const ignoreFadeIn = props.ignoreFadeIn ?? false;
+  const ignoreFadeOut = props.ignoreFadeOut ?? false;
+  const scaleTransition = props.scaleTransition ?? false;
+
+  const scaleTransitionFormula = (percent: number) => {
+    return Math.max((percent * 3) / 100, 1);
+  };
 
   useEffect(() => {
-    const percent = currentDuration / totalDuration;
-    if (percent >= 0) {
-      setDisplay('block');
+    const percent = (props.currentDuration / props.totalDuration) * 100;
 
-      // Set the background offset
-      setOffset(percent * 100);
+    // Set the background offset
+    setOffset(percent);
 
-      // Calculate the text opacity
-      if (fadeIn && fadeOut) {
-        if (percent * 100 <= fadeIn && percent * 100 >= 0 && !ignoreFadeIn) {
-          if (fadeIn == 0) {
-            setOpacity(1);
-          } else {
-            setOpacity(percent * (100 / fadeIn));
-          }
-        } else if (percent * 100 >= fadeIn && percent * 100 <= fadeOut) {
-          setOpacity(1);
-        } else if (
-          percent * 100 >= fadeOut &&
-          percent * 100 <= 100 &&
-          !ignoreFadeOut
-        ) {
-          if (fadeOut == 100) {
-            setOpacity(1);
-          } else {
-            setOpacity((100 - percent * 100) / (100 - fadeOut));
-          }
-        }
+    // Calculate the text opacity if the percentage is less than fadeIn
+    if (percent <= fadeIn && percent >= 0 && !ignoreFadeIn) {
+      // Set the opacity to 0 if the fadein percentage duration is 0
+      if (fadeIn == 0) {
+        setOpacity(1);
+      } else {
+        // Set the fadein opacity
+        setOpacity(percent / fadeIn);
       }
 
-      if (scaleTransition) {
-        setScale(Math.max(percent * 3, 1));
+      // Set opacity to 1 if percentage is greater than fadeIn, and less than fadeOut
+    } else if (percent >= fadeIn && percent <= fadeOut) {
+      setOpacity(1);
+
+      // Calculate the fadeout opacity if the percentage is greater than fadeOut
+    } else if (percent >= fadeOut && percent <= 100 && !ignoreFadeOut) {
+      if (fadeOut == 100) {
+        setOpacity(1);
       } else {
-        setScale(1);
+        setOpacity((100 - percent) / (100 - fadeOut));
       }
     }
+
+    if (scaleTransition) {
+      setScale(scaleTransitionFormula(percent));
+    } else {
+      setScale(1);
+    }
   }, [
-    currentDuration,
-    totalDuration,
+    props.currentDuration,
+    props.totalDuration,
     fadeIn,
     fadeOut,
     ignoreFadeIn,
@@ -86,12 +75,12 @@ const CutoutText = ({
       style={{
         textAlign: variant ?? 'left',
         fontSize: fontSize,
-        display: display,
+        display: 'block',
         opacity: opactiy,
         transform: `translateZ(0) scale(${scale})`,
       }}
     >
-      <span className={styles.text}>{title}</span>
+      <span className={styles.text}>{props.title}</span>
       <div className={styles.backgroundWrapper}>
         <div
           className={styles.background}

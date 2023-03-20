@@ -65,9 +65,9 @@ export const ScrollyTimeline = ({ ...props }: TimelineProps) => {
     <Box
       sx={{
         height: 'fit-content',
-        width: '70%',
+        width: { xs: '90%', md: '80%' },
         position: 'relative',
-        maxWidth: '70%',
+        maxWidth: '90%',
         overflowX: 'hidden',
         paddingLeft: '80px',
         paddingRight: '80px',
@@ -101,19 +101,6 @@ export const ScrollyTimeline = ({ ...props }: TimelineProps) => {
           </TimelineEntry>
         ))}
       </div>
-      <div
-        style={{
-          background:
-            'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7203256302521008) 63%, rgba(0,0,0,1) 100%)',
-          height: '20%',
-          width: '100%',
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          zIndex: 1,
-          pointerEvents: 'none',
-        }}
-      ></div>
     </Box>
   );
 };

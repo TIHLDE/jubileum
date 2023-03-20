@@ -355,7 +355,6 @@ type TimelineEntry = {
 } & DefaultKeys;
 
 export type TimelineEntryItem = EntryAggregate & {title: string;};
-
 export type EntryAggregate = Entry | ParentEntry | QuoteEntry | ButtonEntry | TimelineEntry;
 
-export {entries};
+export default entries;

@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import CutoutText from '../CutoutText/CutoutText';
-import {
+import entries, {
   EntryAggregate,
-  TimelineEntryItem,
-  entries,
 } from '../../../pages/historie/historyEntries';
 import CutoutBody from '../CutoutBody/CutoutBody';
 import CutoutTextWithBody from '../CutoutTextWithBody/CutoutTextWithBody';

@@ -30,7 +30,7 @@ const entries: Array<EntryAggregate> = [
             {
                 type: 'button',
                 label: 'Les mer om drift',
-                href: '/wiki/drift',
+                href: '/historie/drift',
                 duration: 10,
             }
         ]

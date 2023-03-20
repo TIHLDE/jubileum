@@ -67,7 +67,7 @@ export const Countdown = () => {
 
     // Clear the interval when the component is unmounted
     return () => clearInterval(interval);
-  }, [confettiFired]);
+  }, [confettiFired, updateTimer]);
 
   return (
     <React.Fragment>

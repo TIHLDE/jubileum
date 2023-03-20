@@ -26,7 +26,9 @@ import { MerchBox } from '../components/MerchBox/MerchBox';
 import { ROUTES } from '../utility/constants/routes';
 import Logo from '../components/Logo';
 import { Event } from './api/events';
-import EventCard, { EventCardsLoading } from '../components/EventCard/EventCard';
+import EventCard, {
+  EventCardsLoading,
+} from '../components/EventCard/EventCard';
 
 export default function Home() {
   const lgBreakpoint = useMediaQuery('(min-width:800px)');
@@ -182,10 +184,8 @@ export default function Home() {
           <Typography variant='h4' textAlign='center' py={2} pt={4}>
             Arrangementer 🥳
           </Typography>
-          <Grid container sx={{maxWidth: 1000, mx: "auto"}} rowGap={2} >
-            {events.length === 0 && (
-              <EventCardsLoading />
-            )}
+          <Grid container sx={{ maxWidth: 1000, mx: 'auto', pb: 3 }} rowGap={2}>
+            {events.length === 0 && <EventCardsLoading />}
             {events.map((event, i) => (
               <React.Fragment key={event.id}>
                 <>

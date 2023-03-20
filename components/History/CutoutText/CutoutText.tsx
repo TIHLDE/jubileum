@@ -41,10 +41,6 @@ const CutoutText = ({ ...props }: CutoutProps) => {
         setOpacity(percent / fadeIn);
       }
 
-      // Set opacity to 1 if percentage is greater than fadeIn, and less than fadeOut
-    } else if (percent >= fadeIn && percent <= fadeOut) {
-      setOpacity(1);
-
       // Calculate the fadeout opacity if the percentage is greater than fadeOut
     } else if (percent >= fadeOut && percent <= 100 && !ignoreFadeOut) {
       if (fadeOut == 100) {
@@ -52,6 +48,10 @@ const CutoutText = ({ ...props }: CutoutProps) => {
       } else {
         setOpacity((100 - percent) / (100 - fadeOut));
       }
+      
+      // Set opacity to 1 if percentage is greater than fadeIn, and less than fadeOut
+    } else {
+      setOpacity(1);
     }
 
     if (scaleTransition) {

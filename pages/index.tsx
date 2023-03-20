@@ -182,10 +182,8 @@ export default function Home() {
           <Typography variant='h4' textAlign='center' py={2} pt={4}>
             Arrangementer 🥳
           </Typography>
-          <Grid container sx={{maxWidth: 1000, mx: "auto"}} rowGap={2} >
-            {events.length === 0 && (
-              <EventCardsLoading />
-            )}
+          <Grid container sx={{ maxWidth: 1000, mx: 'auto' }} rowGap={2}>
+            {events.length === 0 && <EventCardsLoading />}
             {events.map((event, i) => (
               <React.Fragment key={event.id}>
                 <>
@@ -198,7 +196,7 @@ export default function Home() {
                       image={event.image}
                       limit={event.limit}
                       id={event.id}
-                      list_count={events.length}
+                      list_count={event.list_count}
                       waiting_list_count={event.waiting_list_count}
                     />
                   </Grid>

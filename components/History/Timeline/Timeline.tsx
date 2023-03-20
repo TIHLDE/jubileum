@@ -1,7 +1,7 @@
 import { Box, Card, Typography } from '@mui/material';
 import { DefaultComponentType, TextComponentProps } from '../ComponentType';
 import { useEffect, useState } from 'react';
-import { TimelineEntryItem } from '../../../pages/historie/historyEntries';
+import { TimelineEntryItem } from '../historyEntries';
 import { makeComponent } from '../ScrollyRenderer/ScrollyRenderer';
 import styles from './Timeline.module.css';
 

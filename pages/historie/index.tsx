@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { ScrollyRenderer } from '../../components/History/ScrollyRenderer/ScrollyRenderer';
-import entries from './historyEntries';
+import { entries } from '../../components/History/historyEntries';
 
 const fadeIn = keyframes`
   from {

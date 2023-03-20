@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import CutoutText from '../CutoutText/CutoutText';
-import entries, {
-  EntryAggregate,
-} from '../../../pages/historie/historyEntries';
+
 import CutoutBody from '../CutoutBody/CutoutBody';
 import CutoutTextWithBody from '../CutoutTextWithBody/CutoutTextWithBody';
 import ScrollyImage from '../ScrollyImage/ScrollyImage';
@@ -11,6 +9,7 @@ import { Quote } from '../Quote/Quote';
 import { ScrollyButton } from '../Button/Button';
 import { ScrollyTimeline, TimelineEntry } from '../Timeline/Timeline';
 import { Typography } from '@mui/material';
+import { EntryAggregate, entries } from '../historyEntries';
 
 type ScrollyProps = {
   durationProgress: number;

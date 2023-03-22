@@ -192,7 +192,7 @@ export function makeComponent(entry: EntryAggregate, currentDuration: number) {
       );
       break;
     case 'button':
-      return (
+      /*       return (
         <ScrollyButton
           key={entry.key}
           label={entry.label ?? ''}
@@ -204,7 +204,7 @@ export function makeComponent(entry: EntryAggregate, currentDuration: number) {
           onClick={entry.onClick}
           href={entry.href}
         />
-      );
+      ); */
       break;
     case 'parent':
       return (

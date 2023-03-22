@@ -71,6 +71,7 @@ export const ScrollyTimeline = ({ ...props }: TimelineProps) => {
         overflowX: 'hidden',
         paddingLeft: '80px',
         paddingRight: '80px',
+        display: 'inline-block',
       }}
     >
       <div className={joinAll(styles.timelineShadow, styles.left)} />
@@ -119,7 +120,8 @@ export const TimelineEntry = ({ ...props }: TimelineEntryProps) => {
         display: 'inline-flex',
         flexFlow: 'column',
         height: '100%',
-        width: 'fit-content',
+        width: { xs: '100vw', md: '70vw' },
+        textAlign: 'left',
         alignItems: 'left',
         justifyContent: 'left',
       }}

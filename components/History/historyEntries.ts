@@ -40,7 +40,7 @@ const entries: Array<EntryAggregate> = [
     {
         type: 'titlebody',
         title: '1993',
-        body: 'Tihlde stiftes',
+        body: 'TIHLDE stiftes',
         duration: 10,
     },
     {
@@ -53,13 +53,13 @@ const entries: Array<EntryAggregate> = [
     {
         type: 'titlebody',
         title: '1995',
-        body: 'Tihldes logo',
+        body: 'TIHLDEs logo',
         duration: 10,
         disableBackgroundAnimations: true,
     },
     {
         type: 'image',
-        title: 'Tihldes logo',
+        title: 'TIHLDEs logo',
         duration: 10,
         fadeIn: 70,
         width: 200,
@@ -181,20 +181,22 @@ const entries: Array<EntryAggregate> = [
                 type: 'body',
                 body: 'Thomas Juberg blir slått som TIHLDEs aller første ridder',
                 title: 'November 2018',
+                textAlign: 'left', 
                 duration: 1,
                 disableBackgroundAnimations: true,
             }
         ]
     },
     {
-        type: 'title',
+        type: 'titlebody',
         duration: 10,
-        title: 'Martin Bjerke'
+        title: '2018',
+        body: 'Martin Bjerke'
     },
     {
         type: 'body',
         duration: 10,
-        body: 'Martin Bjerke foreslås som æresmedlem til generalforsamlingen på bakgrunn av hans hjelp til å ivareta og fremme TIHLDEs interesser i IDI sitt samlokaliseringsprosjekt. Uten Martin Bjerkes innsats ville det vært blitt stor usikkerhet rundt TIHLDEs status under flyttingen til Gløshaugen.',
+        body: 'Martin Bjerke foreslås som æresmedlem til generalforsamlingen på bakgrunn av hans hjelp til å ivareta og fremme TIHLDEs interesser i IDI sitt samlokaliseringsprosjekt. Uten Martin Bjerkes innsats ville det vært stor usikkerhet rundt TIHLDEs status under flyttingen til Gløshaugen.',
         disableBackgroundAnimations: true,
     },
     {
@@ -208,6 +210,7 @@ const entries: Array<EntryAggregate> = [
                 type: 'body',
                 title: 'November 2019',
                 body: 'Ole Gunnar Dybvik blir slått til ridder',
+                textAlign: 'left',
                 duration: 1,
                 disableBackgroundAnimations: true,
             },
@@ -215,6 +218,7 @@ const entries: Array<EntryAggregate> = [
                 type: 'body',
                 title: '2019',
                 body: 'TIHLDE får ny nettside. Den gamle kan fortsatt besøkes på old.tihlde.org',
+                textAlign: 'left', 
                 duration: 1,
                 disableBackgroundAnimations: true,
             },
@@ -223,12 +227,14 @@ const entries: Array<EntryAggregate> = [
                 title: 'Januar 2020',
                 body: 'TIHLDE flytter til Gløshaugen',
                 duration: 1,
+                textAlign: 'left',
                 disableBackgroundAnimations: true,
             },
             {
                 type: 'body',
                 title: 'Januar 2020',
                 body: 'Innflyttningsfest med Abakus og Online til ære for TIHLDE',
+                textAlign: 'left',
                 duration: 1,
                 disableBackgroundAnimations: true,
             },
@@ -244,6 +250,7 @@ const entries: Array<EntryAggregate> = [
                         title: '2020',
                         body: 'Det går fra et par bedriftpresentasjoner i semesteret, til et kurs og en bedriftpresentasjon i uken',
                         duration: 1,
+                        textAlign: 'left',
                         disableBackgroundAnimations: true,
                     },
                     {
@@ -258,6 +265,7 @@ const entries: Array<EntryAggregate> = [
                 type: 'body',
                 duration: 1,
                 title: '2022',
+                textAlign: 'left',
                 body: 'Det blir en ny fest med TIHLDE, Abakus og Online i regi av IDI',
                 disableBackgroundAnimations: true,
             },
@@ -265,6 +273,7 @@ const entries: Array<EntryAggregate> = [
                 type: 'body',
                 duration: 1,
                 title: 'Vårgalla 2022',
+                textAlign: 'left',
                 body: 'Markus Lønnemo og Nikoljia Maksic blir slått til riddere',
                 disableBackgroundAnimations: true,
             },
@@ -272,6 +281,7 @@ const entries: Array<EntryAggregate> = [
                 type: 'body',
                 duration: 1,
                 title: 'Høsten 2022',
+                textAlign: 'left',
                 body: 'Drift går fra å være en undergruppe til komité',
                 disableBackgroundAnimations: true,
             }
@@ -288,7 +298,7 @@ const entries: Array<EntryAggregate> = [
         duration: 15,
         fadeIn: 50,
         fadeOut: 90,
-        title: 'Tihlde fyller 30 år.',
+        title: 'TIHLDE fyller 30 år.',
     }
 
 ]

@@ -198,7 +198,7 @@ export default function Home() {
                       image={event.image}
                       limit={event.limit}
                       id={event.id}
-                      list_count={events.length}
+                      list_count={event.list_count}
                       waiting_list_count={event.waiting_list_count}
                     />
                   </Grid>

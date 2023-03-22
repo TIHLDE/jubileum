@@ -1,0 +1,46 @@
+.text {
+    background: black;
+    color: white;
+    mix-blend-mode: multiply;
+    height: 100%;
+    display: block;
+    user-select: none;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    white-space: break-spaces;
+}
+
+.background {
+    background: rgb(168,93,161);
+    background: linear-gradient(0deg, rgba(168,93,161,1) 0%, rgba(160,108,165,1) 20%, rgba(102,220,196,1) 50%, rgba(155,119,168,1) 80%, rgba(168,93,161,1) 100%);
+    height: 500%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transform: translateZ(0);
+}
+
+.fallbackBackground {
+    background: rgb(168,93,161);
+    position: absolute;
+    top: 0; 
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.wrapper {
+    width: fit-content;
+    max-width: 80vw;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 600px) {
+    .text {
+        font-size: 1.5rem;
+    }
+}

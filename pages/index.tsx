@@ -26,7 +26,9 @@ import { MerchBox } from '../components/MerchBox/MerchBox';
 import { ROUTES } from '../utility/constants/routes';
 import Logo from '../components/Logo';
 import { Event } from './api/events';
-import EventCard, { EventCardsLoading } from '../components/EventCard/EventCard';
+import EventCard, {
+  EventCardsLoading,
+} from '../components/EventCard/EventCard';
 
 export default function Home() {
   const lgBreakpoint = useMediaQuery('(min-width:800px)');
@@ -217,7 +219,7 @@ type Button = {
   disabled: true | false;
   color: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
   startIcon?: React.ReactNode;
-  target?: '_blank' | 'unset';
+  target?: '_blank' | 'unset' | '';
 };
 
 export const Buttons: Array<Button> = [
@@ -249,21 +251,21 @@ export const Buttons: Array<Button> = [
     target: '_blank',
   },
   {
+    title: 'Historie',
+    href: '/historie',
+    variant: 'contained',
+    disabled: false,
+    color: 'primary',
+    startIcon: <HistoryIcon />,
+    target: '',
+  },
+  {
     title: 'Daljer',
     href: 'https://tihlde.org/toddel/',
     variant: 'contained',
     disabled: true,
     color: 'primary',
     startIcon: <WorkspacePremiumIcon />,
-    target: 'unset',
-  },
-  {
-    title: 'Historie',
-    href: 'https://tihlde.org/toddel/',
-    variant: 'contained',
-    disabled: true,
-    color: 'primary',
-    startIcon: <HistoryIcon />,
     target: 'unset',
   },
 ];

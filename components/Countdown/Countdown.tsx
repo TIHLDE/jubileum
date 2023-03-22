@@ -20,54 +20,10 @@ export const Countdown = () => {
   const [confettiFired, setConfettiFired] = useState(false);
   const { run } = useConfetti();
 
-  // Define a target date for the countdown timer
-  const targetDate = new Date("Mar 20, 2023 12:00:00");
-
-  // Code for updating the timer values
-  const updateTimer = () => {
-    if (targetDate.getTime() - new Date().getTime() <= 0) {
-      // There is no remaining time!
-      setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-      // Fire the confetti only once!
-      if (!confettiFired) {
-        setConfettiFired(true);
-        run();
-      }
-
-      return;
-    }
-
-    // Calculate the remaining time
-    const now = new Date().getTime();
-    const distance = targetDate.getTime() - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Update the timeLeft hook
-    setTimeLeft({
-      days: days,
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds,
-    });
-  };
-
   useEffect(() => {
-    // Update the time remaining immedeately upon component mount
-    updateTimer();
-
-    // Create an interval which updates the component every second
-    const interval = setInterval(updateTimer, 1000);
-
-    // Clear the interval when the component is unmounted
-    return () => clearInterval(interval);
-  }, [confettiFired]);
+    // Fire some confetti!
+    run();
+  });
 
   return (
     <React.Fragment>
@@ -87,22 +43,22 @@ export const Countdown = () => {
       >
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.days}d
+            0d
           </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.hours}t
+            0t
           </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.minutes}m
+            0m
           </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography fontSize={20} fontWeight={600}>
-            {timeLeft.seconds}s
+            0s
           </Typography>
         </Grid>
       </Grid>

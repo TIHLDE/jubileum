@@ -184,7 +184,7 @@ export default function Home() {
           <Typography variant='h4' textAlign='center' py={2} pt={4}>
             Arrangementer 🥳
           </Typography>
-          <Grid container sx={{ maxWidth: 1000, mx: 'auto' }} rowGap={2}>
+          <Grid container sx={{ maxWidth: 1000, mx: 'auto', pb: 3 }} rowGap={2}>
             {events.length === 0 && <EventCardsLoading />}
             {events.map((event, i) => (
               <React.Fragment key={event.id}>

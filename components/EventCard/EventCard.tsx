@@ -75,19 +75,19 @@ export const EventCardsLoading: React.FC = () => {
   return (
     <>
       <Grid item xs={12} md={6}>
-        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
+        <Skeleton sx={{ m: 2 }} width='90%' height={200} variant='rounded' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
+        <Skeleton sx={{ m: 2 }} width='90%' height={200} variant='rounded' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
+        <Skeleton sx={{ m: 2 }} width='90%' height={200} variant='rounded' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
+        <Skeleton sx={{ m: 2 }} width='90%' height={200} variant='rounded' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <Skeleton sx={{ m: 2 }} width='100%' height={200} variant='rounded' />
+        <Skeleton sx={{ m: 2 }} width='90%' height={200} variant='rounded' />
       </Grid>
     </>
   );

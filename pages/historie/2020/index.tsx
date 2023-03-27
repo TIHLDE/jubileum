@@ -26,9 +26,14 @@ const Tihlde2020 = () => {
           px: 5,
           borderRadius: 0,
           minHeight: "100vh",
+          width: "100vw",
         }}
       >
-        <Typography textAlign="left" fontWeight={600}>
+        <Typography
+          textAlign="left"
+          fontWeight={600}
+          fontSize={{ xs: 17, md: 35 }}
+        >
           Året 2020 for Tihlde
         </Typography>
         <StaticTimeline items={timelineItems} />

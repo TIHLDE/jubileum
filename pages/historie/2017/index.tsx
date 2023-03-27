@@ -24,6 +24,7 @@ const Tihlde2017 = () => {
           px: 5,
           borderRadius: 0,
           minHeight: "100vh",
+          width: "100vw",
         }}
       >
         <Typography

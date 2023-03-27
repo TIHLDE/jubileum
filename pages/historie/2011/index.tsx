@@ -1,29 +1,16 @@
 import * as React from "react";
-import { Jumbotron } from "../../../components/Jumbotron/Jumbotron";
-import HistoryIcon from "@mui/icons-material/History";
-import Logo from "../../../components/Logo";
-import Head from "next/head";
+import StaticTimeline from "../../../components/StaticTimeline/StaticTimeline";
+import { Link as MuiLink, Paper, Stack, Typography } from "@mui/material";
 
-import {
-  Button,
-  Link as MuiLink,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Divider,
-  Grid,
-  IconButton,
-  Paper,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-  Box,
-  ImageList,
-  ImageListItem,
-} from "@mui/material";
-
+const timelineItems = [
+  "Kontoret på Kalvskinnet ble pusset opp",
+  "17.mai frokost og julegrøt ble innført som faste årlige arrangementer",
+  "Julebord ble til galla",
+  "Vi begynte Åretradisjonen",
+  "TIHLDE sverdet ble kjøpt",
+  "Generalforsamling høst - PR (nå Promo) ble til en undergruppe.",
+  "Generalforsamling høst - De Eldstes Raad blir etablert. Dette er tidligere medlemmer av hovedstyret, samt tidligere medlemmer av Drift. Raadet bistår HS med råd og kunnskap ved behov",
+];
 const Tihlde2011 = () => {
   return (
     <Stack
@@ -41,9 +28,14 @@ const Tihlde2011 = () => {
           minHeight: "100vh",
         }}
       >
-        <Typography textAlign="left" fontWeight={600}>
+        <Typography
+          fontSize={{ xs: 17, md: 35 }}
+          textAlign="left"
+          fontWeight={600}
+        >
           Året 2011 for Tihlde
         </Typography>
+        <StaticTimeline items={timelineItems} />
       </Paper>
     </Stack>
   );

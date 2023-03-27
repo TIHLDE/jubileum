@@ -1,31 +1,16 @@
 import * as React from "react";
-import { Jumbotron } from "../../../components/Jumbotron/Jumbotron";
-import HistoryIcon from "@mui/icons-material/History";
-import Logo from "../../../components/Logo";
-import Head from "next/head";
+import StaticTimeline from "../../../components/StaticTimeline/StaticTimeline";
 
-import {
-  Button,
-  Link as MuiLink,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Divider,
-  Grid,
-  IconButton,
-  Paper,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-  Box,
-  ImageList,
-  ImageListItem,
-  List,
-  ListItem,
-} from "@mui/material";
+import { Link as MuiLink, Paper, Stack, Typography } from "@mui/material";
 
+const timelineItems = [
+  "Januar, vi flytter til Gløshaugen",
+  "Januar, den store innflyttningsfesten på A-blokka med Abakus og Online til ære for TIHLDE",
+  "Vi begynner å gå fra et par bedriftpresentasjoner i semesteret, til et kurs og en bedriftpresentasjon i uken",
+  "Drift har ikke lenger ansvar for mailinglistene, og vi går over til Google Workspace",
+  "Immeball september, skiller oss med Nucleus på immeballet",
+  "Generalforsamling høsten 2020, dagens TIHLDE logo godkjennes på generalforsamling. Det blir vedtatt at medlemmer av Drift ikke lenger automatisk blir en del av De Eldstes Raad.",
+];
 const Tihlde2020 = () => {
   return (
     <Stack
@@ -46,7 +31,7 @@ const Tihlde2020 = () => {
         <Typography textAlign="left" fontWeight={600}>
           Året 2020 for Tihlde
         </Typography>
-        <List></List>
+        <StaticTimeline items={timelineItems} />
       </Paper>
     </Stack>
   );

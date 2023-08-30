@@ -7,10 +7,14 @@ import styles from './Gallery.module.css';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
 import { MerchItems } from '../MerchBox/MerchItems';
-import { Grid, useTheme } from '@mui/material';
+import { Grid, useTheme, Typography } from '@mui/material';
 import { MerchBox } from '../MerchBox/MerchBox';
 
-export function Gallery() {
+interface GalleryProps {
+  items: typeof MerchItems;
+}
+
+export function Gallery({ items }: GalleryProps) {
   const theme = useTheme();
   return (
     <Box
@@ -28,22 +32,26 @@ export function Gallery() {
       <Grid
         container
         sx={{
-            mx: 'auto',
-            position: 'relative',
-            width: '100%',
-            justifyContent: 'center',
+          mx: 'auto',
+          position: 'relative',
+          width: '100%',
+          justifyContent: 'center',
         }}
       >
-        {MerchItems.map((item) => (
-          <Grid item={true} key={item.title} xs={12} md={6} lg={4}>
-            <MerchBox
-              title={item.title}
-              url={item.url}
-              price={item.price}
-              available={item.available}
-            />
-          </Grid>
-        ))}
+        {items.length ? (
+          items.map((item) => (
+            <Grid item={true} key={item.title} xs={12} md={6} lg={4}>
+              <MerchBox
+                title={item.title}
+                url={item.url}
+                price={item.price}
+                available={item.available}
+              />
+            </Grid>
+          ))
+        ) : (
+          <Typography>Det er dessverre ikke noe merch igjen 🫣</Typography>
+        )}
       </Grid>
     </Box>
   );

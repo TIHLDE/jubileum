@@ -135,60 +135,71 @@ export default function Home() {
           </Grid>
         </Paper>
         <Divider />
-        <Paper square sx={{ p: 3, position: 'relative' }}>
-          <Link href='/merch'>
-            <Typography variant='h4' textAlign='center' my={2}>
-              Jubileumsmerch ⏳
-            </Typography>
-          </Link>
-          <Grid
-            container
-            sx={{ maxWidth: 800, mx: 'auto', zIndex: 1, position: 'relative' }}
-          >
-            {MerchItems.slice(0, 2).map((item) => (
-              <Grid item xs={12} md={6} key={item.title}>
-                <MerchBox
-                  title={item.title}
-                  price={item.price}
-                  url={item.url}
-                  available={item.available}
-                />
-              </Grid>
-            ))}
-          </Grid>
-
-          <Box
-            sx={{
-              display: 'block',
-              width: 'fit-content',
-              margin: 'auto',
-            }}
-          >
-            <Button
-              endIcon={<EastIcon />}
-              variant='contained'
+        {MerchItems.length ? (
+          <Paper square sx={{ p: 3, position: 'relative' }}>
+            <Link href='/merch'>
+              <Typography variant='h4' textAlign='center' my={2}>
+                Jubileumsmerch ⏳
+              </Typography>
+            </Link>
+            <Grid
+              container
               sx={{
+                maxWidth: 800,
+                mx: 'auto',
+                zIndex: 1,
                 position: 'relative',
-                zIndex: '2',
-                mt: 2,
               }}
-              href={ROUTES.MERCH}
             >
-              Se mer
-            </Button>
-          </Box>
-          <WaveOne sx={{ color: 'four.main', height: '50%' }} />
-        </Paper>
-        <Divider />
-        <Paper square sx={{ position: 'relative' }}>
-          <Typography variant='h4' textAlign='center' py={2} pt={4}>
-            Arrangementer 🥳
-          </Typography>
-          <Grid container sx={{ maxWidth: 1000, mx: 'auto' }} rowGap={2}>
-            {events.length === 0 && <EventCardsLoading />}
-            {events.map((event, i) => (
-              <React.Fragment key={event.id}>
-                <>
+              {MerchItems.slice(0, 2).map((item) => (
+                <Grid item xs={12} md={6} key={item.title}>
+                  <MerchBox
+                    title={item.title}
+                    price={item.price}
+                    url={item.url}
+                    available={item.available}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+
+            <Box
+              sx={{
+                display: 'block',
+                width: 'fit-content',
+                margin: 'auto',
+              }}
+            >
+              <Button
+                endIcon={<EastIcon />}
+                variant='contained'
+                sx={{
+                  position: 'relative',
+                  zIndex: '2',
+                  mt: 2,
+                }}
+                href={ROUTES.MERCH}
+              >
+                Se mer
+              </Button>
+            </Box>
+            <WaveOne sx={{ color: 'four.main', height: '50%' }} />
+          </Paper>
+        ) : undefined}
+
+        {events.length ? (
+          <Paper square sx={{ position: 'relative' }}>
+            <Typography variant='h4' textAlign='center' py={2} pt={4}>
+              Arrangementer 🥳
+            </Typography>
+            <Grid
+              container
+              sx={{ maxWidth: 1000, mx: 'auto', py: '2rem' }}
+              rowGap={2}
+            >
+              {events.length === 0 && <EventCardsLoading />}
+              {events.map((event, i) => (
+                <React.Fragment key={event.id}>
                   {dayRow(new Date(event.start_date))}
                   <Grid xs={12} md={6}>
                     <EventCard
@@ -202,49 +213,11 @@ export default function Home() {
                       waiting_list_count={event.waiting_list_count}
                     />
                   </Grid>
-                </>
-              </React.Fragment>
-            ))}
-          </Grid>
-        </Paper>
-        <Paper>
-          <Typography variant='h4' textAlign='center' py={2}>
-              Flagg?
-              CTF 🚩
-            </Typography>
-            <Typography textAlign='center' py={2}>
-            11111110110111100110001111111
-10000010110100000111101000001
-10111010101001000001101011101
-10111010001011100110001011101
-10111010110010000011101011101
-10000010000101001100001000001
-11111110101010101010101111111
-00000000011111100001000000000
-10011111101000100101010010111
-00100001001000111011010011100
-10101010110001110110100101000
-01111001101000011100100111011
-11110010000100111011011000011
-00100001000010011000101011001
-00000110010011010111100000101
-10111000011100011000011011101
-00110011101101010011100100001
-11100000101100010101000010000
-11100011111100110101111000001
-11011101110111111011101111101
-11100111100010110110111110101
-00000000110111011101100011100
-11111110110010010111101010100
-10000010101010111100100011000
-10111010110101110011111111010
-10111010101101110110010101101
-10111010011110011000010010111
-10000010010110010001001100101
-11111110101110011010100011000
- </Typography>
-
-        </Paper>
+                </React.Fragment>
+              ))}
+            </Grid>
+          </Paper>
+        ) : undefined}
       </main>
     </>
   );

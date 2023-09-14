@@ -6,8 +6,7 @@ type Merch = {
 };
 
 export const MerchItems: Array<Merch> = [
-
-  {
+  /*   {
     title: 'Ølglass',
     price: '',
     url: './ølglass.png',
@@ -18,5 +17,5 @@ export const MerchItems: Array<Merch> = [
     price: '',
     url: './shotteglass.png',
     available: false,
-  },
+  }, */
 ];
